@@ -7,7 +7,7 @@
 <meta name="description" content="Nouveautés, coulisses et rendez-vous Bakougie — bougies et fondants parfumés faits main en France.">
 <link rel="icon" href="icon-192.png">
 <link rel="manifest" href="manifest.webmanifest">
-<meta name="theme-color" content="#26403A">
+<meta name="theme-color" content="#800020">
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -16,120 +16,165 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400&family=Hanken+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
-<!-- OneSignal Web SDK -->
 <script src="https://cdn.onesignal.com/sdks/web/v16/OneSignalSDK.page.js" defer></script>
 <style>
   :root{
-    --paper:#EDE8DA; --paper-2:#F6F2E8; --card:#FCF9F1;
-    --ink:#22261E; --ink-soft:#5E6155; --ink-faint:#8C8E82;
-    --bottle:#26403A; --bottle-2:#31514A;
-    --amber:#B0700F; --amber-2:#D79A38; --amber-soft:#F1DEB4;
-    --glow:#F6C669;
-    --line:#DAD3C1; --line-strong:#C6BDA6;
+    --wine:#800020; --wine-deep:#5E0018; --wine-soft:#F4E7EA;
+    --gold:#C9A24B; --gold-deep:#A9863A; --gold-soft:#F2E6C6;
+    --cream:#FBF7F1; --white:#FFFFFF;
+    --ink:#2A1216; --ink-soft:#6E5A5E; --ink-faint:#9C8B8F;
+    --line:#EBDDDF; --line-gold:#E8D7AE;
     --radius:16px;
-    --shadow:0 1px 2px rgba(38,32,20,.05), 0 14px 30px -18px rgba(38,32,20,.28);
+    --shadow:0 1px 2px rgba(70,10,25,.05), 0 14px 30px -18px rgba(70,10,25,.25);
     font-family:'Hanken Grotesk', system-ui, -apple-system, sans-serif;
   }
   *{box-sizing:border-box;}
   html,body{margin:0;padding:0;}
-  body{background:var(--paper);color:var(--ink);-webkit-font-smoothing:antialiased;font-size:16px;line-height:1.55;}
+  body{background:var(--cream);color:var(--ink);-webkit-font-smoothing:antialiased;font-size:16px;line-height:1.55;}
   a{color:inherit;}
+  .mono{font-variant-numeric:tabular-nums;}
 
-  /* Top bar */
-  .topbar{position:sticky;top:0;z-index:30;background:rgba(38,64,58,.96);backdrop-filter:blur(6px);color:var(--paper-2);
-    display:flex;align-items:center;justify-content:space-between;gap:12px;padding:calc(11px + env(safe-area-inset-top)) 18px 11px;}
-  .topbar .mark{font-family:'Fraunces',Georgia,serif;font-weight:600;font-size:21px;color:#F6EFDD;letter-spacing:.4px;}
-  .bell{appearance:none;border:1px solid rgba(246,239,221,.3);background:rgba(246,239,221,.08);color:#F6EFDD;
-    border-radius:22px;padding:7px 13px;font-size:13.5px;font-weight:600;cursor:pointer;display:inline-flex;align-items:center;gap:7px;font-family:inherit;}
+  .topbar{position:sticky;top:0;z-index:30;background:var(--wine);color:#fff;display:flex;align-items:center;justify-content:space-between;gap:12px;padding:calc(10px + env(safe-area-inset-top)) 18px 10px;}
+  .brand{display:flex;align-items:center;gap:10px;}
+  .brand img{height:30px;width:auto;display:block;}
+  .brand .mark{font-family:'Fraunces',Georgia,serif;font-weight:600;font-size:20px;letter-spacing:.5px;color:#fff;}
+  .bell{appearance:none;border:1px solid rgba(255,255,255,.32);background:rgba(255,255,255,.1);color:#fff;border-radius:22px;padding:7px 13px;font-size:13.5px;font-weight:600;cursor:pointer;display:inline-flex;align-items:center;gap:7px;font-family:inherit;}
   .bell:active{transform:translateY(1px);}
-  .bell.on{background:var(--amber);border-color:var(--amber);color:#fff;}
+  .bell.on{background:var(--gold);border-color:var(--gold);color:#3a2a06;}
 
-  /* Hero */
-  .hero{position:relative;overflow:hidden;background:
-      radial-gradient(120% 80% at 50% -10%, rgba(246,198,105,.55), rgba(246,198,105,0) 55%),
-      linear-gradient(180deg, var(--paper-2), var(--paper));
-    padding:52px 20px 40px;text-align:center;border-bottom:1px solid var(--line);}
-  .hero .flame{font-size:34px;line-height:1;margin-bottom:6px;filter:drop-shadow(0 4px 14px rgba(214,154,56,.5));}
-  .hero h1{font-family:'Fraunces',Georgia,serif;font-weight:600;font-size:clamp(38px,10vw,60px);line-height:.98;margin:4px 0 8px;letter-spacing:.5px;}
-  .hero .tag{font-family:'Fraunces',serif;font-style:italic;font-weight:400;font-size:clamp(16px,4.4vw,20px);color:var(--amber);margin:0 0 14px;}
+  .hero{position:relative;overflow:hidden;text-align:center;padding:40px 20px 34px;background:
+      radial-gradient(120% 90% at 50% -20%, var(--wine-soft), rgba(244,231,234,0) 60%), var(--cream);
+    border-bottom:1px solid var(--line);}
+  .hero img.emblem{height:74px;width:auto;margin:0 auto 12px;display:block;}
+  .hero h1{font-family:'Fraunces',Georgia,serif;font-weight:600;font-size:clamp(34px,9vw,52px);line-height:1;margin:0 0 8px;color:var(--wine);letter-spacing:.5px;}
+  .hero .tag{font-family:'Fraunces',serif;font-style:italic;font-weight:400;font-size:clamp(15px,4.2vw,19px);color:var(--gold-deep);margin:0 0 14px;}
   .hero .intro{max-width:44ch;margin:0 auto;color:var(--ink-soft);font-size:15px;}
+  .hero .gold-rule{width:56px;height:3px;background:linear-gradient(90deg,var(--gold),var(--gold-deep));border-radius:3px;margin:16px auto 0;}
 
-  .wrap{max-width:680px;margin:0 auto;padding:22px 16px calc(60px + env(safe-area-inset-bottom));}
+  .wrap{max-width:680px;margin:0 auto;padding:22px 16px calc(70px + env(safe-area-inset-bottom));}
+  body.admin .wrap{padding-bottom:calc(120px + env(safe-area-inset-bottom));}
 
-  /* Notification card */
-  .notif{background:var(--bottle);color:#EDE7D7;border-radius:var(--radius);padding:18px 18px 20px;box-shadow:var(--shadow);
-    margin-top:-24px;position:relative;z-index:5;}
-  .notif h2{font-family:'Fraunces',serif;font-weight:500;font-size:19px;margin:0 0 4px;color:#F6EFDD;display:flex;align-items:center;gap:9px;}
-  .notif p{margin:0 0 14px;font-size:14px;color:#B9C6BE;}
-  .notif .cta{appearance:none;border:none;border-radius:12px;background:var(--amber);color:#fff;font-weight:700;font-size:15.5px;
-    padding:14px 18px;width:100%;cursor:pointer;font-family:inherit;display:inline-flex;align-items:center;justify-content:center;gap:9px;}
+  /* Notifications */
+  .notif{background:var(--wine);color:#F6E9EC;border-radius:var(--radius);padding:18px;box-shadow:var(--shadow);margin-top:-22px;position:relative;z-index:5;border:1px solid var(--wine-deep);}
+  .notif h2{font-family:'Fraunces',serif;font-weight:500;font-size:19px;margin:0 0 4px;color:#fff;display:flex;align-items:center;gap:9px;}
+  .notif p{margin:0 0 14px;font-size:14px;color:#E7CBD2;}
+  .notif .cta{appearance:none;border:none;border-radius:12px;background:var(--gold);color:#3a2a06;font-weight:700;font-size:15.5px;padding:14px 18px;width:100%;cursor:pointer;font-family:inherit;display:inline-flex;align-items:center;justify-content:center;gap:9px;}
   .notif .cta:active{transform:translateY(1px);}
-  .notif .cta.done{background:#3E7A55;}
-  .notif .cta:disabled{opacity:.55;cursor:default;}
-  .notif .steps{margin:12px 0 0;padding:0;list-style:none;font-size:13.5px;color:#CBD6CE;}
+  .notif .cta.done{background:#EADFC2;}
+  .notif .steps{margin:12px 0 0;padding:0;list-style:none;font-size:13.5px;color:#EAD3D9;}
   .notif .steps li{display:flex;gap:9px;padding:5px 0;align-items:flex-start;}
-  .notif .steps .n{flex:none;width:20px;height:20px;border-radius:50%;background:rgba(246,239,221,.14);color:#F6EFDD;
-    font-size:11.5px;font-weight:700;display:flex;align-items:center;justify-content:center;margin-top:1px;}
-  .notif .admin-note{font-size:12.5px;color:#E7C98B;background:rgba(246,198,105,.12);border:1px solid rgba(246,198,105,.3);
-    border-radius:10px;padding:9px 11px;margin-top:10px;}
+  .notif .steps .n{flex:none;width:20px;height:20px;border-radius:50%;background:rgba(255,255,255,.16);color:#fff;font-size:11.5px;font-weight:700;display:flex;align-items:center;justify-content:center;margin-top:1px;}
+  .notif .admin-note{font-size:12.5px;color:#F2D9A8;background:rgba(201,162,75,.16);border:1px solid rgba(201,162,75,.4);border-radius:10px;padding:9px 11px;margin-top:10px;}
 
-  /* Sections */
-  .section{margin-top:34px;}
-  .section-head{display:flex;align-items:baseline;justify-content:space-between;gap:10px;margin:0 2px 14px;}
-  .section-head h2{font-family:'Fraunces',serif;font-weight:500;font-size:23px;margin:0;}
-  .section-head .eyebrow{font-size:11.5px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--amber);}
+  /* Blocs */
+  .block{position:relative;margin-top:22px;}
+  .section-head{display:flex;align-items:baseline;gap:10px;margin:0 2px 14px;}
+  .section-head h2{font-family:'Fraunces',serif;font-weight:500;font-size:23px;margin:0;color:var(--ink);}
+  .eyebrow{font-size:11.5px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--gold-deep);}
 
-  .cards{display:flex;flex-direction:column;gap:14px;}
-  .card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow);}
-  .card-media{height:150px;background:
-      radial-gradient(90% 120% at 30% 0%, rgba(246,198,105,.5), rgba(246,198,105,0) 60%),
-      linear-gradient(150deg, var(--bottle-2), var(--bottle));
-    display:flex;align-items:center;justify-content:center;color:rgba(246,239,221,.5);font-size:40px;}
+  .card{background:var(--white);border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow);}
+  .card-media{height:150px;background:radial-gradient(90% 120% at 30% 0%, rgba(201,162,75,.28), rgba(201,162,75,0) 60%), linear-gradient(150deg, var(--wine), var(--wine-deep));display:flex;align-items:center;justify-content:center;color:rgba(255,255,255,.6);font-size:40px;}
   .card-media img{width:100%;height:100%;object-fit:cover;display:block;}
   .card-body{padding:15px 17px 17px;}
   .card-date{font-size:12px;font-weight:600;letter-spacing:.04em;text-transform:uppercase;color:var(--ink-faint);margin-bottom:5px;}
   .card-body h3{font-family:'Fraunces',serif;font-weight:500;font-size:19px;margin:0 0 6px;line-height:1.25;}
   .card-body p{margin:0;color:var(--ink-soft);font-size:14.5px;}
-  .card-body .more{display:inline-block;margin-top:11px;color:var(--amber);font-weight:600;font-size:14px;text-decoration:none;}
+  .card-body .more{display:inline-block;margin-top:11px;color:var(--wine);font-weight:700;font-size:14px;text-decoration:none;}
 
-  /* Journal (articles) */
-  .journal{display:flex;flex-direction:column;gap:2px;}
   .post{display:block;padding:15px 4px;border-top:1px solid var(--line);text-decoration:none;}
-  .post:first-child{border-top:none;}
-  .post .card-date{margin-bottom:3px;}
-  .post h3{font-family:'Fraunces',serif;font-weight:500;font-size:18px;margin:0 0 4px;}
+  .journal-first .post{border-top:none;}
+  .post h3{font-family:'Fraunces',serif;font-weight:500;font-size:18px;margin:0 0 4px;color:var(--ink);}
   .post p{margin:0;color:var(--ink-soft);font-size:14px;}
-  .post .more{color:var(--amber);font-weight:600;font-size:13.5px;}
+  .post .more{color:var(--wine);font-weight:700;font-size:13.5px;}
 
-  /* Liens */
+  .live-banner{background:linear-gradient(100deg,var(--wine),var(--wine-deep));color:#fff;border-radius:14px;padding:14px 16px;display:flex;align-items:center;gap:11px;font-weight:600;box-shadow:var(--shadow);border:1px solid var(--gold);text-decoration:none;}
+  .live-banner .dot{width:10px;height:10px;border-radius:50%;background:var(--gold);box-shadow:0 0 0 4px rgba(201,162,75,.3);flex:none;animation:pulse 1.6s infinite;}
+  @keyframes pulse{0%,100%{opacity:1}50%{opacity:.4}}
+  .live-banner.inactive{opacity:.5;filter:grayscale(.4);}
+
+  .cta-btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;background:var(--wine);color:#fff;border-radius:12px;padding:14px 22px;font-weight:700;font-size:15px;text-decoration:none;box-shadow:var(--shadow);}
+  .cta-wrap{text-align:center;}
+
+  .textblock{background:var(--white);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);padding:16px 18px;}
+  .textblock h3{font-family:'Fraunces',serif;font-weight:500;font-size:19px;margin:0 0 6px;color:var(--ink);}
+  .textblock p{margin:0;color:var(--ink-soft);font-size:15px;white-space:pre-wrap;}
+
+  figure.imgblock{margin:0;border-radius:var(--radius);overflow:hidden;border:1px solid var(--line);box-shadow:var(--shadow);background:var(--white);}
+  figure.imgblock img{width:100%;display:block;}
+  figure.imgblock figcaption{padding:9px 14px;font-size:13px;color:var(--ink-soft);}
+  .imgblock .ph{height:170px;display:flex;align-items:center;justify-content:center;color:var(--ink-faint);background:var(--wine-soft);}
+
   .links{display:flex;flex-direction:column;gap:10px;}
-  .link-btn{display:flex;align-items:center;gap:13px;background:var(--card);border:1px solid var(--line);border-radius:14px;
-    padding:14px 16px;text-decoration:none;font-weight:600;font-size:15.5px;box-shadow:var(--shadow);}
+  .link-btn{display:flex;align-items:center;gap:13px;background:var(--white);border:1px solid var(--line);border-radius:14px;padding:14px 16px;text-decoration:none;font-weight:600;font-size:15.5px;box-shadow:var(--shadow);}
   .link-btn:active{transform:translateY(1px);}
-  .link-btn .ic{width:38px;height:38px;border-radius:11px;flex:none;display:flex;align-items:center;justify-content:center;color:#fff;}
-  .link-btn .ic.shop{background:var(--amber);}
+  .link-btn .ic{width:38px;height:38px;border-radius:11px;flex:none;display:flex;align-items:center;justify-content:center;color:#fff;font-size:17px;}
+  .link-btn .ic.shop{background:var(--wine);}
   .link-btn .ic.tt{background:#111;}
   .link-btn .ic.ig{background:linear-gradient(135deg,#F58529,#DD2A7B,#8134AF);}
   .link-btn .arr{margin-left:auto;color:var(--ink-faint);}
 
-  .install-hint{margin-top:34px;text-align:center;font-size:13px;color:var(--ink-faint);background:var(--paper-2);
-    border:1px dashed var(--line-strong);border-radius:12px;padding:13px 15px;}
+  .install-hint{margin-top:32px;text-align:center;font-size:13px;color:var(--ink-faint);background:var(--white);border:1px dashed var(--line-gold);border-radius:12px;padding:13px 15px;}
   .install-hint b{color:var(--ink-soft);}
-
-  footer{margin-top:40px;text-align:center;color:var(--ink-faint);font-size:12.5px;padding-top:18px;border-top:1px solid var(--line);}
+  footer{margin-top:36px;text-align:center;color:var(--ink-faint);font-size:12.5px;padding-top:18px;border-top:1px solid var(--line);}
+  footer .adot{display:inline-block;width:16px;height:16px;margin-left:6px;opacity:.28;cursor:pointer;vertical-align:middle;}
   .empty-note{color:var(--ink-faint);font-size:14px;font-style:italic;padding:8px 2px;}
 
-  #toast{position:fixed;left:50%;bottom:calc(20px + env(safe-area-inset-bottom));transform:translateX(-50%) translateY(160%);z-index:80;
-    background:var(--bottle);color:#F3EEDD;padding:12px 18px;border-radius:12px;font-size:14.5px;font-weight:500;
-    box-shadow:0 12px 30px -10px rgba(0,0,0,.4);transition:transform .3s cubic-bezier(.2,.9,.3,1);max-width:90vw;text-align:center;}
+  /* ADMIN */
+  body.admin .block{outline:1.5px dashed var(--line-gold);outline-offset:6px;border-radius:6px;}
+  .blk-tools{position:absolute;top:-12px;right:0;display:none;gap:4px;z-index:6;}
+  body.admin .block:hover .blk-tools, body.admin .block .blk-tools{display:flex;}
+  .blk-tools button{width:30px;height:30px;border-radius:8px;border:1px solid var(--line);background:var(--white);color:var(--ink-soft);cursor:pointer;font-size:14px;line-height:0;display:flex;align-items:center;justify-content:center;box-shadow:var(--shadow);}
+  .blk-tools button:active{transform:translateY(1px);}
+  .blk-tools button.del{color:var(--wine);}
+  .blk-label{position:absolute;top:-12px;left:0;font-size:10.5px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;color:var(--gold-deep);background:var(--gold-soft);border:1px solid var(--line-gold);border-radius:6px;padding:2px 7px;display:none;}
+  body.admin .block .blk-label{display:inline-block;}
+
+  .adminbar{position:fixed;left:0;right:0;bottom:0;z-index:40;background:var(--wine);color:#fff;display:none;align-items:center;gap:8px;padding:10px 12px calc(10px + env(safe-area-inset-bottom));box-shadow:0 -8px 24px -12px rgba(0,0,0,.4);}
+  body.admin .adminbar{display:flex;}
+  .adminbar .ab-title{font-weight:700;font-size:13px;margin-right:auto;display:flex;align-items:center;gap:7px;}
+  .adminbar .ab-title .g{color:var(--gold);}
+  .adminbar button{appearance:none;border-radius:10px;border:1px solid rgba(255,255,255,.28);background:rgba(255,255,255,.1);color:#fff;font-weight:600;font-size:13.5px;padding:9px 12px;cursor:pointer;font-family:inherit;display:inline-flex;align-items:center;gap:6px;}
+  .adminbar button.pub{background:var(--gold);color:#3a2a06;border-color:var(--gold);}
+  .adminbar button:active{transform:translateY(1px);}
+
+  /* Modales */
+  .overlay{position:fixed;inset:0;background:rgba(40,10,20,.5);backdrop-filter:blur(3px);display:flex;align-items:center;justify-content:center;padding:18px;z-index:60;}
+  .modal{background:var(--white);border-radius:18px;box-shadow:0 24px 60px -20px rgba(40,8,18,.55);width:100%;max-width:520px;max-height:92vh;overflow:auto;}
+  .modal-head{padding:18px 22px 12px;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;align-items:center;position:sticky;top:0;background:var(--white);z-index:1;}
+  .modal-head h3{font-family:'Fraunces',serif;font-weight:500;font-size:20px;margin:0;color:var(--wine);}
+  .modal-body{padding:18px 22px;}
+  .modal-foot{padding:14px 22px 20px;display:flex;gap:10px;justify-content:flex-end;flex-wrap:wrap;}
+  .icon-btn{appearance:none;background:none;border:none;cursor:pointer;color:var(--ink-faint);padding:6px;border-radius:8px;line-height:0;}
+  .icon-btn:active{background:var(--cream);}
+  .field{margin-bottom:15px;}
+  .field label{display:block;font-size:13px;font-weight:600;margin-bottom:6px;color:var(--ink);}
+  .field input[type=text],.field input[type=password],.field input[type=date],.field textarea{width:100%;padding:11px 13px;border:1px solid var(--line-gold);border-radius:11px;font-family:inherit;font-size:15px;background:var(--cream);color:var(--ink);}
+  .field textarea{min-height:90px;resize:vertical;}
+  .field input:focus,.field textarea:focus{outline:2px solid var(--gold);border-color:transparent;background:#fff;}
+  .field.bool{display:flex;align-items:center;gap:10px;}
+  .field.bool input{width:20px;height:20px;accent-color:var(--wine);}
+  .field.bool label{margin:0;}
+  .btn{appearance:none;cursor:pointer;border-radius:11px;font-weight:700;font-size:14.5px;padding:11px 16px;border:1px solid transparent;font-family:inherit;}
+  .btn-primary{background:var(--wine);color:#fff;}
+  .btn-gold{background:var(--gold);color:#3a2a06;}
+  .btn-ghost{background:var(--white);border-color:var(--line-gold);color:var(--ink);}
+  .type-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;}
+  .type-card{display:flex;align-items:center;gap:10px;padding:14px;border:1px solid var(--line-gold);border-radius:12px;background:var(--cream);cursor:pointer;font-weight:600;font-size:14.5px;text-align:left;font-family:inherit;color:var(--ink);}
+  .type-card:active{background:#fff;}
+  .type-card .em{font-size:20px;}
+  .muted{color:var(--ink-faint);font-size:12.5px;}
+  .login-lock{width:44px;height:44px;border-radius:50%;background:var(--wine);color:var(--gold);display:flex;align-items:center;justify-content:center;font-size:20px;margin:0 auto 10px;}
+  .login-err{color:var(--wine);font-size:13.5px;font-weight:600;margin-top:6px;min-height:18px;}
+
+  #toast{position:fixed;left:50%;bottom:calc(78px + env(safe-area-inset-bottom));transform:translateX(-50%) translateY(160%);z-index:80;background:var(--ink);color:#F6ECDF;padding:12px 18px;border-radius:12px;font-size:14.5px;font-weight:500;box-shadow:0 12px 30px -10px rgba(0,0,0,.4);transition:transform .3s cubic-bezier(.2,.9,.3,1);max-width:90vw;text-align:center;}
   #toast.show{transform:translateX(-50%) translateY(0);}
-  @media (prefers-reduced-motion:reduce){*{transition:none!important;}}
-  :focus-visible{outline:2px solid var(--amber-2);outline-offset:2px;}
+  @media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important;}}
+  :focus-visible{outline:2px solid var(--gold);outline-offset:2px;}
 </style>
 </head>
 <body>
   <header class="topbar">
-    <span class="mark" id="brandMark">Bakougie</span>
+    <div class="brand"><img src="logo-white.png" alt=""><span class="mark" id="brandMark">Bakougie</span></div>
     <button class="bell" id="bellBtn" onclick="enableNotifications()">
       <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"/><path d="M10.3 21a1.94 1.94 0 0 0 3.4 0"/></svg>
       <span id="bellLabel">Notifications</span>
@@ -137,146 +182,322 @@
   </header>
 
   <section class="hero">
-    <div class="flame">🔥</div>
+    <img class="emblem" src="logo-black.png" alt="Logo Bakougie">
     <h1 id="heroTitle">Bakougie</h1>
-    <p class="tag" id="heroTag">Bougies & fondants parfumés, faits main en France</p>
+    <p class="tag" id="heroTag"></p>
     <p class="intro" id="heroIntro"></p>
+    <div class="gold-rule"></div>
   </section>
 
   <div class="wrap">
     <div class="notif" id="notifCard"></div>
-
-    <section class="section" id="secNouveautes">
-      <div class="section-head"><span class="eyebrow">Frais du jour</span><h2>Nouveautés</h2></div>
-      <div class="cards" id="nouveautes"></div>
-    </section>
-
-    <section class="section" id="secJournal">
-      <div class="section-head"><span class="eyebrow">Coulisses & conseils</span><h2>Le journal</h2></div>
-      <div class="journal" id="journal"></div>
-    </section>
-
-    <section class="section" id="secLiens">
-      <div class="section-head"><h2>Nous suivre</h2></div>
-      <div class="links" id="liens"></div>
-    </section>
+    <div id="page"></div>
 
     <div class="install-hint">
       📲 <b>Astuce :</b> ajoutez cette page à votre écran d'accueil pour la retrouver en un geste et recevoir les notifications.
       <span id="iosHint"></span>
     </div>
-
-    <div style="text-align:center;margin-top:18px">
-      <button onclick="toggleDiag()" style="background:none;border:none;color:var(--ink-faint);font-size:12.5px;text-decoration:underline;cursor:pointer;font-family:inherit">Diagnostic notifications</button>
-      <button onclick="copyDiag()" style="background:none;border:none;color:var(--ink-faint);font-size:12.5px;text-decoration:underline;cursor:pointer;font-family:inherit;margin-left:14px">Copier</button>
-      <pre id="diag" style="display:none;text-align:left;background:var(--card);border:1px solid var(--line);border-radius:12px;padding:13px 15px;margin-top:10px;font-size:12px;line-height:1.6;overflow:auto;white-space:pre-wrap;word-break:break-all;color:var(--ink-soft)"></pre>
-    </div>
-
-    <footer>© <span id="year"></span> Bakougie · Fait main en France</footer>
+    <footer>© <span id="year"></span> Bakougie · Fait main en France
+      <svg class="adot" onclick="openLogin()" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-label="Espace admin"><rect x="5" y="11" width="14" height="9" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg>
+    </footer>
   </div>
+
+  <div class="adminbar" id="adminbar">
+    <span class="ab-title">✦ <span class="g">Admin</span></span>
+    <button onclick="openAddModule()">+ Module</button>
+    <button onclick="openSettings()">Réglages</button>
+    <button class="pub" onclick="publish()">Publier</button>
+    <button onclick="logout()">Quitter</button>
+  </div>
+
+  <div id="modal-root"></div>
   <div id="toast"></div>
 
 <script src="contenu.js"></script>
 <script>
-/* ---------- Utilitaires ---------- */
+/* ===== Sécurité admin (empreinte chiffrée, jamais le mot de passe en clair) ===== */
+const ADMIN_SALT = "bakougie-atelier-2026::";
+const ADMIN_HASH = "d13aa31fbbd5039dacbefb446426ac5e988d687bc78ecb51e7148948b938edbd";
+async function sha256hex(str){
+  const buf = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(str));
+  return [...new Uint8Array(buf)].map(b=>b.toString(16).padStart(2,'0')).join('');
+}
+
+/* ===== Utilitaires ===== */
 const $=(s)=>document.querySelector(s);
-function esc(s){ return String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c])); }
-function toast(m){ const t=$('#toast'); t.textContent=m; t.classList.add('show'); clearTimeout(t._t); t._t=setTimeout(()=>t.classList.remove('show'),2400); }
-function fmtDate(s){ try{ const d=new Date(s+'T00:00:00'); return d.toLocaleDateString('fr-FR',{day:'numeric',month:'long',year:'numeric'}); }catch(e){ return s; } }
-function isIOS(){ return /iphone|ipad|ipod/i.test(navigator.userAgent) || (navigator.platform==='MacIntel' && navigator.maxTouchPoints>1); }
+function esc(s){ return String(s==null?'':s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c])); }
+function clone(o){ return JSON.parse(JSON.stringify(o)); }
+function uid(){ return 'b_'+Math.random().toString(36).slice(2,9); }
+function fmtDate(s){ try{ return new Date(s+'T00:00:00').toLocaleDateString('fr-FR',{day:'numeric',month:'long',year:'numeric'}); }catch(e){ return s; } }
+function toast(m){ const t=$('#toast'); t.textContent=m; t.classList.add('show'); clearTimeout(t._t); t._t=setTimeout(()=>t.classList.remove('show'),2300); }
+function today(){ return new Date().toISOString().slice(0,10); }
+function isIOS(){ return /iphone|ipad|ipod/i.test(navigator.userAgent) || (navigator.platform==='MacIntel'&&navigator.maxTouchPoints>1); }
 function isStandalone(){ return window.matchMedia('(display-mode: standalone)').matches || navigator.standalone===true; }
 
-/* ---------- Contenu ---------- */
-const CFG = (typeof BAKOUGIE_CONFIG!=='undefined') ? BAKOUGIE_CONFIG : {};
-document.getElementById('year').textContent=new Date().getFullYear();
-if(CFG.marque){ $('#brandMark').textContent=CFG.marque; $('#heroTitle').textContent=CFG.marque; }
-if(CFG.tagline) $('#heroTag').textContent=CFG.tagline;
-$('#heroIntro').textContent=CFG.intro||'';
-
-function renderNouveautes(){
-  const box=$('#nouveautes'); const list=(typeof NOUVEAUTES!=='undefined')?NOUVEAUTES:[];
-  if(!list.length){ box.innerHTML='<p class="empty-note">Bientôt de nouvelles publications.</p>'; return; }
-  box.innerHTML=list.map(n=>`
-    <article class="card">
-      <div class="card-media">${n.image?`<img src="${esc(n.image)}" alt="${esc(n.titre)}" loading="lazy">`:'🕯️'}</div>
-      <div class="card-body">
-        <div class="card-date">${fmtDate(n.date)}</div>
-        <h3>${esc(n.titre)}</h3>
-        <p>${esc(n.texte||'')}</p>
-        ${n.lien?`<a class="more" href="${esc(n.lien)}" target="_blank" rel="noopener">Découvrir →</a>`:''}
-      </div>
-    </article>`).join('');
+/* ===== Modèle ===== */
+const CFG_DEFAULT = (typeof BAKOUGIE_CONFIG!=='undefined')?BAKOUGIE_CONFIG:{};
+function backcompatBlocks(){
+  const bl=[];
+  if(typeof NOUVEAUTES!=='undefined' && NOUVEAUTES.length){
+    bl.push({id:uid(),type:'section',data:{eyebrow:'Frais du jour',titre:'Nouveautés'}});
+    NOUVEAUTES.forEach(n=>bl.push({id:uid(),type:'nouveaute',data:{...n}}));
+  }
+  if(typeof ARTICLES!=='undefined' && ARTICLES.length){
+    bl.push({id:uid(),type:'section',data:{eyebrow:'Coulisses & conseils',titre:'Le journal'}});
+    ARTICLES.forEach(a=>bl.push({id:uid(),type:'article',data:{...a}}));
+  }
+  bl.push({id:uid(),type:'section',data:{eyebrow:'',titre:'Nous suivre'}});
+  bl.push({id:uid(),type:'liens',data:{}});
+  return bl;
 }
-function renderJournal(){
-  const box=$('#journal'); const list=(typeof ARTICLES!=='undefined')?ARTICLES:[];
-  if(!list.length){ $('#secJournal').style.display='none'; return; }
-  box.innerHTML=list.map(a=>{
-    const inner=`<div class="card-date">${fmtDate(a.date)}</div><h3>${esc(a.titre)}</h3><p>${esc(a.extrait||'')}</p>${a.lien?'<span class="more">Lire →</span>':''}`;
-    return a.lien ? `<a class="post" href="${esc(a.lien)}" target="_blank" rel="noopener">${inner}</a>` : `<div class="post">${inner}</div>`;
+const PUBLISHED = (typeof PAGE_BLOCKS!=='undefined' && Array.isArray(PAGE_BLOCKS)) ? PAGE_BLOCKS : backcompatBlocks();
+
+let CONFIG = Object.assign({marque:'Bakougie',tagline:'',intro:'',liens:{}}, clone(CFG_DEFAULT));
+let blocks = clone(PUBLISHED);
+let isAdmin = sessionStorage.getItem('bkg_admin')==='1';
+
+const DRAFT_KEY='bakougie_page_draft_v1';
+function saveDraft(){ try{ localStorage.setItem(DRAFT_KEY, JSON.stringify({config:CONFIG,blocks})); }catch(e){} }
+function loadDraft(){ try{ const d=JSON.parse(localStorage.getItem(DRAFT_KEY)); if(d&&Array.isArray(d.blocks)) return d; }catch(e){} return null; }
+function clearDraft(){ try{ localStorage.removeItem(DRAFT_KEY); }catch(e){} }
+if(isAdmin){ const d=loadDraft(); if(d){ CONFIG=Object.assign(CONFIG,d.config||{}); blocks=d.blocks; } document.body.classList.add('admin'); }
+
+/* ===== En-tête / hero ===== */
+function renderHeader(){
+  $('#year').textContent=new Date().getFullYear();
+  $('#brandMark').textContent=CONFIG.marque||'Bakougie';
+  $('#heroTitle').textContent=CONFIG.marque||'Bakougie';
+  $('#heroTag').textContent=CONFIG.tagline||'';
+  $('#heroIntro').textContent=CONFIG.intro||'';
+}
+
+/* ===== Rendu des blocs ===== */
+const TYPE_LABELS={live:'Bandeau live',section:'Titre de section',nouveaute:'Nouveauté',article:'Article',bouton:'Bouton',texte:'Texte',image:'Image',liens:'Réseaux & boutique'};
+const TYPE_ICONS={live:'🔴',section:'📑',nouveaute:'🕯️',article:'📝',bouton:'🔘',texte:'✍️',image:'🖼️',liens:'🔗'};
+
+function blockInner(b, prevType){
+  const d=b.data||{};
+  switch(b.type){
+    case 'live':{
+      if(!d.actif && !isAdmin) return '';
+      const cls='live-banner'+(d.actif?'':' inactive');
+      const inner=`<span class="dot"></span><span>${esc(d.texte||'Live en cours')}</span>`;
+      if(d.lien && d.actif) return `<a class="${cls}" href="${esc(d.lien)}" target="_blank" rel="noopener">${inner}</a>`;
+      return `<div class="${cls}">${inner}${(!d.actif&&isAdmin)?' <span class="muted" style="color:#f2d9a8;margin-left:auto">(inactif)</span>':''}</div>`;
+    }
+    case 'section':
+      return `<div class="section-head">${d.eyebrow?`<span class="eyebrow">${esc(d.eyebrow)}</span>`:''}<h2>${esc(d.titre||'')}</h2></div>`;
+    case 'nouveaute':
+      return `<article class="card">
+        <div class="card-media">${d.image?`<img src="${esc(d.image)}" alt="${esc(d.titre)}" loading="lazy">`:'🕯️'}</div>
+        <div class="card-body">${d.date?`<div class="card-date">${fmtDate(d.date)}</div>`:''}<h3>${esc(d.titre||'')}</h3><p>${esc(d.texte||'')}</p>
+        ${d.lien?`<a class="more" href="${esc(d.lien)}" target="_blank" rel="noopener">Découvrir →</a>`:''}</div></article>`;
+    case 'article':{
+      const first = prevType!=='article';
+      const inner=`${d.date?`<div class="card-date">${fmtDate(d.date)}</div>`:''}<h3>${esc(d.titre||'')}</h3><p>${esc(d.extrait||'')}</p>${d.lien?'<span class="more">Lire →</span>':''}`;
+      const wrap = d.lien?`<a class="post" href="${esc(d.lien)}" target="_blank" rel="noopener">${inner}</a>`:`<div class="post">${inner}</div>`;
+      return `<div class="${first?'journal-first':''}">${wrap}</div>`;
+    }
+    case 'bouton':
+      return `<div class="cta-wrap"><a class="cta-btn" href="${esc(d.url||'#')}" target="_blank" rel="noopener">${esc(d.label||'Voir plus')}</a></div>`;
+    case 'texte':
+      return `<div class="textblock">${d.titre?`<h3>${esc(d.titre)}</h3>`:''}<p>${esc(d.corps||'')}</p></div>`;
+    case 'image':
+      return `<figure class="imgblock">${d.url?`<img src="${esc(d.url)}" alt="${esc(d.legende||'')}" loading="lazy">`:'<div class="ph">🖼️ Ajoutez une image</div>'}${d.legende?`<figcaption>${esc(d.legende)}</figcaption>`:''}</figure>`;
+    case 'liens':{
+      const L=CONFIG.liens||{}; let h='';
+      if(L.boutique) h+=`<a class="link-btn" href="${esc(L.boutique)}" target="_blank" rel="noopener"><span class="ic shop">🛍️</span> Boutique en ligne <span class="arr">→</span></a>`;
+      if(L.tiktok) h+=`<a class="link-btn" href="${esc(L.tiktok)}" target="_blank" rel="noopener"><span class="ic tt">♪</span> TikTok <span class="arr">→</span></a>`;
+      if(L.instagram) h+=`<a class="link-btn" href="${esc(L.instagram)}" target="_blank" rel="noopener"><span class="ic ig">◎</span> Instagram <span class="arr">→</span></a>`;
+      if(!h) h=isAdmin?'<p class="empty-note">Ajoutez vos liens dans « Réglages ».</p>':'';
+      return `<div class="links">${h}</div>`;
+    }
+  }
+  return '';
+}
+function renderPage(){
+  const page=$('#page'); let html=''; let prevType=null;
+  blocks.forEach((b,i)=>{
+    const inner=blockInner(b, prevType);
+    if(inner==='' && !isAdmin){ prevType=b.type; return; }
+    const tools = isAdmin ? `<span class="blk-label">${TYPE_ICONS[b.type]||''} ${TYPE_LABELS[b.type]||b.type}</span>
+      <span class="blk-tools">
+        <button title="Monter" onclick="moveBlock('${b.id}',-1)">↑</button>
+        <button title="Descendre" onclick="moveBlock('${b.id}',1)">↓</button>
+        <button title="Modifier" onclick="editBlock('${b.id}')">✎</button>
+        <button class="del" title="Supprimer" onclick="deleteBlock('${b.id}')">🗑</button>
+      </span>` : '';
+    html+=`<div class="block" data-id="${b.id}">${tools}${inner||'<div class="empty-note">(bloc vide)</div>'}</div>`;
+    prevType=b.type;
+  });
+  if(blocks.length===0) html=`<p class="empty-note">Aucun module. ${isAdmin?'Touchez « + Module » pour commencer.':''}</p>`;
+  page.innerHTML=html;
+}
+function render(){ renderHeader(); renderPage(); }
+
+/* ===== Admin : édition des blocs ===== */
+function findBlock(id){ return blocks.find(b=>b.id===id); }
+function moveBlock(id,dir){ const i=blocks.findIndex(b=>b.id===id); const j=i+dir; if(i<0||j<0||j>=blocks.length) return; const t=blocks[i]; blocks[i]=blocks[j]; blocks[j]=t; saveDraft(); renderPage(); }
+function deleteBlock(id){ const b=findBlock(id); if(!b) return; if(!confirm(`Supprimer ce module « ${TYPE_LABELS[b.type]} » ?`)) return; blocks=blocks.filter(x=>x.id!==id); saveDraft(); renderPage(); toast('Module supprimé'); }
+
+const SCHEMAS={
+  live:[{k:'actif',label:'Bandeau visible',type:'bool'},{k:'texte',label:'Texte',type:'text'},{k:'lien',label:'Lien au clic (optionnel)',type:'text'}],
+  section:[{k:'eyebrow',label:'Sur-titre (optionnel)',type:'text'},{k:'titre',label:'Titre',type:'text'}],
+  nouveaute:[{k:'date',label:'Date',type:'date'},{k:'titre',label:'Titre',type:'text'},{k:'texte',label:'Texte',type:'area'},{k:'image',label:"Image (URL, optionnel)",type:'text'},{k:'lien',label:'Lien (optionnel)',type:'text'}],
+  article:[{k:'date',label:'Date',type:'date'},{k:'titre',label:'Titre',type:'text'},{k:'extrait',label:'Extrait',type:'area'},{k:'lien',label:'Lien (optionnel)',type:'text'}],
+  bouton:[{k:'label',label:'Texte du bouton',type:'text'},{k:'url',label:'Lien',type:'text'}],
+  texte:[{k:'titre',label:'Titre (optionnel)',type:'text'},{k:'corps',label:'Texte',type:'area'}],
+  image:[{k:'url',label:'Image (URL)',type:'text'},{k:'legende',label:'Légende (optionnel)',type:'text'}],
+  liens:[],
+};
+function defaultData(type){
+  return ({live:{actif:true,texte:'🔴 Live TikTok en cours — venez !',lien:''},
+    section:{eyebrow:'',titre:'Nouvelle section'},
+    nouveaute:{date:today(),titre:'Nouveauté',texte:'',image:'',lien:''},
+    article:{date:today(),titre:'Nouvel article',extrait:'',lien:''},
+    bouton:{label:'En savoir plus',url:''},
+    texte:{titre:'',corps:'Votre texte ici.'},
+    image:{url:'',legende:''},
+    liens:{}})[type];
+}
+function openAddModule(){
+  const cards=Object.keys(TYPE_LABELS).map(t=>`<button class="type-card" onclick="addBlock('${t}')"><span class="em">${TYPE_ICONS[t]}</span> ${TYPE_LABELS[t]}</button>`).join('');
+  openModal(`<div class="modal-head"><h3>Ajouter un module</h3><button class="icon-btn" onclick="closeModal()">✕</button></div>
+    <div class="modal-body"><div class="type-grid">${cards}</div></div>`);
+}
+function addBlock(type){
+  const b={id:uid(),type,data:defaultData(type)};
+  blocks.push(b); saveDraft(); closeModal(); renderPage(); toast('Module ajouté');
+  if(SCHEMAS[type].length) editBlock(b.id);
+}
+function editBlock(id){
+  const b=findBlock(id); if(!b) return;
+  if(b.type==='liens'){ openSettings(); return; }
+  const sc=SCHEMAS[b.type]||[];
+  const fields=sc.map(f=>{
+    const v=b.data[f.k]==null?'':b.data[f.k];
+    if(f.type==='bool') return `<div class="field bool"><input type="checkbox" id="f_${f.k}" ${b.data[f.k]?'checked':''}><label for="f_${f.k}">${f.label}</label></div>`;
+    if(f.type==='area') return `<div class="field"><label>${f.label}</label><textarea id="f_${f.k}">${esc(v)}</textarea></div>`;
+    if(f.type==='date') return `<div class="field"><label>${f.label}</label><input type="date" id="f_${f.k}" value="${esc(v)}"></div>`;
+    return `<div class="field"><label>${f.label}</label><input type="text" id="f_${f.k}" value="${esc(v)}"></div>`;
   }).join('');
+  openModal(`<div class="modal-head"><h3>${TYPE_ICONS[b.type]} ${TYPE_LABELS[b.type]}</h3><button class="icon-btn" onclick="closeModal()">✕</button></div>
+    <div class="modal-body">${fields||'<p class="muted">Aucun réglage pour ce module.</p>'}</div>
+    <div class="modal-foot"><button class="btn btn-ghost" onclick="closeModal()">Annuler</button><button class="btn btn-primary" onclick="saveBlock('${id}')">Enregistrer</button></div>`);
 }
-function renderLiens(){
-  const box=$('#liens'); const L=CFG.liens||{}; let h='';
-  if(L.boutique) h+=`<a class="link-btn" href="${esc(L.boutique)}" target="_blank" rel="noopener"><span class="ic shop">🛍️</span> Boutique en ligne <span class="arr">→</span></a>`;
-  if(L.tiktok) h+=`<a class="link-btn" href="${esc(L.tiktok)}" target="_blank" rel="noopener"><span class="ic tt">♪</span> TikTok <span class="arr">→</span></a>`;
-  if(L.instagram) h+=`<a class="link-btn" href="${esc(L.instagram)}" target="_blank" rel="noopener"><span class="ic ig">◎</span> Instagram <span class="arr">→</span></a>`;
-  if(!h){ $('#secLiens').style.display='none'; return; }
-  box.innerHTML=h;
+function saveBlock(id){
+  const b=findBlock(id); if(!b) return;
+  (SCHEMAS[b.type]||[]).forEach(f=>{
+    const el=$('#f_'+f.k); if(!el) return;
+    b.data[f.k] = f.type==='bool' ? el.checked : el.value;
+  });
+  saveDraft(); closeModal(); renderPage(); toast('Module mis à jour');
 }
-renderNouveautes(); renderJournal(); renderLiens();
 
-/* iOS install hint text */
-if(isIOS() && !isStandalone()){
-  $('#iosHint').innerHTML=' Sur iPhone : bouton <b>Partager</b> → <b>Sur l\'écran d\'accueil</b>.';
+/* ===== Réglages (config) ===== */
+function openSettings(){
+  const L=CONFIG.liens||{};
+  openModal(`<div class="modal-head"><h3>Réglages de la page</h3><button class="icon-btn" onclick="closeModal()">✕</button></div>
+    <div class="modal-body">
+      <div class="field"><label>Nom de la marque</label><input type="text" id="s_marque" value="${esc(CONFIG.marque||'')}"></div>
+      <div class="field"><label>Accroche (sous le titre)</label><input type="text" id="s_tag" value="${esc(CONFIG.tagline||'')}"></div>
+      <div class="field"><label>Introduction</label><textarea id="s_intro">${esc(CONFIG.intro||'')}</textarea></div>
+      <div class="field"><label>Lien Boutique</label><input type="text" id="s_boutique" value="${esc(L.boutique||'')}"></div>
+      <div class="field"><label>Lien TikTok</label><input type="text" id="s_tiktok" value="${esc(L.tiktok||'')}"></div>
+      <div class="field"><label>Lien Instagram</label><input type="text" id="s_instagram" value="${esc(L.instagram||'')}"></div>
+      <p class="muted">Notifications (OneSignal) : ${esc((CONFIG.oneSignalAppId||'').slice(0,8))}… — géré ailleurs, non modifiable ici.</p>
+    </div>
+    <div class="modal-foot"><button class="btn btn-ghost" onclick="closeModal()">Annuler</button><button class="btn btn-primary" onclick="saveSettings()">Enregistrer</button></div>`);
 }
+function saveSettings(){
+  CONFIG.marque=$('#s_marque').value.trim()||'Bakougie';
+  CONFIG.tagline=$('#s_tag').value.trim();
+  CONFIG.intro=$('#s_intro').value.trim();
+  CONFIG.liens={boutique:$('#s_boutique').value.trim(),tiktok:$('#s_tiktok').value.trim(),instagram:$('#s_instagram').value.trim()};
+  saveDraft(); closeModal(); render(); toast('Réglages enregistrés');
+}
+
+/* ===== Publier (génère un nouveau contenu.js à déposer sur GitHub) ===== */
+function publish(){
+  const cfg=clone(CONFIG);
+  const js = "/* BAKOUGIE — Contenu généré par l'espace admin le "+new Date().toLocaleString('fr-FR')+" */\n\n"
+    + "const BAKOUGIE_CONFIG = "+JSON.stringify(cfg,null,2)+";\n\n"
+    + "const PAGE_BLOCKS = "+JSON.stringify(blocks,null,2)+";\n";
+  const blob=new Blob([js],{type:'text/javascript'}); const url=URL.createObjectURL(blob);
+  const a=document.createElement('a'); a.href=url; a.download='contenu.js'; a.click(); URL.revokeObjectURL(url);
+  openModal(`<div class="modal-head"><h3>Publier vos changements</h3><button class="icon-btn" onclick="closeModal()">✕</button></div>
+    <div class="modal-body">
+      <p>Le fichier <b>contenu.js</b> vient d'être téléchargé.</p>
+      <ol class="steps" style="color:var(--ink-soft);padding-left:18px">
+        <li>Ouvrez votre dépôt GitHub <b>bakougie-pixel/app</b>.</li>
+        <li><b>Add file → Upload files</b>, glissez le nouveau <b>contenu.js</b> (il remplace l'ancien).</li>
+        <li><b>Commit changes</b>. Le site est à jour pour tout le monde en ~1 minute.</li>
+      </ol>
+      <p class="muted">Tant que vous n'avez pas déposé ce fichier, vos changements restent visibles uniquement sur cet appareil.</p>
+    </div>
+    <div class="modal-foot"><button class="btn btn-primary" onclick="closeModal()">Compris</button></div>`);
+}
+
+/* ===== Connexion admin ===== */
+function openLogin(){
+  if(isAdmin){ // déjà connecté : proposer de quitter
+    openModal(`<div class="modal-head"><h3>Espace admin</h3><button class="icon-btn" onclick="closeModal()">✕</button></div>
+      <div class="modal-body"><p>Vous êtes connectée en administratrice.</p></div>
+      <div class="modal-foot"><button class="btn btn-ghost" onclick="closeModal()">Fermer</button><button class="btn btn-primary" onclick="logout()">Se déconnecter</button></div>`);
+    return;
+  }
+  openModal(`<div class="modal-head"><h3>Connexion</h3><button class="icon-btn" onclick="closeModal()">✕</button></div>
+    <div class="modal-body">
+      <div class="login-lock">🔒</div>
+      <div class="field"><label>Nom d'utilisateur</label><input type="text" id="lg_user" autocomplete="off" autocapitalize="characters"></div>
+      <div class="field"><label>Mot de passe</label><input type="password" id="lg_pass" autocomplete="off" onkeydown="if(event.key==='Enter')doLogin()"></div>
+      <div class="login-err" id="lg_err"></div>
+    </div>
+    <div class="modal-foot"><button class="btn btn-ghost" onclick="closeModal()">Annuler</button><button class="btn btn-primary" onclick="doLogin()">Se connecter</button></div>`);
+  setTimeout(()=>{ const u=$('#lg_user'); if(u) u.focus(); },40);
+}
+async function doLogin(){
+  const u=$('#lg_user').value, p=$('#lg_pass').value; const err=$('#lg_err');
+  try{
+    const h=await sha256hex(ADMIN_SALT + (u||'').trim().toUpperCase() + ':' + (p||''));
+    if(h===ADMIN_HASH){
+      sessionStorage.setItem('bkg_admin','1'); isAdmin=true; document.body.classList.add('admin');
+      const d=loadDraft(); if(d){ CONFIG=Object.assign(CONFIG,d.config||{}); blocks=d.blocks; }
+      closeModal(); render(); toast('Bienvenue ✦');
+    } else { err.textContent='Identifiants incorrects.'; await new Promise(r=>setTimeout(r,600)); }
+  }catch(e){ err.textContent="Connexion sécurisée indisponible sur cette page (HTTPS requis)."; }
+}
+function logout(){ sessionStorage.removeItem('bkg_admin'); isAdmin=false; document.body.classList.remove('admin'); blocks=clone(PUBLISHED); CONFIG=Object.assign({marque:'Bakougie',tagline:'',intro:'',liens:{}},clone(CFG_DEFAULT)); closeModal(); render(); toast('Déconnectée'); }
+
+/* ===== Modales ===== */
+function openModal(html){ const r=$('#modal-root'); r.innerHTML=`<div class="overlay" id="ov"><div class="modal" role="dialog" aria-modal="true">${html}</div></div>`; $('#ov').addEventListener('mousedown',e=>{ if(e.target.id==='ov') closeModal(); }); document.addEventListener('keydown',escC); }
+function closeModal(){ $('#modal-root').innerHTML=''; document.removeEventListener('keydown',escC); }
+function escC(e){ if(e.key==='Escape') closeModal(); }
+
+/* accès admin via #admin */
+if((location.hash||'').toLowerCase()==='#admin') setTimeout(openLogin,300);
+
+render();
 
 /* ============================================================
-   NOTIFICATIONS (OneSignal)
+   NOTIFICATIONS (OneSignal) — configuration qui fonctionne, inchangée
    ============================================================ */
-let osReady=false;
-const hasAppId = !!(CFG.oneSignalAppId && CFG.oneSignalAppId.trim());
+const hasAppId = !!(CONFIG.oneSignalAppId && CONFIG.oneSignalAppId.trim());
+let osReady=false, diagError=null;
+
+if(isIOS() && !isStandalone()) $('#iosHint').innerHTML=' Sur iPhone : bouton <b>Partager</b> → <b>Sur l\'écran d\'accueil</b>.';
 
 function renderNotifCard(state){
-  // state: 'setup' | 'ios-install' | 'enable' | 'on' | 'unsupported'
   const card=$('#notifCard'); const bell=$('#bellBtn'); const bl=$('#bellLabel');
-  if(state==='setup'){
-    card.innerHTML=`<h2>🔔 Notifications</h2>
-      <p>Prévenez vos client·e·s des nouveautés, promos et lives.</p>
-      <div class="admin-note"><b>À faire (vous, l'administratrice) :</b> collez votre « App ID » OneSignal dans le fichier <b>contenu.js</b>. Voir GUIDE.md.</div>`;
-    bell.style.display='none'; return;
-  }
-  if(state==='unsupported'){
-    card.innerHTML=`<h2>🔔 Notifications</h2><p>Votre navigateur ne prend pas en charge les notifications. Essayez Chrome (Android) ou installez la page sur l'écran d'accueil (iPhone).</p>`;
-    bell.style.display='none'; return;
-  }
-  if(state==='ios-install'){
-    card.innerHTML=`<h2>🔔 Recevoir les notifications</h2>
-      <p>Sur iPhone, ajoutez d'abord la page à votre écran d'accueil, puis ouvrez-la et activez les notifications.</p>
-      <ol class="steps">
-        <li><span class="n">1</span> Touchez le bouton <b>Partager</b> (carré avec une flèche) en bas de Safari.</li>
-        <li><span class="n">2</span> Choisissez <b>Sur l'écran d'accueil</b>, puis <b>Ajouter</b>.</li>
-        <li><span class="n">3</span> Ouvrez l'app <b>Bakougie</b> depuis l'écran d'accueil et touchez <b>Activer</b>.</li>
-      </ol>`;
-    bell.style.display='none'; return;
-  }
-  if(state==='on'){
-    card.innerHTML=`<h2>✓ Notifications activées</h2><p>Vous serez prévenu·e des nouveautés, promos et lives. Merci !</p>
-      <button class="cta done" onclick="disableNotifications()">Se désabonner</button>`;
-    bell.classList.add('on'); bl.textContent='Activées ✓'; return;
-  }
-  // enable
-  card.innerHTML=`<h2>🔔 Activer les notifications</h2>
-    <p>Soyez prévenu·e des nouveautés, promos et lives TikTok — directement sur votre téléphone.</p>
-    <button class="cta" onclick="enableNotifications()">Activer les notifications</button>`;
-  bell.classList.remove('on'); bl.textContent='Notifications';
+  if(state==='setup'){ card.innerHTML=`<h2>🔔 Notifications</h2><p>Prévenez vos client·e·s des nouveautés, promos et lives.</p><div class="admin-note"><b>À configurer :</b> collez votre App ID OneSignal dans <b>contenu.js</b>.</div>`; bell.style.display='none'; return; }
+  if(state==='unsupported'){ card.innerHTML=`<h2>🔔 Notifications</h2><p>Votre navigateur ne les prend pas en charge. Essayez Chrome (Android) ou installez la page sur l'écran d'accueil (iPhone).</p>`; bell.style.display='none'; return; }
+  if(state==='ios-install'){ card.innerHTML=`<h2>🔔 Recevoir les notifications</h2><p>Sur iPhone, ajoutez d'abord la page à votre écran d'accueil, puis rouvrez-la pour activer.</p><ol class="steps"><li><span class="n">1</span> Bouton <b>Partager</b> en bas de Safari.</li><li><span class="n">2</span> <b>Sur l'écran d'accueil</b> → <b>Ajouter</b>.</li><li><span class="n">3</span> Ouvrez l'app <b>Bakougie</b> et touchez <b>Activer</b>.</li></ol>`; bell.style.display='none'; return; }
+  if(state==='on'){ card.innerHTML=`<h2>✓ Notifications activées</h2><p>Vous serez prévenu·e des nouveautés, promos et lives. Merci !</p><button class="cta done" onclick="disableNotifications()">Se désabonner</button>`; bell.classList.add('on'); bl.textContent='Activées ✓'; return; }
+  card.innerHTML=`<h2>🔔 Activer les notifications</h2><p>Soyez prévenu·e des nouveautés, promos et lives TikTok — sur votre téléphone.</p><button class="cta" onclick="enableNotifications()">Activer les notifications</button>`; bell.classList.remove('on'); bl.textContent='Notifications';
 }
-
-/* État initial */
 if(!hasAppId){ renderNotifCard('setup'); }
-else if(!('Notification' in window) || !('serviceWorker' in navigator)){
-  if(isIOS() && !isStandalone()) renderNotifCard('ios-install'); else renderNotifCard('unsupported');
-}
-else if(isIOS() && !isStandalone()){ renderNotifCard('ios-install'); }
+else if(!('Notification' in window)||!('serviceWorker' in navigator)){ (isIOS()&&!isStandalone())?renderNotifCard('ios-install'):renderNotifCard('unsupported'); }
+else if(isIOS()&&!isStandalone()){ renderNotifCard('ios-install'); }
 else { renderNotifCard('enable'); initOneSignal(); }
 
 function initOneSignal(){
@@ -284,72 +505,22 @@ function initOneSignal(){
   window.OneSignalDeferred = window.OneSignalDeferred || [];
   window.OneSignalDeferred.push(async function(OneSignal){
     try{
-      // Le worker doit être enregistré dans le dossier réel de la page
-      // (ex. /bakougie-site/ sur GitHub Pages), sinon l'abonnement ne remonte pas.
-      const dir = new URL('.', location.href).pathname;         // ex: "/bakougie-site/"
-      await OneSignal.init({
-        appId: CFG.oneSignalAppId.trim(),
-        serviceWorkerPath: dir.replace(/^\//,'') + 'OneSignalSDKWorker.js',
-        serviceWorkerParam: { scope: dir },
-        allowLocalhostAsSecureOrigin: true,
-      });
-      osReady=true;
-      syncState(OneSignal); renderDiag(OneSignal);
-      OneSignal.Notifications.addEventListener('permissionChange', ()=>{syncState(OneSignal);renderDiag(OneSignal);});
-      OneSignal.User.PushSubscription.addEventListener('change', ()=>{syncState(OneSignal);renderDiag(OneSignal);});
-    }catch(e){ diagError=(e&&e.message)||String(e); renderDiag(null); }
+      const dir = new URL('.', location.href).pathname;
+      await OneSignal.init({ appId: CONFIG.oneSignalAppId.trim(), serviceWorkerPath: dir.replace(/^\//,'')+'OneSignalSDKWorker.js', serviceWorkerParam:{scope:dir}, allowLocalhostAsSecureOrigin:true });
+      osReady=true; syncState(OneSignal);
+      OneSignal.Notifications.addEventListener('permissionChange',()=>syncState(OneSignal));
+      OneSignal.User.PushSubscription.addEventListener('change',()=>syncState(OneSignal));
+    }catch(e){ diagError=(e&&e.message)||String(e); }
   });
 }
-let diagError=null;
-function renderDiag(OneSignal){
-  const pre=document.getElementById('diag'); if(!pre) return;
-  const lines=[];
-  const push=(k,v)=>lines.push(k.padEnd(22)+': '+v);
-  push('Page (origine)', location.origin);
-  push('Dossier du site', new URL('.',location.href).pathname);
-  push('App ID', (CFG.oneSignalAppId||'').trim().slice(0,8)+'…');
-  push('Permission navigateur', (typeof Notification!=='undefined')?Notification.permission:'n/a');
-  push('Installée (écran acc.)', isStandalone()?'oui':'non');
-  try{
-    if(OneSignal){
-      const sub=OneSignal.User.PushSubscription;
-      push('OneSignal SDK', 'chargé');
-      push('OneSignal permission', OneSignal.Notifications.permission);
-      push('Abonné (optedIn)', sub.optedIn);
-      push('ID abonnement', sub.id ? sub.id : '(VIDE — pas enregistré chez OneSignal)');
-    } else { push('OneSignal SDK', 'non initialisé'); }
-  }catch(e){ push('Lecture état', 'erreur'); }
-  if(diagError) push('Erreur', diagError);
-  pre.textContent=lines.join('\n');
-}
-function toggleDiag(){ const p=document.getElementById('diag'); const show=p.style.display==='none'; p.style.display=show?'block':'none'; if(show){ window.OneSignalDeferred=window.OneSignalDeferred||[]; window.OneSignalDeferred.push(o=>renderDiag(o)); if(!hasAppId||!osReady) renderDiag(null); } }
-function copyDiag(){ const t=document.getElementById('diag').textContent; navigator.clipboard&&navigator.clipboard.writeText(t); toast('Diagnostic copié'); }
-function syncState(OneSignal){
-  try{
-    const on = OneSignal.Notifications.permission === true && OneSignal.User.PushSubscription.optedIn !== false;
-    renderNotifCard(on ? 'on' : 'enable');
-  }catch(e){}
-}
-
+function syncState(OneSignal){ try{ const on=OneSignal.Notifications.permission===true && OneSignal.User.PushSubscription.optedIn!==false; renderNotifCard(on?'on':'enable'); }catch(e){} }
 function enableNotifications(){
-  if(!hasAppId){ toast('Notifications à configurer (voir GUIDE.md)'); return; }
-  if(isIOS() && !isStandalone()){ renderNotifCard('ios-install'); toast("Ajoutez d'abord la page à l'écran d'accueil"); return; }
-  window.OneSignalDeferred = window.OneSignalDeferred || [];
-  window.OneSignalDeferred.push(async function(OneSignal){
-    try{
-      await OneSignal.Notifications.requestPermission();
-      try{ await OneSignal.User.PushSubscription.optIn(); }catch(_){}
-      syncState(OneSignal);
-      if(OneSignal.Notifications.permission===true) toast('Notifications activées 🔔');
-    }catch(e){ toast("Impossible d'activer ici"); }
-  });
+  if(!hasAppId){ toast('Notifications à configurer'); return; }
+  if(isIOS()&&!isStandalone()){ renderNotifCard('ios-install'); toast("Ajoutez d'abord la page à l'écran d'accueil"); return; }
+  window.OneSignalDeferred=window.OneSignalDeferred||[];
+  window.OneSignalDeferred.push(async function(OneSignal){ try{ await OneSignal.Notifications.requestPermission(); try{ await OneSignal.User.PushSubscription.optIn(); }catch(_){} syncState(OneSignal); if(OneSignal.Notifications.permission===true) toast('Notifications activées 🔔'); }catch(e){ toast("Impossible d'activer ici"); } });
 }
-function disableNotifications(){
-  window.OneSignalDeferred = window.OneSignalDeferred || [];
-  window.OneSignalDeferred.push(async function(OneSignal){
-    try{ await OneSignal.User.PushSubscription.optOut(); syncState(OneSignal); toast('Désabonné·e'); }catch(e){}
-  });
-}
+function disableNotifications(){ window.OneSignalDeferred=window.OneSignalDeferred||[]; window.OneSignalDeferred.push(async function(OneSignal){ try{ await OneSignal.User.PushSubscription.optOut(); syncState(OneSignal); toast('Désabonné·e'); }catch(e){} }); }
 </script>
 </body>
 </html>
