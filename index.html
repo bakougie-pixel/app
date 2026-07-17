@@ -166,6 +166,12 @@
       <span id="iosHint"></span>
     </div>
 
+    <div style="text-align:center;margin-top:18px">
+      <button onclick="toggleDiag()" style="background:none;border:none;color:var(--ink-faint);font-size:12.5px;text-decoration:underline;cursor:pointer;font-family:inherit">Diagnostic notifications</button>
+      <button onclick="copyDiag()" style="background:none;border:none;color:var(--ink-faint);font-size:12.5px;text-decoration:underline;cursor:pointer;font-family:inherit;margin-left:14px">Copier</button>
+      <pre id="diag" style="display:none;text-align:left;background:var(--card);border:1px solid var(--line);border-radius:12px;padding:13px 15px;margin-top:10px;font-size:12px;line-height:1.6;overflow:auto;white-space:pre-wrap;word-break:break-all;color:var(--ink-soft)"></pre>
+    </div>
+
     <footer>© <span id="year"></span> Bakougie · Fait main en France</footer>
   </div>
   <div id="toast"></div>
@@ -278,17 +284,46 @@ function initOneSignal(){
   window.OneSignalDeferred = window.OneSignalDeferred || [];
   window.OneSignalDeferred.push(async function(OneSignal){
     try{
+      // Le worker doit être enregistré dans le dossier réel de la page
+      // (ex. /bakougie-site/ sur GitHub Pages), sinon l'abonnement ne remonte pas.
+      const dir = new URL('.', location.href).pathname;         // ex: "/bakougie-site/"
       await OneSignal.init({
         appId: CFG.oneSignalAppId.trim(),
+        serviceWorkerPath: dir.replace(/^\//,'') + 'OneSignalSDKWorker.js',
+        serviceWorkerParam: { scope: dir },
         allowLocalhostAsSecureOrigin: true,
       });
       osReady=true;
-      syncState(OneSignal);
-      OneSignal.Notifications.addEventListener('permissionChange', ()=>syncState(OneSignal));
-      OneSignal.User.PushSubscription.addEventListener('change', ()=>syncState(OneSignal));
-    }catch(e){ /* silencieux */ }
+      syncState(OneSignal); renderDiag(OneSignal);
+      OneSignal.Notifications.addEventListener('permissionChange', ()=>{syncState(OneSignal);renderDiag(OneSignal);});
+      OneSignal.User.PushSubscription.addEventListener('change', ()=>{syncState(OneSignal);renderDiag(OneSignal);});
+    }catch(e){ diagError=(e&&e.message)||String(e); renderDiag(null); }
   });
 }
+let diagError=null;
+function renderDiag(OneSignal){
+  const pre=document.getElementById('diag'); if(!pre) return;
+  const lines=[];
+  const push=(k,v)=>lines.push(k.padEnd(22)+': '+v);
+  push('Page (origine)', location.origin);
+  push('Dossier du site', new URL('.',location.href).pathname);
+  push('App ID', (CFG.oneSignalAppId||'').trim().slice(0,8)+'…');
+  push('Permission navigateur', (typeof Notification!=='undefined')?Notification.permission:'n/a');
+  push('Installée (écran acc.)', isStandalone()?'oui':'non');
+  try{
+    if(OneSignal){
+      const sub=OneSignal.User.PushSubscription;
+      push('OneSignal SDK', 'chargé');
+      push('OneSignal permission', OneSignal.Notifications.permission);
+      push('Abonné (optedIn)', sub.optedIn);
+      push('ID abonnement', sub.id ? sub.id : '(VIDE — pas enregistré chez OneSignal)');
+    } else { push('OneSignal SDK', 'non initialisé'); }
+  }catch(e){ push('Lecture état', 'erreur'); }
+  if(diagError) push('Erreur', diagError);
+  pre.textContent=lines.join('\n');
+}
+function toggleDiag(){ const p=document.getElementById('diag'); const show=p.style.display==='none'; p.style.display=show?'block':'none'; if(show){ window.OneSignalDeferred=window.OneSignalDeferred||[]; window.OneSignalDeferred.push(o=>renderDiag(o)); if(!hasAppId||!osReady) renderDiag(null); } }
+function copyDiag(){ const t=document.getElementById('diag').textContent; navigator.clipboard&&navigator.clipboard.writeText(t); toast('Diagnostic copié'); }
 function syncState(OneSignal){
   try{
     const on = OneSignal.Notifications.permission === true && OneSignal.User.PushSubscription.optedIn !== false;
