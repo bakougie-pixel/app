@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Bakougie · Nouveautés & journal</title>
+<meta name="description" content="Nouveautés, coulisses et rendez-vous Bakougie — bougies et fondants parfumés faits main en France.">
+<link rel="icon" href="icon-192.png">
+<link rel="manifest" href="manifest.webmanifest">
+<meta name="theme-color" content="#26403A">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Bakougie">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400&family=Hanken+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<!-- OneSignal Web SDK -->
+<script src="https://cdn.onesignal.com/sdks/web/v16/OneSignalSDK.page.js" defer></script>
+<style>
+  :root{
+    --paper:#EDE8DA; --paper-2:#F6F2E8; --card:#FCF9F1;
+    --ink:#22261E; --ink-soft:#5E6155; --ink-faint:#8C8E82;
+    --bottle:#26403A; --bottle-2:#31514A;
+    --amber:#B0700F; --amber-2:#D79A38; --amber-soft:#F1DEB4;
+    --glow:#F6C669;
+    --line:#DAD3C1; --line-strong:#C6BDA6;
+    --radius:16px;
+    --shadow:0 1px 2px rgba(38,32,20,.05), 0 14px 30px -18px rgba(38,32,20,.28);
+    font-family:'Hanken Grotesk', system-ui, -apple-system, sans-serif;
+  }
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;}
+  body{background:var(--paper);color:var(--ink);-webkit-font-smoothing:antialiased;font-size:16px;line-height:1.55;}
+  a{color:inherit;}
+
+  /* Top bar */
+  .topbar{position:sticky;top:0;z-index:30;background:rgba(38,64,58,.96);backdrop-filter:blur(6px);color:var(--paper-2);
+    display:flex;align-items:center;justify-content:space-between;gap:12px;padding:calc(11px + env(safe-area-inset-top)) 18px 11px;}
+  .topbar .mark{font-family:'Fraunces',Georgia,serif;font-weight:600;font-size:21px;color:#F6EFDD;letter-spacing:.4px;}
+  .bell{appearance:none;border:1px solid rgba(246,239,221,.3);background:rgba(246,239,221,.08);color:#F6EFDD;
+    border-radius:22px;padding:7px 13px;font-size:13.5px;font-weight:600;cursor:pointer;display:inline-flex;align-items:center;gap:7px;font-family:inherit;}
+  .bell:active{transform:translateY(1px);}
+  .bell.on{background:var(--amber);border-color:var(--amber);color:#fff;}
+
+  /* Hero */
+  .hero{position:relative;overflow:hidden;background:
+      radial-gradient(120% 80% at 50% -10%, rgba(246,198,105,.55), rgba(246,198,105,0) 55%),
+      linear-gradient(180deg, var(--paper-2), var(--paper));
+    padding:52px 20px 40px;text-align:center;border-bottom:1px solid var(--line);}
+  .hero .flame{font-size:34px;line-height:1;margin-bottom:6px;filter:drop-shadow(0 4px 14px rgba(214,154,56,.5));}
+  .hero h1{font-family:'Fraunces',Georgia,serif;font-weight:600;font-size:clamp(38px,10vw,60px);line-height:.98;margin:4px 0 8px;letter-spacing:.5px;}
+  .hero .tag{font-family:'Fraunces',serif;font-style:italic;font-weight:400;font-size:clamp(16px,4.4vw,20px);color:var(--amber);margin:0 0 14px;}
+  .hero .intro{max-width:44ch;margin:0 auto;color:var(--ink-soft);font-size:15px;}
+
+  .wrap{max-width:680px;margin:0 auto;padding:22px 16px calc(60px + env(safe-area-inset-bottom));}
+
+  /* Notification card */
+  .notif{background:var(--bottle);color:#EDE7D7;border-radius:var(--radius);padding:18px 18px 20px;box-shadow:var(--shadow);
+    margin-top:-24px;position:relative;z-index:5;}
+  .notif h2{font-family:'Fraunces',serif;font-weight:500;font-size:19px;margin:0 0 4px;color:#F6EFDD;display:flex;align-items:center;gap:9px;}
+  .notif p{margin:0 0 14px;font-size:14px;color:#B9C6BE;}
+  .notif .cta{appearance:none;border:none;border-radius:12px;background:var(--amber);color:#fff;font-weight:700;font-size:15.5px;
+    padding:14px 18px;width:100%;cursor:pointer;font-family:inherit;display:inline-flex;align-items:center;justify-content:center;gap:9px;}
+  .notif .cta:active{transform:translateY(1px);}
+  .notif .cta.done{background:#3E7A55;}
+  .notif .cta:disabled{opacity:.55;cursor:default;}
+  .notif .steps{margin:12px 0 0;padding:0;list-style:none;font-size:13.5px;color:#CBD6CE;}
+  .notif .steps li{display:flex;gap:9px;padding:5px 0;align-items:flex-start;}
+  .notif .steps .n{flex:none;width:20px;height:20px;border-radius:50%;background:rgba(246,239,221,.14);color:#F6EFDD;
+    font-size:11.5px;font-weight:700;display:flex;align-items:center;justify-content:center;margin-top:1px;}
+  .notif .admin-note{font-size:12.5px;color:#E7C98B;background:rgba(246,198,105,.12);border:1px solid rgba(246,198,105,.3);
+    border-radius:10px;padding:9px 11px;margin-top:10px;}
+
+  /* Sections */
+  .section{margin-top:34px;}
+  .section-head{display:flex;align-items:baseline;justify-content:space-between;gap:10px;margin:0 2px 14px;}
+  .section-head h2{font-family:'Fraunces',serif;font-weight:500;font-size:23px;margin:0;}
+  .section-head .eyebrow{font-size:11.5px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--amber);}
+
+  .cards{display:flex;flex-direction:column;gap:14px;}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow);}
+  .card-media{height:150px;background:
+      radial-gradient(90% 120% at 30% 0%, rgba(246,198,105,.5), rgba(246,198,105,0) 60%),
+      linear-gradient(150deg, var(--bottle-2), var(--bottle));
+    display:flex;align-items:center;justify-content:center;color:rgba(246,239,221,.5);font-size:40px;}
+  .card-media img{width:100%;height:100%;object-fit:cover;display:block;}
+  .card-body{padding:15px 17px 17px;}
+  .card-date{font-size:12px;font-weight:600;letter-spacing:.04em;text-transform:uppercase;color:var(--ink-faint);margin-bottom:5px;}
+  .card-body h3{font-family:'Fraunces',serif;font-weight:500;font-size:19px;margin:0 0 6px;line-height:1.25;}
+  .card-body p{margin:0;color:var(--ink-soft);font-size:14.5px;}
+  .card-body .more{display:inline-block;margin-top:11px;color:var(--amber);font-weight:600;font-size:14px;text-decoration:none;}
+
+  /* Journal (articles) */
+  .journal{display:flex;flex-direction:column;gap:2px;}
+  .post{display:block;padding:15px 4px;border-top:1px solid var(--line);text-decoration:none;}
+  .post:first-child{border-top:none;}
+  .post .card-date{margin-bottom:3px;}
+  .post h3{font-family:'Fraunces',serif;font-weight:500;font-size:18px;margin:0 0 4px;}
+  .post p{margin:0;color:var(--ink-soft);font-size:14px;}
+  .post .more{color:var(--amber);font-weight:600;font-size:13.5px;}
+
+  /* Liens */
+  .links{display:flex;flex-direction:column;gap:10px;}
+  .link-btn{display:flex;align-items:center;gap:13px;background:var(--card);border:1px solid var(--line);border-radius:14px;
+    padding:14px 16px;text-decoration:none;font-weight:600;font-size:15.5px;box-shadow:var(--shadow);}
+  .link-btn:active{transform:translateY(1px);}
+  .link-btn .ic{width:38px;height:38px;border-radius:11px;flex:none;display:flex;align-items:center;justify-content:center;color:#fff;}
+  .link-btn .ic.shop{background:var(--amber);}
+  .link-btn .ic.tt{background:#111;}
+  .link-btn .ic.ig{background:linear-gradient(135deg,#F58529,#DD2A7B,#8134AF);}
+  .link-btn .arr{margin-left:auto;color:var(--ink-faint);}
+
+  .install-hint{margin-top:34px;text-align:center;font-size:13px;color:var(--ink-faint);background:var(--paper-2);
+    border:1px dashed var(--line-strong);border-radius:12px;padding:13px 15px;}
+  .install-hint b{color:var(--ink-soft);}
+
+  footer{margin-top:40px;text-align:center;color:var(--ink-faint);font-size:12.5px;padding-top:18px;border-top:1px solid var(--line);}
+  .empty-note{color:var(--ink-faint);font-size:14px;font-style:italic;padding:8px 2px;}
+
+  #toast{position:fixed;left:50%;bottom:calc(20px + env(safe-area-inset-bottom));transform:translateX(-50%) translateY(160%);z-index:80;
+    background:var(--bottle);color:#F3EEDD;padding:12px 18px;border-radius:12px;font-size:14.5px;font-weight:500;
+    box-shadow:0 12px 30px -10px rgba(0,0,0,.4);transition:transform .3s cubic-bezier(.2,.9,.3,1);max-width:90vw;text-align:center;}
+  #toast.show{transform:translateX(-50%) translateY(0);}
+  @media (prefers-reduced-motion:reduce){*{transition:none!important;}}
+  :focus-visible{outline:2px solid var(--amber-2);outline-offset:2px;}
+</style>
+</head>
+<body>
+  <header class="topbar">
+    <span class="mark" id="brandMark">Bakougie</span>
+    <button class="bell" id="bellBtn" onclick="enableNotifications()">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"/><path d="M10.3 21a1.94 1.94 0 0 0 3.4 0"/></svg>
+      <span id="bellLabel">Notifications</span>
+    </button>
+  </header>
+
+  <section class="hero">
+    <div class="flame">🔥</div>
+    <h1 id="heroTitle">Bakougie</h1>
+    <p class="tag" id="heroTag">Bougies & fondants parfumés, faits main en France</p>
+    <p class="intro" id="heroIntro"></p>
+  </section>
+
+  <div class="wrap">
+    <div class="notif" id="notifCard"></div>
+
+    <section class="section" id="secNouveautes">
+      <div class="section-head"><span class="eyebrow">Frais du jour</span><h2>Nouveautés</h2></div>
+      <div class="cards" id="nouveautes"></div>
+    </section>
+
+    <section class="section" id="secJournal">
+      <div class="section-head"><span class="eyebrow">Coulisses & conseils</span><h2>Le journal</h2></div>
+      <div class="journal" id="journal"></div>
+    </section>
+
+    <section class="section" id="secLiens">
+      <div class="section-head"><h2>Nous suivre</h2></div>
+      <div class="links" id="liens"></div>
+    </section>
+
+    <div class="install-hint">
+      📲 <b>Astuce :</b> ajoutez cette page à votre écran d'accueil pour la retrouver en un geste et recevoir les notifications.
+      <span id="iosHint"></span>
+    </div>
+
+    <footer>© <span id="year"></span> Bakougie · Fait main en France</footer>
+  </div>
+  <div id="toast"></div>
+
+<script src="contenu.js"></script>
+<script>
+/* ---------- Utilitaires ---------- */
+const $=(s)=>document.querySelector(s);
+function esc(s){ return String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c])); }
+function toast(m){ const t=$('#toast'); t.textContent=m; t.classList.add('show'); clearTimeout(t._t); t._t=setTimeout(()=>t.classList.remove('show'),2400); }
+function fmtDate(s){ try{ const d=new Date(s+'T00:00:00'); return d.toLocaleDateString('fr-FR',{day:'numeric',month:'long',year:'numeric'}); }catch(e){ return s; } }
+function isIOS(){ return /iphone|ipad|ipod/i.test(navigator.userAgent) || (navigator.platform==='MacIntel' && navigator.maxTouchPoints>1); }
+function isStandalone(){ return window.matchMedia('(display-mode: standalone)').matches || navigator.standalone===true; }
+
+/* ---------- Contenu ---------- */
+const CFG = (typeof BAKOUGIE_CONFIG!=='undefined') ? BAKOUGIE_CONFIG : {};
+document.getElementById('year').textContent=new Date().getFullYear();
+if(CFG.marque){ $('#brandMark').textContent=CFG.marque; $('#heroTitle').textContent=CFG.marque; }
+if(CFG.tagline) $('#heroTag').textContent=CFG.tagline;
+$('#heroIntro').textContent=CFG.intro||'';
+
+function renderNouveautes(){
+  const box=$('#nouveautes'); const list=(typeof NOUVEAUTES!=='undefined')?NOUVEAUTES:[];
+  if(!list.length){ box.innerHTML='<p class="empty-note">Bientôt de nouvelles publications.</p>'; return; }
+  box.innerHTML=list.map(n=>`
+    <article class="card">
+      <div class="card-media">${n.image?`<img src="${esc(n.image)}" alt="${esc(n.titre)}" loading="lazy">`:'🕯️'}</div>
+      <div class="card-body">
+        <div class="card-date">${fmtDate(n.date)}</div>
+        <h3>${esc(n.titre)}</h3>
+        <p>${esc(n.texte||'')}</p>
+        ${n.lien?`<a class="more" href="${esc(n.lien)}" target="_blank" rel="noopener">Découvrir →</a>`:''}
+      </div>
+    </article>`).join('');
+}
+function renderJournal(){
+  const box=$('#journal'); const list=(typeof ARTICLES!=='undefined')?ARTICLES:[];
+  if(!list.length){ $('#secJournal').style.display='none'; return; }
+  box.innerHTML=list.map(a=>{
+    const inner=`<div class="card-date">${fmtDate(a.date)}</div><h3>${esc(a.titre)}</h3><p>${esc(a.extrait||'')}</p>${a.lien?'<span class="more">Lire →</span>':''}`;
+    return a.lien ? `<a class="post" href="${esc(a.lien)}" target="_blank" rel="noopener">${inner}</a>` : `<div class="post">${inner}</div>`;
+  }).join('');
+}
+function renderLiens(){
+  const box=$('#liens'); const L=CFG.liens||{}; let h='';
+  if(L.boutique) h+=`<a class="link-btn" href="${esc(L.boutique)}" target="_blank" rel="noopener"><span class="ic shop">🛍️</span> Boutique en ligne <span class="arr">→</span></a>`;
+  if(L.tiktok) h+=`<a class="link-btn" href="${esc(L.tiktok)}" target="_blank" rel="noopener"><span class="ic tt">♪</span> TikTok <span class="arr">→</span></a>`;
+  if(L.instagram) h+=`<a class="link-btn" href="${esc(L.instagram)}" target="_blank" rel="noopener"><span class="ic ig">◎</span> Instagram <span class="arr">→</span></a>`;
+  if(!h){ $('#secLiens').style.display='none'; return; }
+  box.innerHTML=h;
+}
+renderNouveautes(); renderJournal(); renderLiens();
+
+/* iOS install hint text */
+if(isIOS() && !isStandalone()){
+  $('#iosHint').innerHTML=' Sur iPhone : bouton <b>Partager</b> → <b>Sur l\'écran d\'accueil</b>.';
+}
+
+/* ============================================================
+   NOTIFICATIONS (OneSignal)
+   ============================================================ */
+let osReady=false;
+const hasAppId = !!(CFG.oneSignalAppId && CFG.oneSignalAppId.trim());
+
+function renderNotifCard(state){
+  // state: 'setup' | 'ios-install' | 'enable' | 'on' | 'unsupported'
+  const card=$('#notifCard'); const bell=$('#bellBtn'); const bl=$('#bellLabel');
+  if(state==='setup'){
+    card.innerHTML=`<h2>🔔 Notifications</h2>
+      <p>Prévenez vos client·e·s des nouveautés, promos et lives.</p>
+      <div class="admin-note"><b>À faire (vous, l'administratrice) :</b> collez votre « App ID » OneSignal dans le fichier <b>contenu.js</b>. Voir GUIDE.md.</div>`;
+    bell.style.display='none'; return;
+  }
+  if(state==='unsupported'){
+    card.innerHTML=`<h2>🔔 Notifications</h2><p>Votre navigateur ne prend pas en charge les notifications. Essayez Chrome (Android) ou installez la page sur l'écran d'accueil (iPhone).</p>`;
+    bell.style.display='none'; return;
+  }
+  if(state==='ios-install'){
+    card.innerHTML=`<h2>🔔 Recevoir les notifications</h2>
+      <p>Sur iPhone, ajoutez d'abord la page à votre écran d'accueil, puis ouvrez-la et activez les notifications.</p>
+      <ol class="steps">
+        <li><span class="n">1</span> Touchez le bouton <b>Partager</b> (carré avec une flèche) en bas de Safari.</li>
+        <li><span class="n">2</span> Choisissez <b>Sur l'écran d'accueil</b>, puis <b>Ajouter</b>.</li>
+        <li><span class="n">3</span> Ouvrez l'app <b>Bakougie</b> depuis l'écran d'accueil et touchez <b>Activer</b>.</li>
+      </ol>`;
+    bell.style.display='none'; return;
+  }
+  if(state==='on'){
+    card.innerHTML=`<h2>✓ Notifications activées</h2><p>Vous serez prévenu·e des nouveautés, promos et lives. Merci !</p>
+      <button class="cta done" onclick="disableNotifications()">Se désabonner</button>`;
+    bell.classList.add('on'); bl.textContent='Activées ✓'; return;
+  }
+  // enable
+  card.innerHTML=`<h2>🔔 Activer les notifications</h2>
+    <p>Soyez prévenu·e des nouveautés, promos et lives TikTok — directement sur votre téléphone.</p>
+    <button class="cta" onclick="enableNotifications()">Activer les notifications</button>`;
+  bell.classList.remove('on'); bl.textContent='Notifications';
+}
+
+/* État initial */
+if(!hasAppId){ renderNotifCard('setup'); }
+else if(!('Notification' in window) || !('serviceWorker' in navigator)){
+  if(isIOS() && !isStandalone()) renderNotifCard('ios-install'); else renderNotifCard('unsupported');
+}
+else if(isIOS() && !isStandalone()){ renderNotifCard('ios-install'); }
+else { renderNotifCard('enable'); initOneSignal(); }
+
+function initOneSignal(){
+  if(!hasAppId) return;
+  window.OneSignalDeferred = window.OneSignalDeferred || [];
+  window.OneSignalDeferred.push(async function(OneSignal){
+    try{
+      await OneSignal.init({
+        appId: CFG.oneSignalAppId.trim(),
+        allowLocalhostAsSecureOrigin: true,
+      });
+      osReady=true;
+      syncState(OneSignal);
+      OneSignal.Notifications.addEventListener('permissionChange', ()=>syncState(OneSignal));
+      OneSignal.User.PushSubscription.addEventListener('change', ()=>syncState(OneSignal));
+    }catch(e){ /* silencieux */ }
+  });
+}
+function syncState(OneSignal){
+  try{
+    const on = OneSignal.Notifications.permission === true && OneSignal.User.PushSubscription.optedIn !== false;
+    renderNotifCard(on ? 'on' : 'enable');
+  }catch(e){}
+}
+
+function enableNotifications(){
+  if(!hasAppId){ toast('Notifications à configurer (voir GUIDE.md)'); return; }
+  if(isIOS() && !isStandalone()){ renderNotifCard('ios-install'); toast("Ajoutez d'abord la page à l'écran d'accueil"); return; }
+  window.OneSignalDeferred = window.OneSignalDeferred || [];
+  window.OneSignalDeferred.push(async function(OneSignal){
+    try{
+      await OneSignal.Notifications.requestPermission();
+      try{ await OneSignal.User.PushSubscription.optIn(); }catch(_){}
+      syncState(OneSignal);
+      if(OneSignal.Notifications.permission===true) toast('Notifications activées 🔔');
+    }catch(e){ toast("Impossible d'activer ici"); }
+  });
+}
+function disableNotifications(){
+  window.OneSignalDeferred = window.OneSignalDeferred || [];
+  window.OneSignalDeferred.push(async function(OneSignal){
+    try{ await OneSignal.User.PushSubscription.optOut(); syncState(OneSignal); toast('Désabonné·e'); }catch(e){}
+  });
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,45 @@
+# OPTIONNEL — Envoyer une notification à tous vos abonnés depuis GitHub.
+# Déclenchement MANUEL : onglet "Actions" de votre dépôt → "Envoyer une notification" → Run workflow.
+# Nécessite 2 secrets de dépôt (Settings → Secrets and variables → Actions) :
+#   ONESIGNAL_APP_ID   = votre App ID OneSignal
+#   ONESIGNAL_API_KEY  = votre "REST API Key" OneSignal (Settings → Keys & IDs)
+#
+# La plupart du temps, il est plus simple d'envoyer depuis le tableau de bord OneSignal
+# (ou son app mobile). Ce workflow est là si vous préférez tout piloter depuis GitHub.
+
+name: Envoyer une notification
+
+on:
+  workflow_dispatch:
+    inputs:
+      titre:
+        description: "Titre"
+        required: true
+        default: "Bakougie"
+      message:
+        description: "Message"
+        required: true
+        default: "Nouveauté du jour ✨"
+      url:
+        description: "Lien ouvert au clic (optionnel)"
+        required: false
+        default: ""
+
+jobs:
+  send:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Appel API OneSignal
+        run: |
+          curl -sS -X POST https://api.onesignal.com/notifications \
+            -H "Authorization: Key ${{ secrets.ONESIGNAL_API_KEY }}" \
+            -H "Content-Type: application/json; charset=utf-8" \
+            -d @- <<'JSON'
+          {
+            "app_id": "${{ secrets.ONESIGNAL_APP_ID }}",
+            "included_segments": ["Subscribed Users"],
+            "headings": { "en": "${{ github.event.inputs.titre }}" },
+            "contents": { "en": "${{ github.event.inputs.message }}" },
+            "url": "${{ github.event.inputs.url }}"
+          }
+          JSON
