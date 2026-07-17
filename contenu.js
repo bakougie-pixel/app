@@ -9,11 +9,11 @@ const BAKOUGIE_CONFIG = {
   /* 1) NOTIFICATIONS — collez ici votre "App ID" OneSignal.
      Voir GUIDE.md, étape « Créer votre compte OneSignal ».
      Tant que c'est vide, le bouton notifications reste inactif. */
-  oneSignalAppId: "",
+  oneSignalAppId: "e0a36d33-bb92-4ea2-8da1-7c55b4263260",
 
   /* 2) Adresse finale du site (après mise en ligne GitHub Pages).
      Ex : "https://bakougie.github.io/bakougie-site/" */
-  siteUrl: "",
+  siteUrl: "https://bakougie-pixel.github.io/app/",
 
   /* 3) Textes de présentation */
   marque: "Bakougie",
