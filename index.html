@@ -166,6 +166,40 @@
   .login-lock{width:44px;height:44px;border-radius:50%;background:var(--wine);color:var(--gold);display:flex;align-items:center;justify-content:center;font-size:20px;margin:0 auto 10px;}
   .login-err{color:var(--wine);font-size:13.5px;font-weight:600;margin-top:6px;min-height:18px;}
 
+  /* BAK'MUSIC */
+  .music{background:var(--white);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);overflow:hidden;}
+  .music-head{background:linear-gradient(120deg,var(--wine),var(--wine-deep));color:#fff;padding:15px 17px;display:flex;align-items:center;gap:12px;}
+  .music-head .note{width:40px;height:40px;border-radius:12px;background:rgba(201,162,75,.22);border:1px solid var(--gold);color:var(--gold);display:flex;align-items:center;justify-content:center;font-size:20px;flex:none;}
+  .music-head h3{font-family:'Fraunces',serif;font-weight:500;font-size:20px;margin:0;line-height:1.15;}
+  .music-head .sub{font-size:12.5px;color:#E7CBD2;}
+  .music-search{padding:10px 13px;border-bottom:1px solid var(--line);}
+  .music-search input{width:100%;padding:10px 12px;border:1px solid var(--line-gold);border-radius:10px;background:var(--cream);font-family:inherit;font-size:14.5px;color:var(--ink);}
+  .music-search input:focus{outline:2px solid var(--gold);border-color:transparent;background:#fff;}
+  .tracks{list-style:none;margin:0;padding:0;}
+  .track{display:flex;align-items:center;gap:12px;padding:10px 13px;border-top:1px solid var(--line);}
+  .tracks li:first-child .track{border-top:none;}
+  .track.playing{background:var(--wine-soft);}
+  .play-btn{width:40px;height:40px;flex:none;border-radius:50%;border:none;background:var(--wine);color:#fff;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:14px;line-height:0;box-shadow:0 2px 6px -2px rgba(94,0,24,.6);}
+  .track.playing .play-btn{background:var(--gold);color:#3a2a06;}
+  .play-btn:active{transform:scale(.94);}
+  .track-main{flex:1;min-width:0;}
+  .track-title{font-weight:600;font-size:14.5px;line-height:1.25;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+  .track.playing .track-title{color:var(--wine);}
+  .track-bar{height:4px;background:var(--line);border-radius:3px;margin-top:7px;overflow:hidden;display:none;cursor:pointer;}
+  .track.playing .track-bar{display:block;}
+  .track-bar i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--gold),var(--gold-deep));border-radius:3px;}
+  .track-time{font-size:11.5px;color:var(--ink-faint);margin-top:3px;display:none;font-variant-numeric:tabular-nums;}
+  .track.playing .track-time{display:block;}
+  .track .dl{color:var(--ink-faint);text-decoration:none;padding:8px;border-radius:8px;flex:none;line-height:0;}
+  .track .dl:active{background:var(--cream);}
+  .music-more{width:100%;border:none;border-top:1px solid var(--line);background:var(--cream);color:var(--wine);font-weight:700;font-size:14px;padding:13px;cursor:pointer;font-family:inherit;}
+  .music-more:active{background:var(--wine-soft);}
+  .track-row{display:flex;align-items:center;gap:9px;padding:9px 10px;border:1px solid var(--line);border-radius:11px;margin-bottom:7px;background:var(--cream);}
+  .track-row .tr-name{flex:1;min-width:0;font-size:14px;font-weight:600;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+  .track-row .tr-num{font-size:12px;color:var(--ink-faint);width:22px;flex:none;text-align:center;font-weight:700;}
+  .track-row button{width:30px;height:30px;border-radius:8px;border:1px solid var(--line-gold);background:#fff;cursor:pointer;font-size:13px;line-height:0;color:var(--ink-soft);flex:none;}
+  .track-row button.del{color:var(--wine);}
+
   #toast{position:fixed;left:50%;bottom:calc(78px + env(safe-area-inset-bottom));transform:translateX(-50%) translateY(160%);z-index:80;background:var(--ink);color:#F6ECDF;padding:12px 18px;border-radius:12px;font-size:14.5px;font-weight:500;box-shadow:0 12px 30px -10px rgba(0,0,0,.4);transition:transform .3s cubic-bezier(.2,.9,.3,1);max-width:90vw;text-align:center;}
   #toast.show{transform:translateX(-50%) translateY(0);}
   @media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important;}}
@@ -272,8 +306,55 @@ function renderHeader(){
 }
 
 /* ===== Rendu des blocs ===== */
-const TYPE_LABELS={live:'Bandeau live',section:'Titre de section',nouveaute:'Nouveauté',article:'Article',bouton:'Bouton',texte:'Texte',image:'Image',liens:'Réseaux & boutique'};
-const TYPE_ICONS={live:'🔴',section:'📑',nouveaute:'🕯️',article:'📝',bouton:'🔘',texte:'✍️',image:'🖼️',liens:'🔗'};
+const TYPE_LABELS={live:'Bandeau live',section:'Titre de section',nouveaute:'Nouveauté',article:'Article',bakmusic:"BAK'MUSIC",bouton:'Bouton',texte:'Texte',image:'Image',liens:'Réseaux & boutique'};
+const TYPE_ICONS={live:'🔴',section:'📑',nouveaute:'🕯️',article:'📝',bakmusic:'🎵',bouton:'🔘',texte:'✍️',image:'🖼️',liens:'🔗'};
+
+/* ---- Lecteur audio BAK'MUSIC ---- */
+const musicOpen={}, musicFilter={};
+let audio=null, playingKey=null;
+function mmss(s){ if(!isFinite(s)||s<0) s=0; const m=Math.floor(s/60), r=Math.floor(s%60); return m+':'+String(r).padStart(2,'0'); }
+function musicToggle(id){ musicOpen[id]=!musicOpen[id]; renderPage(); }
+function musicSearch(id,v){
+  musicFilter[id]=v; renderPage();
+  const el=document.querySelector(`.block[data-id="${id}"] .music-search input`);
+  if(el){ el.focus(); el.setSelectionRange(el.value.length,el.value.length); }
+}
+function stopPlayback(){
+  if(audio){ audio.pause(); audio.src=''; audio=null; }
+  if(playingKey){
+    const row=document.getElementById('tr_'+playingKey); if(row) row.classList.remove('playing');
+    const ic=document.getElementById('pi_'+playingKey); if(ic) ic.textContent='▶';
+    playingKey=null;
+  }
+}
+function togglePlay(blockId, idx){
+  const b=findBlock(blockId); if(!b) return;
+  const t=(b.data.tracks||[])[idx]; if(!t||!t.url){ toast('Aucun fichier audio pour ce titre'); return; }
+  const key=blockId+'_'+idx;
+  if(playingKey===key && audio){
+    if(audio.paused){ audio.play(); document.getElementById('pi_'+key).textContent='❚❚'; }
+    else { audio.pause(); document.getElementById('pi_'+key).textContent='▶'; }
+    return;
+  }
+  stopPlayback();
+  audio=new Audio(t.url); playingKey=key;
+  const row=document.getElementById('tr_'+key); if(row) row.classList.add('playing');
+  const ic=document.getElementById('pi_'+key); if(ic) ic.textContent='❚❚';
+  audio.addEventListener('timeupdate',()=>{
+    const bar=document.getElementById('pb_'+key), tt=document.getElementById('tt_'+key);
+    if(bar&&audio.duration) bar.style.width=(audio.currentTime/audio.duration*100)+'%';
+    if(tt) tt.textContent=mmss(audio.currentTime)+(audio.duration?' / '+mmss(audio.duration):'');
+  });
+  audio.addEventListener('ended',()=>stopPlayback());
+  audio.addEventListener('error',()=>{ toast('Lecture impossible'); stopPlayback(); });
+  audio.play().catch(()=>{ toast('Lecture impossible'); stopPlayback(); });
+}
+function seekTrack(e, blockId, idx){
+  const key=blockId+'_'+idx;
+  if(playingKey!==key||!audio||!audio.duration) return;
+  const r=e.currentTarget.getBoundingClientRect();
+  audio.currentTime=Math.max(0,Math.min(1,(e.clientX-r.left)/r.width))*audio.duration;
+}
 
 function blockInner(b, prevType){
   const d=b.data||{};
@@ -297,6 +378,36 @@ function blockInner(b, prevType){
       const inner=`${d.date?`<div class="card-date">${fmtDate(d.date)}</div>`:''}<h3>${esc(d.titre||'')}</h3><p>${esc(d.extrait||'')}</p>${d.lien?'<span class="more">Lire →</span>':''}`;
       const wrap = d.lien?`<a class="post" href="${esc(d.lien)}" target="_blank" rel="noopener">${inner}</a>`:`<div class="post">${inner}</div>`;
       return `<div class="${first?'journal-first':''}">${wrap}</div>`;
+    }
+    case 'bakmusic':{
+      const all=Array.isArray(d.tracks)?d.tracks:[];
+      const q=(musicFilter[b.id]||'').trim().toLowerCase();
+      const list=q?all.filter(t=>(t.titre||'').toLowerCase().includes(q)):all;
+      const LIMIT=8;
+      const expanded=!!musicOpen[b.id]||!!q;
+      const shown=expanded?list:list.slice(0,LIMIT);
+      const rows=shown.map((t,i)=>{
+        const idx=all.indexOf(t);
+        return `<li><div class="track" id="tr_${b.id}_${idx}">
+          <button class="play-btn" onclick="togglePlay('${b.id}',${idx})" aria-label="Écouter ${esc(t.titre)}"><span id="pi_${b.id}_${idx}">▶</span></button>
+          <div class="track-main">
+            <div class="track-title">${esc(t.titre||'Sans titre')}</div>
+            <div class="track-bar" onclick="seekTrack(event,'${b.id}',${idx})"><i id="pb_${b.id}_${idx}"></i></div>
+            <div class="track-time" id="tt_${b.id}_${idx}">0:00</div>
+          </div>
+          ${t.url?`<a class="dl" href="${esc(t.url)}" download target="_blank" rel="noopener" aria-label="Télécharger">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12"/><path d="m7 12 5 5 5-5"/><path d="M5 21h14"/></svg></a>`:''}
+        </div></li>`;
+      }).join('');
+      const search = all.length>8 ? `<div class="music-search"><input type="text" placeholder="Rechercher un titre…" value="${esc(musicFilter[b.id]||'')}" oninput="musicSearch('${b.id}',this.value)"></div>` : '';
+      const more = (!expanded && list.length>LIMIT) ? `<button class="music-more" onclick="musicToggle('${b.id}')">Voir les ${list.length} titres ↓</button>`
+                 : (expanded && list.length>LIMIT && !q) ? `<button class="music-more" onclick="musicToggle('${b.id}')">Réduire ↑</button>` : '';
+      return `<div class="music">
+        <div class="music-head"><span class="note">♪</span><div><h3>${esc(d.titre||"BAK'MUSIC")}</h3>
+          <div class="sub">${esc(d.sous_titre||'')}${d.sous_titre?' · ':''}${all.length} titre${all.length>1?'s':''}</div></div></div>
+        ${search}
+        <ul class="tracks">${rows||'<li><div class="track"><span class="empty-note">Aucun titre.</span></div></li>'}</ul>
+        ${more}</div>`;
     }
     case 'bouton':
       return `<div class="cta-wrap"><a class="cta-btn" href="${esc(d.url||'#')}" target="_blank" rel="noopener">${esc(d.label||'Voir plus')}</a></div>`;
@@ -332,6 +443,10 @@ function renderPage(){
   });
   if(blocks.length===0) html=`<p class="empty-note">Aucun module. ${isAdmin?'Touchez « + Module » pour commencer.':''}</p>`;
   page.innerHTML=html;
+  if(playingKey && audio){
+    const row=document.getElementById('tr_'+playingKey); if(row) row.classList.add('playing');
+    const ic=document.getElementById('pi_'+playingKey); if(ic) ic.textContent=audio.paused?'▶':'❚❚';
+  }
 }
 function render(){ renderHeader(); renderPage(); }
 
@@ -345,6 +460,7 @@ const SCHEMAS={
   section:[{k:'eyebrow',label:'Sur-titre (optionnel)',type:'text'},{k:'titre',label:'Titre',type:'text'}],
   nouveaute:[{k:'date',label:'Date',type:'date'},{k:'titre',label:'Titre',type:'text'},{k:'texte',label:'Texte',type:'area'},{k:'image',label:"Image (URL, optionnel)",type:'text'},{k:'lien',label:'Lien (optionnel)',type:'text'}],
   article:[{k:'date',label:'Date',type:'date'},{k:'titre',label:'Titre',type:'text'},{k:'extrait',label:'Extrait',type:'area'},{k:'lien',label:'Lien (optionnel)',type:'text'}],
+  bakmusic:[{k:'titre',label:'Titre de la section',type:'text'},{k:'sous_titre',label:'Sous-titre (optionnel)',type:'text'}],
   bouton:[{k:'label',label:'Texte du bouton',type:'text'},{k:'url',label:'Lien',type:'text'}],
   texte:[{k:'titre',label:'Titre (optionnel)',type:'text'},{k:'corps',label:'Texte',type:'area'}],
   image:[{k:'url',label:'Image (URL)',type:'text'},{k:'legende',label:'Légende (optionnel)',type:'text'}],
@@ -355,6 +471,7 @@ function defaultData(type){
     section:{eyebrow:'',titre:'Nouvelle section'},
     nouveaute:{date:today(),titre:'Nouveauté',texte:'',image:'',lien:''},
     article:{date:today(),titre:'Nouvel article',extrait:'',lien:''},
+    bakmusic:{titre:"BAK'MUSIC",sous_titre:'Les chansons Bakougie',tracks:[]},
     bouton:{label:'En savoir plus',url:''},
     texte:{titre:'',corps:'Votre texte ici.'},
     image:{url:'',legende:''},
@@ -373,6 +490,7 @@ function addBlock(type){
 function editBlock(id){
   const b=findBlock(id); if(!b) return;
   if(b.type==='liens'){ openSettings(); return; }
+  if(b.type==='bakmusic'){ openMusicEditor(id); return; }
   const sc=SCHEMAS[b.type]||[];
   const fields=sc.map(f=>{
     const v=b.data[f.k]==null?'':b.data[f.k];
@@ -392,6 +510,73 @@ function saveBlock(id){
     b.data[f.k] = f.type==='bool' ? el.checked : el.value;
   });
   saveDraft(); closeModal(); renderPage(); toast('Module mis à jour');
+}
+
+/* ===== Éditeur BAK'MUSIC ===== */
+let musicEditFilter='';
+function openMusicEditor(id){
+  const b=findBlock(id); if(!b) return;
+  if(!Array.isArray(b.data.tracks)) b.data.tracks=[];
+  const all=b.data.tracks;
+  const q=musicEditFilter.trim().toLowerCase();
+  const rows=all.map((t,i)=>({t,i}))
+    .filter(o=>!q||(o.t.titre||'').toLowerCase().includes(q))
+    .map(o=>`<div class="track-row">
+      <span class="tr-num">${o.i+1}</span>
+      <span class="tr-name">${esc(o.t.titre||'Sans titre')}</span>
+      <button title="Monter" onclick="moveTrack('${id}',${o.i},-1)">↑</button>
+      <button title="Descendre" onclick="moveTrack('${id}',${o.i},1)">↓</button>
+      <button title="Modifier" onclick="openTrackForm('${id}',${o.i})">✎</button>
+      <button class="del" title="Supprimer" onclick="deleteTrack('${id}',${o.i})">🗑</button>
+    </div>`).join('');
+  openModal(`<div class="modal-head"><h3>🎵 ${esc(b.data.titre||"BAK'MUSIC")}</h3><button class="icon-btn" onclick="closeModal()">✕</button></div>
+    <div class="modal-body">
+      <div class="field"><label>Titre de la section</label><input type="text" id="m_titre" value="${esc(b.data.titre||'')}" onchange="setMusicMeta('${id}')"></div>
+      <div class="field"><label>Sous-titre (optionnel)</label><input type="text" id="m_sous" value="${esc(b.data.sous_titre||'')}" onchange="setMusicMeta('${id}')"></div>
+      <div class="field"><label>Titres — ${all.length}</label>
+        ${all.length>8?`<input type="text" placeholder="Filtrer…" value="${esc(musicEditFilter)}" oninput="musicEditSearch('${id}',this.value)" style="margin-bottom:9px">`:''}
+        <div style="max-height:44vh;overflow:auto">${rows||'<p class="muted">Aucun titre pour l\'instant.</p>'}</div>
+      </div>
+      <button class="btn btn-gold" style="width:100%" onclick="openTrackForm('${id}',-1)">+ Ajouter un titre</button>
+    </div>
+    <div class="modal-foot"><button class="btn btn-primary" onclick="closeModal()">Terminé</button></div>`);
+}
+function musicEditSearch(id,v){ musicEditFilter=v; openMusicEditor(id); const i=document.querySelector('.modal input[placeholder="Filtrer…"]'); if(i){ i.focus(); i.setSelectionRange(i.value.length,i.value.length); } }
+function setMusicMeta(id){
+  const b=findBlock(id); if(!b) return;
+  const t=$('#m_titre'), s=$('#m_sous');
+  if(t) b.data.titre=t.value.trim(); if(s) b.data.sous_titre=s.value.trim();
+  saveDraft(); renderPage();
+}
+function moveTrack(id,i,dir){
+  const b=findBlock(id); const a=b.data.tracks; const j=i+dir;
+  if(j<0||j>=a.length) return;
+  const tmp=a[i]; a[i]=a[j]; a[j]=tmp;
+  saveDraft(); renderPage(); openMusicEditor(id);
+}
+function deleteTrack(id,i){
+  const b=findBlock(id); const t=b.data.tracks[i];
+  if(!confirm(`Supprimer « ${t.titre} » ?`)) return;
+  b.data.tracks.splice(i,1); saveDraft(); renderPage(); openMusicEditor(id); toast('Titre supprimé');
+}
+function openTrackForm(id,i){
+  const b=findBlock(id); const isNew=(i<0);
+  const t=isNew?{titre:'',url:''}:b.data.tracks[i];
+  openModal(`<div class="modal-head"><h3>${isNew?'Ajouter un titre':'Modifier le titre'}</h3><button class="icon-btn" onclick="openMusicEditor('${id}')">✕</button></div>
+    <div class="modal-body">
+      <div class="field"><label>Nom de la chanson</label><input type="text" id="t_titre" value="${esc(t.titre||'')}" placeholder="ex. BAKOUGIE DANS L'AIR"></div>
+      <div class="field"><label>Lien du fichier MP3</label><input type="text" id="t_url" value="${esc(t.url||'')}" placeholder="https://…/ma-chanson.mp3">
+        <p class="muted" style="margin-top:6px">Collez le lien du fichier audio (celui de Shopify « Contenus → Fichiers », ou tout lien .mp3 public).</p></div>
+    </div>
+    <div class="modal-foot"><button class="btn btn-ghost" onclick="openMusicEditor('${id}')">Annuler</button><button class="btn btn-primary" onclick="saveTrack('${id}',${i})">Enregistrer</button></div>`);
+  setTimeout(()=>{ const el=$('#t_titre'); if(el) el.focus(); },40);
+}
+function saveTrack(id,i){
+  const b=findBlock(id);
+  const titre=$('#t_titre').value.trim(), url=$('#t_url').value.trim();
+  if(!titre){ toast('Donnez un nom à la chanson'); return; }
+  if(i<0) b.data.tracks.push({titre,url}); else b.data.tracks[i]={titre,url};
+  saveDraft(); renderPage(); openMusicEditor(id); toast(i<0?'Titre ajouté':'Titre modifié');
 }
 
 /* ===== Réglages (config) ===== */
@@ -492,7 +677,8 @@ function renderNotifCard(state){
   if(state==='setup'){ card.innerHTML=`<h2>🔔 Notifications</h2><p>Prévenez vos client·e·s des nouveautés, promos et lives.</p><div class="admin-note"><b>À configurer :</b> collez votre App ID OneSignal dans <b>contenu.js</b>.</div>`; bell.style.display='none'; return; }
   if(state==='unsupported'){ card.innerHTML=`<h2>🔔 Notifications</h2><p>Votre navigateur ne les prend pas en charge. Essayez Chrome (Android) ou installez la page sur l'écran d'accueil (iPhone).</p>`; bell.style.display='none'; return; }
   if(state==='ios-install'){ card.innerHTML=`<h2>🔔 Recevoir les notifications</h2><p>Sur iPhone, ajoutez d'abord la page à votre écran d'accueil, puis rouvrez-la pour activer.</p><ol class="steps"><li><span class="n">1</span> Bouton <b>Partager</b> en bas de Safari.</li><li><span class="n">2</span> <b>Sur l'écran d'accueil</b> → <b>Ajouter</b>.</li><li><span class="n">3</span> Ouvrez l'app <b>Bakougie</b> et touchez <b>Activer</b>.</li></ol>`; bell.style.display='none'; return; }
-  if(state==='on'){ card.innerHTML=`<h2>✓ Notifications activées</h2><p>Vous serez prévenu·e des nouveautés, promos et lives. Merci !</p><button class="cta done" onclick="disableNotifications()">Se désabonner</button>`; bell.classList.add('on'); bl.textContent='Activées ✓'; return; }
+  if(state==='on'){ card.innerHTML=''; card.style.display='none'; bell.style.display=''; bell.classList.add('on'); bl.textContent='Activées ✓'; return; }
+  card.style.display='';
   card.innerHTML=`<h2>🔔 Activer les notifications</h2><p>Soyez prévenu·e des nouveautés, promos et lives TikTok — sur votre téléphone.</p><button class="cta" onclick="enableNotifications()">Activer les notifications</button>`; bell.classList.remove('on'); bl.textContent='Notifications';
 }
 if(!hasAppId){ renderNotifCard('setup'); }
@@ -514,7 +700,13 @@ function initOneSignal(){
   });
 }
 function syncState(OneSignal){ try{ const on=OneSignal.Notifications.permission===true && OneSignal.User.PushSubscription.optedIn!==false; renderNotifCard(on?'on':'enable'); }catch(e){} }
+function openNotifStatus(){
+  openModal(`<div class="modal-head"><h3>🔔 Notifications</h3><button class="icon-btn" onclick="closeModal()">✕</button></div>
+    <div class="modal-body"><p>Vos notifications sont <b>activées</b>. Vous serez prévenu·e des nouveautés, promos et lives.</p></div>
+    <div class="modal-foot"><button class="btn btn-ghost" onclick="closeModal()">Fermer</button><button class="btn btn-primary" onclick="disableNotifications();closeModal()">Se désabonner</button></div>`);
+}
 function enableNotifications(){
+  if($('#bellBtn').classList.contains('on')){ openNotifStatus(); return; }
   if(!hasAppId){ toast('Notifications à configurer'); return; }
   if(isIOS()&&!isStandalone()){ renderNotifCard('ios-install'); toast("Ajoutez d'abord la page à l'écran d'accueil"); return; }
   window.OneSignalDeferred=window.OneSignalDeferred||[];
