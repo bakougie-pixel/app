@@ -222,6 +222,101 @@
   .track-row button{width:30px;height:30px;border-radius:8px;border:1px solid var(--line-gold);background:#fff;cursor:pointer;font-size:13px;line-height:0;color:var(--ink-soft);flex:none;}
   .track-row button.del{color:var(--wine);}
 
+  /* ===== BAK'MUSIC — page dédiée ===== */
+  .m-hero{display:flex;align-items:center;gap:14px;background:linear-gradient(120deg,var(--wine),var(--wine-deep));color:#fff;border-radius:var(--radius);padding:16px 18px;box-shadow:var(--shadow);margin-bottom:14px;}
+  .m-hero .note{width:46px;height:46px;border-radius:14px;background:rgba(201,162,75,.22);border:1px solid var(--gold);color:var(--gold);display:flex;align-items:center;justify-content:center;font-size:22px;flex:none;}
+  .m-hero h2{font-family:'Fraunces',serif;font-weight:500;font-size:22px;margin:0;line-height:1.15;}
+  .m-hero .sub{font-size:12.5px;color:#E7CBD2;margin-top:2px;}
+
+  .mtabs{display:flex;gap:5px;background:var(--white);border:1px solid var(--line);border-radius:14px;padding:5px;margin-bottom:13px;box-shadow:var(--shadow);}
+  .mtab{flex:1;appearance:none;border:none;background:none;border-radius:10px;padding:11px 6px;font-family:inherit;font-weight:700;font-size:13px;color:var(--ink-soft);cursor:pointer;display:flex;align-items:center;justify-content:center;gap:5px;white-space:nowrap;}
+  .mtab.active{background:var(--wine);color:#fff;}
+  .mtab .cnt{font-size:11px;opacity:.8;background:rgba(0,0,0,.08);border-radius:20px;padding:1px 6px;}
+  .mtab.active .cnt{background:rgba(255,255,255,.22);}
+
+  .m-search{margin-bottom:12px;}
+  .m-search input{width:100%;padding:12px 14px;border:1px solid var(--line-gold);border-radius:12px;background:var(--white);font-family:inherit;font-size:15px;color:var(--ink);box-shadow:var(--shadow);}
+  .m-search input:focus{outline:2px solid var(--gold);border-color:transparent;}
+
+  .m-actions{display:flex;align-items:center;gap:8px;margin-bottom:11px;flex-wrap:wrap;}
+  .m-actions button{appearance:none;border:none;border-radius:11px;padding:11px 16px;font-family:inherit;font-weight:700;font-size:14px;cursor:pointer;}
+  .m-play{background:var(--wine);color:#fff;}
+  .m-shuf{background:var(--gold-soft);color:var(--gold-deep);border:1px solid var(--line-gold)!important;}
+  .m-actions button:active{transform:translateY(1px);}
+  .m-count{margin-left:auto;font-size:12.5px;color:var(--ink-faint);font-weight:600;}
+
+  .card-list{background:var(--white);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);overflow:hidden;}
+  .track-now{font-size:11.5px;color:var(--wine);font-weight:700;margin-top:2px;}
+  .track.current{background:var(--wine-soft);}
+  .fav-btn{appearance:none;border:none;background:none;cursor:pointer;font-size:19px;line-height:1;color:var(--ink-faint);padding:7px;border-radius:9px;flex:none;}
+  .fav-btn.on{color:var(--wine);}
+  .fav-btn:active{transform:scale(.9);}
+  .more-btn{appearance:none;border:none;background:none;cursor:pointer;font-size:19px;line-height:1;color:var(--ink-faint);padding:7px 9px;border-radius:9px;flex:none;font-weight:700;}
+  .more-btn:active{background:var(--cream);}
+  .pl-ord{display:flex;flex-direction:column;flex:none;}
+  .pl-ord button{width:26px;height:20px;border:1px solid var(--line);background:var(--white);color:var(--ink-soft);cursor:pointer;font-size:11px;line-height:0;border-radius:5px;margin:1px 0;}
+  .m-empty{padding:18px;color:var(--ink-faint);font-style:italic;font-size:14px;text-align:center;list-style:none;}
+
+  .m-blank{text-align:center;padding:40px 22px;background:var(--white);border:1px dashed var(--line-gold);border-radius:var(--radius);}
+  .m-blank .em{font-size:34px;color:var(--gold);margin-bottom:6px;}
+  .m-blank h3{font-family:'Fraunces',serif;font-weight:500;font-size:19px;margin:0 0 6px;}
+  .m-blank p{margin:0 0 15px;color:var(--ink-soft);font-size:14px;}
+
+  .m-newpl{width:100%;appearance:none;border:1px dashed var(--line-gold);background:var(--white);color:var(--wine);border-radius:13px;padding:14px;font-family:inherit;font-weight:700;font-size:15px;cursor:pointer;margin-bottom:12px;box-shadow:var(--shadow);}
+  .m-newpl:active{background:var(--cream);}
+  .pl-grid{display:flex;flex-direction:column;gap:9px;}
+  .pl-card{display:flex;align-items:center;gap:12px;background:var(--white);border:1px solid var(--line);border-radius:13px;padding:13px 15px;cursor:pointer;box-shadow:var(--shadow);}
+  .pl-card:active{transform:translateY(1px);}
+  .pl-ico{width:38px;height:38px;border-radius:11px;background:var(--wine);color:var(--gold);display:flex;align-items:center;justify-content:center;font-size:17px;flex:none;}
+  .pl-main{flex:1;min-width:0;}
+  .pl-main b{display:block;font-size:15.5px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+  .pl-main span{font-size:12.5px;color:var(--ink-faint);}
+  .pl-go{color:var(--ink-faint);font-size:17px;}
+  .pl-head{display:flex;align-items:center;gap:10px;margin-bottom:13px;flex-wrap:wrap;}
+  .pl-head h3{font-family:'Fraunces',serif;font-weight:500;font-size:20px;margin:0;flex:1;min-width:0;}
+  .backbtn.sm{padding:7px 12px;font-size:13px;}
+  .pl-tools{display:flex;gap:5px;}
+  .pl-tools button{width:34px;height:34px;border-radius:9px;border:1px solid var(--line-gold);background:var(--white);color:var(--ink-soft);cursor:pointer;font-size:14px;line-height:0;}
+  .pl-tools button.del{color:var(--wine);}
+
+  .m-recent{margin-top:22px;}
+  .m-recent h4{font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--gold-deep);margin:0 0 9px 2px;}
+  .rec-row{display:flex;gap:8px;overflow-x:auto;padding-bottom:4px;}
+  .rec-chip{appearance:none;border:1px solid var(--line);background:var(--white);border-radius:20px;padding:9px 14px;font-family:inherit;font-size:13px;font-weight:600;color:var(--ink);cursor:pointer;white-space:nowrap;flex:none;}
+  .rec-chip:active{background:var(--cream);}
+
+  /* Feuille d'options d'un titre */
+  .sheet-item{display:flex;align-items:center;gap:11px;width:100%;appearance:none;border:1px solid var(--line);background:var(--white);border-radius:12px;padding:13px 15px;font-family:inherit;font-size:15px;font-weight:600;color:var(--ink);cursor:pointer;margin-bottom:8px;text-decoration:none;text-align:left;}
+  .sheet-item:active{background:var(--cream);}
+  .sheet-item.strong{background:var(--cream);}
+  .sheet-item.new{border-style:dashed;color:var(--wine);}
+  .sheet-item .si{width:26px;text-align:center;font-size:17px;color:var(--wine);flex:none;}
+  .sheet-item .sn{margin-left:auto;font-size:12px;color:var(--ink-faint);font-weight:600;}
+  .sheet-label{font-size:11.5px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-faint);margin:16px 0 9px;}
+
+  /* Mini-lecteur */
+  .miniplayer{position:fixed;left:0;right:0;bottom:0;z-index:45;background:linear-gradient(180deg,var(--wine),var(--wine-deep));color:#fff;box-shadow:0 -10px 26px -14px rgba(0,0,0,.55);display:none;padding-bottom:env(safe-area-inset-bottom);}
+  body.playing .miniplayer{display:block;}
+  body.admin .miniplayer{bottom:calc(56px + env(safe-area-inset-bottom));padding-bottom:0;}
+  .mp-bar{height:5px;background:rgba(255,255,255,.18);cursor:pointer;}
+  .mp-bar i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--gold),#F0D68A);}
+  .mp-body{display:flex;align-items:center;gap:11px;padding:9px 13px 11px;}
+  .mp-info{flex:1;min-width:0;cursor:pointer;}
+  .mp-info b{display:block;font-size:14px;font-weight:700;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+  .mp-info span{font-size:11.5px;color:#E2C3CB;}
+  .mp-ctrl{display:flex;align-items:center;gap:3px;flex:none;}
+  .mp-b{appearance:none;border:none;background:none;color:#EBD3D9;font-size:15px;cursor:pointer;padding:8px;border-radius:9px;line-height:0;}
+  .mp-b.on{color:var(--gold);}
+  .mp-b:active{background:rgba(255,255,255,.12);}
+  .mp-play{appearance:none;border:none;background:var(--gold);color:#3a2a06;width:40px;height:40px;border-radius:50%;font-size:14px;font-weight:700;cursor:pointer;line-height:0;flex:none;}
+  .mp-play:active{transform:scale(.94);}
+  .mp-close{appearance:none;border:none;background:none;color:#C69FA9;font-size:16px;cursor:pointer;padding:8px;border-radius:9px;line-height:0;flex:none;}
+  body.playing .wrap{padding-bottom:calc(110px + env(safe-area-inset-bottom));}
+  body.playing.admin .wrap{padding-bottom:calc(170px + env(safe-area-inset-bottom));}
+  body.playing #toast{bottom:calc(96px + env(safe-area-inset-bottom));}
+  body.admin.playing #toast{bottom:calc(152px + env(safe-area-inset-bottom));}
+  @media (max-width:400px){ .mp-b{padding:7px 5px;} .mp-info b{font-size:13px;} }
+
   #toast{position:fixed;left:50%;bottom:calc(22px + env(safe-area-inset-bottom));transform:translateX(-50%) translateY(14px);opacity:0;visibility:hidden;pointer-events:none;z-index:80;background:var(--ink);color:#F6ECDF;padding:12px 18px;border-radius:12px;font-size:14.5px;font-weight:500;box-shadow:0 12px 30px -10px rgba(0,0,0,.4);transition:opacity .25s ease, transform .3s cubic-bezier(.2,.9,.3,1), visibility .3s;max-width:90vw;text-align:center;}
   #toast.show{transform:translateX(-50%) translateY(0);opacity:1;visibility:visible;}
   body.admin #toast{bottom:calc(78px + env(safe-area-inset-bottom));}
@@ -273,6 +368,7 @@
   </div>
 
   <div id="modal-root"></div>
+  <div class="miniplayer" id="miniplayer"></div>
   <div id="toast"></div>
 
 <script src="contenu.js"></script>
@@ -356,7 +452,6 @@ function applyRoute(){
   currentView=v;
   document.body.classList.toggle('view-music', v==='musique');
   const nav=$('#musicNav'); if(nav) nav.classList.toggle('active', v==='musique');
-  if(changed && v!=='musique') stopPlayback();
   render();
   if(changed) window.scrollTo(0,0);
 }
@@ -365,51 +460,408 @@ window.addEventListener('hashchange',()=>{
   applyRoute();
 });
 
-/* ---- Lecteur audio BAK'MUSIC ---- */
-const musicOpen={}, musicFilter={};
-let audio=null, playingKey=null;
-function mmss(s){ if(!isFinite(s)||s<0) s=0; const m=Math.floor(s/60), r=Math.floor(s%60); return m+':'+String(r).padStart(2,'0'); }
-function musicToggle(id){ musicOpen[id]=!musicOpen[id]; renderPage(); }
-function musicSearch(id,v){
-  musicFilter[id]=v; renderPage();
-  const el=document.querySelector(`.block[data-id="${id}"] .music-search input`);
+/* ============================================================
+   BAK'MUSIC — moteur d'écoute
+   Favoris, playlists et file de lecture. Données de l'auditeur
+   enregistrées localement sur son appareil (rien n'est envoyé).
+   ============================================================ */
+const MUSIC_KEY='bakougie_music_user_v1';
+let UM=loadUM();
+function loadUM(){
+  try{ const d=JSON.parse(localStorage.getItem(MUSIC_KEY));
+    if(d&&Array.isArray(d.fav)&&Array.isArray(d.pls)) return {fav:d.fav,pls:d.pls,recent:Array.isArray(d.recent)?d.recent:[]};
+  }catch(e){}
+  return {fav:[],pls:[],recent:[]};
+}
+function saveUM(){ try{ localStorage.setItem(MUSIC_KEY,JSON.stringify(UM)); }catch(e){} }
+
+/* ---- Catalogue ---- */
+function allTracks(){ const o=[]; blocks.forEach(b=>{ if(b.type==='bakmusic') (b.data.tracks||[]).forEach(t=>{ if(t&&t.titre) o.push(t); }); }); return o; }
+function tkey(t){ return (t&&t.url)?t.url:('t:'+((t&&t.titre)||'')); }
+function trackByKey(k){ const a=allTracks(); for(let i=0;i<a.length;i++) if(tkey(a[i])===k) return a[i]; return null; }
+function keysToTracks(keys){ return (keys||[]).map(trackByKey).filter(Boolean); }
+function musicTitle(){ const b=blocks.find(x=>x.type==='bakmusic'); return (b&&b.data.titre)||"BAK'MUSIC"; }
+function musicSub(){ const b=blocks.find(x=>x.type==='bakmusic'); return (b&&b.data.sous_titre)||''; }
+
+/* ---- Favoris ---- */
+function isFav(k){ return UM.fav.indexOf(k)>=0; }
+function toggleFav(k){
+  const i=UM.fav.indexOf(k);
+  if(i>=0){ UM.fav.splice(i,1); toast('Retiré des favoris'); }
+  else { UM.fav.unshift(k); toast('Ajouté aux favoris ♥'); }
+  saveUM(); renderPage(); renderPlayer();
+}
+function favTracks(){ return keysToTracks(UM.fav); }
+
+/* ---- Playlists ---- */
+function plById(id){ return UM.pls.find(p=>p.id===id)||null; }
+function createPlaylist(cb){
+  openPrompt('Nouvelle playlist','Nom de la playlist','', v=>{
+    const nom=v.trim(); if(!nom) return;
+    const p={id:'p_'+Math.random().toString(36).slice(2,8),nom,keys:[]};
+    UM.pls.unshift(p); saveUM(); toast('Playlist créée');
+    if(cb) cb(p); else { musicTab='playlists'; renderPage(); }
+  });
+}
+function renamePlaylist(id){
+  const p=plById(id); if(!p) return;
+  openPrompt('Renommer','Nom de la playlist',p.nom, v=>{ const n=v.trim(); if(!n) return; p.nom=n; saveUM(); renderPage(); toast('Playlist renommée'); });
+}
+function deletePlaylist(id){
+  const p=plById(id); if(!p) return;
+  if(!confirm('Supprimer la playlist « '+p.nom+' » ?')) return;
+  UM.pls=UM.pls.filter(x=>x.id!==id); saveUM();
+  if(openPl===id) openPl=null;
+  renderPage(); toast('Playlist supprimée');
+}
+function addToPlaylist(id,k){
+  const p=plById(id); if(!p) return;
+  if(p.keys.indexOf(k)>=0){ toast('Déjà dans « '+p.nom+' »'); return; }
+  p.keys.push(k); saveUM(); renderPage(); toast('Ajouté à « '+p.nom+' »');
+}
+function removeFromPlaylist(id,k){
+  const p=plById(id); if(!p) return;
+  p.keys=p.keys.filter(x=>x!==k); saveUM(); renderPage(); toast('Retiré de la playlist');
+}
+function movePlTrack(id,i,dir){
+  const p=plById(id); if(!p) return; const j=i+dir;
+  if(j<0||j>=p.keys.length) return;
+  const t=p.keys[i]; p.keys[i]=p.keys[j]; p.keys[j]=t; saveUM(); renderPage();
+}
+
+/* ---- Récemment écoutés ---- */
+function pushRecent(k){
+  UM.recent=[k].concat((UM.recent||[]).filter(x=>x!==k)).slice(0,20);
+  saveUM();
+}
+
+/* ---- Lecture ---- */
+let audio=null, queue=[], qi=-1, shuffle=false, repeat='off', qName='';
+function mmss(s){ if(!isFinite(s)||s<0) s=0; const m=Math.floor(s/60),r=Math.floor(s%60); return m+':'+String(r).padStart(2,'0'); }
+function currentTrack(){ return (qi>=0&&queue[qi])?queue[qi]:null; }
+function isPlaying(){ return !!(audio&&!audio.paused); }
+
+function playList(list,idx,name){
+  const clean=(list||[]).filter(t=>t&&t.url);
+  if(!clean.length){ toast('Aucun titre lisible'); return; }
+  const target=list[idx];
+  let start=clean.indexOf(target); if(start<0) start=0;
+  queue=clean; qi=start; qName=name||''; startCurrent();
+}
+function playAll(list,name,rnd){
+  const clean=(list||[]).filter(t=>t&&t.url);
+  if(!clean.length){ toast('Aucun titre lisible'); return; }
+  queue=clean; qName=name||''; shuffle=!!rnd;
+  qi=rnd?Math.floor(Math.random()*clean.length):0;
+  startCurrent();
+}
+function startCurrent(){
+  const t=currentTrack(); if(!t){ stopAll(); return; }
+  if(audio){ audio.pause(); audio.removeAttribute('src'); audio.load(); }
+  audio=new Audio(t.url);
+  audio.preload='auto';
+  audio.addEventListener('timeupdate',onTime);
+  audio.addEventListener('loadedmetadata',()=>{ renderPlayer(); });
+  audio.addEventListener('ended',onEnded);
+  audio.addEventListener('error',()=>{ toast('Lecture impossible : '+(t.titre||'')); });
+  audio.addEventListener('play',()=>{ document.body.classList.add('playing'); renderPlayer(); markRows(); });
+  audio.addEventListener('pause',()=>{ renderPlayer(); markRows(); });
+  document.body.classList.add('playing');
+  pushRecent(tkey(t));
+  audio.play().catch(()=>{ toast('Touchez à nouveau pour lancer la lecture'); });
+  renderPlayer(); markRows();
+  setMediaSession(t);
+}
+function onTime(){
+  if(!audio) return;
+  const f=document.getElementById('mpFill');
+  if(f&&audio.duration) f.style.width=(audio.currentTime/audio.duration*100)+'%';
+  const el=document.getElementById('mpTime');
+  if(el) el.textContent=mmss(audio.currentTime)+' / '+(audio.duration?mmss(audio.duration):'—');
+}
+function onEnded(){
+  if(repeat==='one'){ audio.currentTime=0; audio.play(); return; }
+  nextTrack(true);
+}
+function nextTrack(auto){
+  if(!queue.length) return;
+  if(shuffle && queue.length>1){
+    let n=qi; while(n===qi) n=Math.floor(Math.random()*queue.length);
+    qi=n;
+  } else {
+    qi++;
+    if(qi>=queue.length){
+      if(repeat==='all'||!auto){ qi=0; }
+      else { qi=queue.length-1; if(audio){audio.pause(); audio.currentTime=0;} renderPlayer(); markRows(); return; }
+    }
+  }
+  startCurrent();
+}
+function prevTrack(){
+  if(!queue.length) return;
+  if(audio&&audio.currentTime>3){ audio.currentTime=0; return; }
+  qi--; if(qi<0) qi=queue.length-1;
+  startCurrent();
+}
+function togglePlayPause(){
+  if(!audio){ if(queue.length&&qi>=0) startCurrent(); return; }
+  if(audio.paused) audio.play(); else audio.pause();
+}
+function toggleShuffle(){ shuffle=!shuffle; toast(shuffle?'Lecture aléatoire activée':'Lecture aléatoire désactivée'); renderPlayer(); }
+function cycleRepeat(){
+  repeat = repeat==='off'?'all':(repeat==='all'?'one':'off');
+  toast(repeat==='all'?'Répéter la liste':(repeat==='one'?'Répéter ce titre':'Répétition désactivée'));
+  renderPlayer();
+}
+function stopAll(){
+  if(audio){ audio.pause(); audio.removeAttribute('src'); audio.load(); audio=null; }
+  queue=[]; qi=-1; qName='';
+  document.body.classList.remove('playing');
+  renderPlayer(); markRows();
+}
+function seekFromEvent(e){
+  if(!audio||!audio.duration) return;
+  const r=e.currentTarget.getBoundingClientRect();
+  const x=(e.touches&&e.touches[0]?e.touches[0].clientX:e.clientX)-r.left;
+  audio.currentTime=Math.max(0,Math.min(1,x/r.width))*audio.duration;
+  onTime();
+}
+function setMediaSession(t){
+  try{
+    if(!('mediaSession' in navigator)) return;
+    navigator.mediaSession.metadata=new MediaMetadata({title:t.titre||'',artist:'Bakougie',album:musicTitle(),
+      artwork:[{src:'icon-512.png',sizes:'512x512',type:'image/png'}]});
+    navigator.mediaSession.setActionHandler('play',()=>togglePlayPause());
+    navigator.mediaSession.setActionHandler('pause',()=>togglePlayPause());
+    navigator.mediaSession.setActionHandler('nexttrack',()=>nextTrack(false));
+    navigator.mediaSession.setActionHandler('previoustrack',()=>prevTrack());
+  }catch(e){}
+}
+
+/* ---- Marquage des lignes en cours ---- */
+function markRows(){
+  const cur=currentTrack(); const ck=cur?tkey(cur):null; const pl=isPlaying();
+  document.querySelectorAll('#page .track').forEach(row=>{
+    const on=(row.dataset.k===ck);
+    row.classList.toggle('current',on);
+    row.classList.toggle('playing',on&&pl);
+    const ic=row.querySelector('.play-ic');
+    if(ic) ic.textContent = (on&&pl)?'❚❚':'▶';
+  });
+}
+
+/* ---- Mini-lecteur ---- */
+function renderPlayer(){
+  const box=document.getElementById('miniplayer'); if(!box) return;
+  const t=currentTrack();
+  if(!t){ box.innerHTML=''; document.body.classList.remove('playing'); return; }
+  const pl=isPlaying();
+  box.innerHTML=`
+    <div class="mp-bar" onclick="seekFromEvent(event)"><i id="mpFill"></i></div>
+    <div class="mp-body">
+      <div class="mp-info" onclick="goMusic()">
+        <b>${esc(t.titre||'')}</b>
+        <span>${qName?esc(qName)+' · ':''}${qi+1}/${queue.length} · <span id="mpTime">0:00 / —</span></span>
+      </div>
+      <div class="mp-ctrl">
+        <button class="mp-b ${shuffle?'on':''}" onclick="toggleShuffle()" title="Aléatoire" aria-label="Lecture aléatoire">⇄</button>
+        <button class="mp-b" onclick="prevTrack()" title="Précédent" aria-label="Précédent">⏮</button>
+        <button class="mp-play" onclick="togglePlayPause()" aria-label="${pl?'Pause':'Lecture'}">${pl?'❚❚':'▶'}</button>
+        <button class="mp-b" onclick="nextTrack(false)" title="Suivant" aria-label="Suivant">⏭</button>
+        <button class="mp-b ${repeat!=='off'?'on':''}" onclick="cycleRepeat()" title="Répéter" aria-label="Répéter">${repeat==='one'?'🔂':'🔁'}</button>
+      </div>
+      <button class="mp-close" onclick="stopAll()" aria-label="Fermer le lecteur">✕</button>
+    </div>`;
+  onTime();
+}
+
+/* ============================================================
+   BAK'MUSIC — interface de la page dédiée
+   ============================================================ */
+let musicTab='titres', openPl=null, mFilter='', sheetCtx=null;
+
+function setMusicTab(t){ musicTab=t; openPl=null; mFilter=''; renderPage(); window.scrollTo({top:0,behavior:'smooth'}); }
+function openPlaylist(id){ openPl=id; renderPage(); window.scrollTo({top:0,behavior:'smooth'}); }
+function backToPlaylists(){ openPl=null; renderPage(); }
+function mSearch(v){
+  mFilter=v; renderPage();
+  const el=document.querySelector('#page .m-search input');
   if(el){ el.focus(); el.setSelectionRange(el.value.length,el.value.length); }
 }
-function stopPlayback(){
-  if(audio){ audio.pause(); audio.src=''; audio=null; }
-  if(playingKey){
-    const row=document.getElementById('tr_'+playingKey); if(row) row.classList.remove('playing');
-    const ic=document.getElementById('pi_'+playingKey); if(ic) ic.textContent='▶';
-    playingKey=null;
-  }
+
+function trackRow(t,i){
+  const k=tkey(t); const cur=currentTrack();
+  const on=cur&&tkey(cur)===k; const pl=on&&isPlaying();
+  return `<li><div class="track ${on?'current':''} ${pl?'playing':''}" data-k="${esc(k)}">
+    <button class="play-btn js-play" data-i="${i}" aria-label="Écouter ${esc(t.titre)}"><span class="play-ic">${pl?'❚❚':'▶'}</span></button>
+    <div class="track-main js-play" data-i="${i}">
+      <div class="track-title">${esc(t.titre||'Sans titre')}</div>
+      ${on?'<div class="track-now">en cours de lecture</div>':''}
+    </div>
+    <button class="fav-btn js-fav ${isFav(k)?'on':''}" data-k="${esc(k)}" aria-label="Favori">${isFav(k)?'♥':'♡'}</button>
+    <button class="more-btn js-more" data-k="${esc(k)}" aria-label="Options">⋯</button>
+  </div></li>`;
 }
-function togglePlay(blockId, idx){
-  const b=findBlock(blockId); if(!b) return;
-  const t=(b.data.tracks||[])[idx]; if(!t||!t.url){ toast('Aucun fichier audio pour ce titre'); return; }
-  const key=blockId+'_'+idx;
-  if(playingKey===key && audio){
-    if(audio.paused){ audio.play(); document.getElementById('pi_'+key).textContent='❚❚'; }
-    else { audio.pause(); document.getElementById('pi_'+key).textContent='▶'; }
-    return;
-  }
-  stopPlayback();
-  audio=new Audio(t.url); playingKey=key;
-  const row=document.getElementById('tr_'+key); if(row) row.classList.add('playing');
-  const ic=document.getElementById('pi_'+key); if(ic) ic.textContent='❚❚';
-  audio.addEventListener('timeupdate',()=>{
-    const bar=document.getElementById('pb_'+key), tt=document.getElementById('tt_'+key);
-    if(bar&&audio.duration) bar.style.width=(audio.currentTime/audio.duration*100)+'%';
-    if(tt) tt.textContent=mmss(audio.currentTime)+(audio.duration?' / '+mmss(audio.duration):'');
-  });
-  audio.addEventListener('ended',()=>stopPlayback());
-  audio.addEventListener('error',()=>{ toast('Lecture impossible'); stopPlayback(); });
-  audio.play().catch(()=>{ toast('Lecture impossible'); stopPlayback(); });
+
+function listHeader(count,list,name){
+  if(!count) return '';
+  return `<div class="m-actions">
+    <button class="m-play" onclick='playAllFrom(${JSON.stringify(name)},false)'>▶ Tout lire</button>
+    <button class="m-shuf" onclick='playAllFrom(${JSON.stringify(name)},true)'>⇄ Aléatoire</button>
+    <span class="m-count">${count} titre${count>1?'s':''}</span>
+  </div>`;
 }
-function seekTrack(e, blockId, idx){
-  const key=blockId+'_'+idx;
-  if(playingKey!==key||!audio||!audio.duration) return;
-  const r=e.currentTarget.getBoundingClientRect();
-  audio.currentTime=Math.max(0,Math.min(1,(e.clientX-r.left)/r.width))*audio.duration;
+
+let renderedList=[];
+function playAllFrom(name,rnd){ playAll(renderedList,name,rnd); }
+
+function renderMusicApp(){
+  const lib=allTracks();
+  const q=fold(mFilter).trim();
+  let html='';
+
+  html+=`<div class="pagehead"><button class="backbtn" onclick="goHome()">← Retour</button>
+    ${isAdmin?`<button class="backbtn" style="margin-left:auto" onclick="editFirstMusic()">✎ Gérer les titres</button>`:''}</div>`;
+
+  html+=`<div class="m-hero"><span class="note">♪</span><div>
+      <h2>${esc(musicTitle())}</h2>
+      <div class="sub">${esc(musicSub())}${musicSub()?' · ':''}${lib.length} titre${lib.length>1?'s':''}</div>
+    </div></div>`;
+
+  html+=`<div class="mtabs">
+    <button class="mtab ${musicTab==='titres'?'active':''}" onclick="setMusicTab('titres')">Titres</button>
+    <button class="mtab ${musicTab==='favoris'?'active':''}" onclick="setMusicTab('favoris')">♥ Favoris <span class="cnt">${UM.fav.length}</span></button>
+    <button class="mtab ${musicTab==='playlists'?'active':''}" onclick="setMusicTab('playlists')">Playlists <span class="cnt">${UM.pls.length}</span></button>
+  </div>`;
+
+  /* ----- Onglet TITRES ----- */
+  if(musicTab==='titres'){
+    const list=q?lib.filter(t=>fold(t.titre).includes(q)):lib;
+    renderedList=list;
+    html+=`<div class="m-search"><input type="text" placeholder="Rechercher un titre…" value="${esc(mFilter)}" oninput="mSearch(this.value)"></div>`;
+    html+=listHeader(list.length,list,musicTitle());
+    html+=`<ul class="tracks card-list">${list.map(trackRow).join('')||'<li class="m-empty">Aucun titre ne correspond.</li>'}</ul>`;
+  }
+
+  /* ----- Onglet FAVORIS ----- */
+  else if(musicTab==='favoris'){
+    let list=favTracks();
+    if(q) list=list.filter(t=>fold(t.titre).includes(q));
+    renderedList=list;
+    if(!UM.fav.length){
+      html+=`<div class="m-blank"><div class="em">♡</div><h3>Aucun favori</h3>
+        <p>Touchez le cœur à côté d'un titre pour le retrouver ici.</p>
+        <button class="btn btn-primary" onclick="setMusicTab('titres')">Parcourir les titres</button></div>`;
+    } else {
+      html+=`<div class="m-search"><input type="text" placeholder="Rechercher dans mes favoris…" value="${esc(mFilter)}" oninput="mSearch(this.value)"></div>`;
+      html+=listHeader(list.length,list,'Mes favoris');
+      html+=`<ul class="tracks card-list">${list.map(trackRow).join('')||'<li class="m-empty">Aucun favori ne correspond.</li>'}</ul>`;
+    }
+  }
+
+  /* ----- Onglet PLAYLISTS ----- */
+  else {
+    if(openPl){
+      const p=plById(openPl);
+      if(!p){ openPl=null; return renderMusicApp(); }
+      let list=keysToTracks(p.keys);
+      renderedList=list;
+      html+=`<div class="pl-head">
+        <button class="backbtn sm" onclick="backToPlaylists()">← Playlists</button>
+        <h3>${esc(p.nom)}</h3>
+        <div class="pl-tools">
+          <button onclick="renamePlaylist('${p.id}')" aria-label="Renommer">✎</button>
+          <button class="del" onclick="deletePlaylist('${p.id}')" aria-label="Supprimer">🗑</button>
+        </div></div>`;
+      if(!list.length){
+        html+=`<div class="m-blank"><div class="em">♪</div><h3>Playlist vide</h3>
+          <p>Ajoutez des titres avec le menu <b>⋯</b> à côté d'une chanson.</p>
+          <button class="btn btn-primary" onclick="setMusicTab('titres')">Parcourir les titres</button></div>`;
+      } else {
+        html+=listHeader(list.length,list,p.nom);
+        html+=`<ul class="tracks card-list">${list.map((t,i)=>{
+          const k=tkey(t); const cur=currentTrack(); const on=cur&&tkey(cur)===k; const pl=on&&isPlaying();
+          return `<li><div class="track ${on?'current':''} ${pl?'playing':''}" data-k="${esc(k)}">
+            <button class="play-btn js-play" data-i="${i}"><span class="play-ic">${pl?'❚❚':'▶'}</span></button>
+            <div class="track-main js-play" data-i="${i}"><div class="track-title">${esc(t.titre)}</div>
+              ${on?'<div class="track-now">en cours de lecture</div>':''}</div>
+            <span class="pl-ord">
+              <button onclick="movePlTrack('${p.id}',${i},-1)" aria-label="Monter">↑</button>
+              <button onclick="movePlTrack('${p.id}',${i},1)" aria-label="Descendre">↓</button>
+            </span>
+            <button class="more-btn js-more" data-k="${esc(k)}" aria-label="Options">⋯</button>
+          </div></li>`;
+        }).join('')}</ul>`;
+      }
+    } else {
+      html+=`<button class="m-newpl" onclick="createPlaylist()">＋ Créer une playlist</button>`;
+      if(!UM.pls.length){
+        html+=`<div class="m-blank"><div class="em">≡</div><h3>Aucune playlist</h3>
+          <p>Créez vos ambiances : « Pour l'atelier », « Détente du soir »…</p></div>`;
+      } else {
+        html+=`<div class="pl-grid">${UM.pls.map(p=>{
+          const n=keysToTracks(p.keys).length;
+          return `<div class="pl-card" onclick="openPlaylist('${p.id}')">
+            <span class="pl-ico">♪</span>
+            <span class="pl-main"><b>${esc(p.nom)}</b><span>${n} titre${n>1?'s':''}</span></span>
+            <span class="pl-go">→</span></div>`;
+        }).join('')}</div>`;
+      }
+    }
+  }
+
+  if(UM.recent && UM.recent.length && musicTab==='titres' && !q){
+    const rec=keysToTracks(UM.recent).slice(0,5);
+    if(rec.length) html+=`<div class="m-recent"><h4>Écoutés récemment</h4>
+      <div class="rec-row">${rec.map(t=>`<button class="rec-chip js-rec" data-k="${esc(tkey(t))}">♪ ${esc(t.titre)}</button>`).join('')}</div></div>`;
+  }
+  return html;
+}
+
+function editFirstMusic(){ const b=blocks.find(x=>x.type==='bakmusic'); if(b) openMusicEditor(b.id); }
+
+/* ---- Interactions déléguées ---- */
+function onPageClick(e){
+  const play=e.target.closest('.js-play');
+  if(play){ const i=+play.dataset.i; const nm=(musicTab==='favoris')?'Mes favoris':(openPl?(plById(openPl)||{}).nom:musicTitle()); playList(renderedList,i,nm); return; }
+  const fav=e.target.closest('.js-fav');
+  if(fav){ toggleFav(fav.dataset.k); return; }
+  const more=e.target.closest('.js-more');
+  if(more){ openTrackSheet(more.dataset.k); return; }
+  const rec=e.target.closest('.js-rec');
+  if(rec){ const t=trackByKey(rec.dataset.k); if(t) playList([t],0,'Écoutés récemment'); return; }
+}
+
+/* ---- Menu d'un titre ---- */
+function openTrackSheet(k){
+  const t=trackByKey(k); if(!t) return;
+  sheetCtx={k, pl:openPl};
+  const pls=UM.pls.map(p=>`<button class="sheet-item" onclick="sheetAdd('${p.id}')"><span class="si">♪</span> ${esc(p.nom)} <span class="sn">${keysToTracks(p.keys).length}</span></button>`).join('');
+  openModal(`<div class="modal-head"><h3>${esc(t.titre)}</h3><button class="icon-btn" onclick="closeModal()">✕</button></div>
+    <div class="modal-body">
+      <button class="sheet-item strong" onclick="sheetFav()"><span class="si">${isFav(k)?'♥':'♡'}</span> ${isFav(k)?'Retirer des favoris':'Ajouter aux favoris'}</button>
+      ${sheetCtx.pl?`<button class="sheet-item strong" onclick="sheetRemove()"><span class="si">✕</span> Retirer de cette playlist</button>`:''}
+      ${t.url?`<a class="sheet-item strong" href="${esc(t.url)}" download target="_blank" rel="noopener" onclick="closeModal()"><span class="si">⤓</span> Télécharger</a>`:''}
+      <div class="sheet-label">Ajouter à une playlist</div>
+      ${pls||'<p class="muted">Aucune playlist pour l\'instant.</p>'}
+      <button class="sheet-item new" onclick="sheetNewPl()"><span class="si">＋</span> Nouvelle playlist…</button>
+    </div>`);
+}
+function sheetFav(){ if(!sheetCtx) return; toggleFav(sheetCtx.k); closeModal(); }
+function sheetAdd(id){ if(!sheetCtx) return; addToPlaylist(id,sheetCtx.k); closeModal(); }
+function sheetRemove(){ if(!sheetCtx||!sheetCtx.pl) return; removeFromPlaylist(sheetCtx.pl,sheetCtx.k); closeModal(); }
+function sheetNewPl(){ const k=sheetCtx?sheetCtx.k:null; closeModal(); createPlaylist(p=>{ if(k) addToPlaylist(p.id,k); }); }
+
+/* ---- Petite boîte de saisie ---- */
+function openPrompt(titre,label,val,cb){
+  openModal(`<div class="modal-head"><h3>${esc(titre)}</h3><button class="icon-btn" onclick="closeModal()">✕</button></div>
+    <div class="modal-body"><div class="field"><label>${esc(label)}</label>
+      <input type="text" id="pr_v" value="${esc(val||'')}" onkeydown="if(event.key==='Enter')document.getElementById('pr_ok').click()"></div></div>
+    <div class="modal-foot"><button class="btn btn-ghost" onclick="closeModal()">Annuler</button>
+      <button class="btn btn-primary" id="pr_ok">Valider</button></div>`);
+  const inp=document.getElementById('pr_v');
+  setTimeout(()=>{ if(inp){ inp.focus(); inp.select(); } },40);
+  document.getElementById('pr_ok').onclick=()=>{ const v=inp?inp.value:''; closeModal(); cb(v); };
 }
 
 function blockInner(b, prevType){
@@ -435,37 +887,7 @@ function blockInner(b, prevType){
       const wrap = d.lien?`<a class="post" href="${esc(d.lien)}" target="_blank" rel="noopener">${inner}</a>`:`<div class="post">${inner}</div>`;
       return `<div class="${first?'journal-first':''}">${wrap}</div>`;
     }
-    case 'bakmusic':{
-      const all=Array.isArray(d.tracks)?d.tracks:[];
-      const q=fold(musicFilter[b.id]||'').trim();
-      const list=q?all.filter(t=>fold(t.titre).includes(q)):all;
-      const LIMIT=8;
-      const expanded=(currentView==='musique')||!!musicOpen[b.id]||!!q;
-      const shown=expanded?list:list.slice(0,LIMIT);
-      const rows=shown.map((t,i)=>{
-        const idx=all.indexOf(t);
-        return `<li><div class="track" id="tr_${b.id}_${idx}">
-          <button class="play-btn" onclick="togglePlay('${b.id}',${idx})" aria-label="Écouter ${esc(t.titre)}"><span id="pi_${b.id}_${idx}">▶</span></button>
-          <div class="track-main">
-            <div class="track-title">${esc(t.titre||'Sans titre')}</div>
-            <div class="track-bar" onclick="seekTrack(event,'${b.id}',${idx})"><i id="pb_${b.id}_${idx}"></i></div>
-            <div class="track-time" id="tt_${b.id}_${idx}">0:00</div>
-          </div>
-          ${t.url?`<a class="dl" href="${esc(t.url)}" download target="_blank" rel="noopener" aria-label="Télécharger">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12"/><path d="m7 12 5 5 5-5"/><path d="M5 21h14"/></svg></a>`:''}
-        </div></li>`;
-      }).join('');
-      const search = all.length>8 ? `<div class="music-search"><input type="text" placeholder="Rechercher un titre…" value="${esc(musicFilter[b.id]||'')}" oninput="musicSearch('${b.id}',this.value)"></div>` : '';
-      const more = (currentView==='musique') ? ''
-                 : (!expanded && list.length>LIMIT) ? `<button class="music-more" onclick="musicToggle('${b.id}')">Voir les ${list.length} titres ↓</button>`
-                 : (expanded && list.length>LIMIT && !q) ? `<button class="music-more" onclick="musicToggle('${b.id}')">Réduire ↑</button>` : '';
-      return `<div class="music">
-        <div class="music-head"><span class="note">♪</span><div><h3>${esc(d.titre||"BAK'MUSIC")}</h3>
-          <div class="sub">${esc(d.sous_titre||'')}${d.sous_titre?' · ':''}${all.length} titre${all.length>1?'s':''}</div></div></div>
-        ${search}
-        <ul class="tracks">${rows||'<li><div class="track"><span class="empty-note">Aucun titre.</span></div></li>'}</ul>
-        ${more}</div>`;
-    }
+    case 'bakmusic': return '';
     case 'bouton':
       return `<div class="cta-wrap"><a class="cta-btn" href="${esc(d.url||'#')}" target="_blank" rel="noopener">${esc(d.label||'Voir plus')}</a></div>`;
     case 'texte':
@@ -488,18 +910,8 @@ function renderPage(){
   const musicView = (currentView==='musique');
 
   if(musicView){
-    const list=blocks.filter(b=>b.type==='bakmusic');
-    html+=`<div class="pagehead"><button class="backbtn" onclick="goHome()">← Retour</button></div>`;
-    if(list.length===0){
-      html+=`<div class="empty-note">Aucune section musique pour l'instant.</div>`;
-    } else {
-      list.forEach(b=>{
-        const tools = isAdmin ? `<span class="blk-label">${TYPE_ICONS[b.type]} ${TYPE_LABELS[b.type]}</span>
-          <span class="blk-tools"><button title="Modifier" onclick="editBlock('${b.id}')">✎</button></span>` : '';
-        html+=`<div class="block" data-id="${b.id}">${tools}${blockInner(b,null)}</div>`;
-      });
-    }
-    page.innerHTML=html; restorePlayingUI(); return;
+    page.innerHTML=renderMusicApp();
+    markRows(); return;
   }
 
   blocks.forEach((b,i)=>{
@@ -535,12 +947,7 @@ function renderPage(){
   page.innerHTML=html;
   restorePlayingUI();
 }
-function restorePlayingUI(){
-  if(playingKey && audio){
-    const row=document.getElementById('tr_'+playingKey); if(row) row.classList.add('playing');
-    const ic=document.getElementById('pi_'+playingKey); if(ic) ic.textContent=audio.paused?'▶':'❚❚';
-  }
-}
+function restorePlayingUI(){ markRows(); }
 function render(){ renderHeader(); renderPage(); }
 
 /* ===== Admin : édition des blocs ===== */
@@ -755,7 +1162,9 @@ function escC(e){ if(e.key==='Escape') closeModal(); }
 /* accès admin via #admin */
 if((location.hash||'').toLowerCase()==='#admin') setTimeout(openLogin,300);
 
+document.getElementById('page').addEventListener('click',onPageClick);
 applyRoute();
+renderPlayer();
 
 /* ============================================================
    NOTIFICATIONS (OneSignal) — configuration qui fonctionne, inchangée
