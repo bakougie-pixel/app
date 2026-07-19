@@ -38,6 +38,28 @@
   .brand{display:flex;align-items:center;gap:10px;}
   .brand img{height:30px;width:auto;display:block;}
   .brand .mark{font-family:'Fraunces',Georgia,serif;font-weight:600;font-size:20px;letter-spacing:.5px;color:#fff;}
+  .brand{display:flex;align-items:center;gap:10px;cursor:pointer;}
+  .topnav{display:flex;align-items:center;gap:8px;}
+  .navbtn{appearance:none;border:1px solid rgba(201,162,75,.55);background:rgba(201,162,75,.16);color:var(--gold);border-radius:22px;padding:7px 13px;font-size:13px;font-weight:700;cursor:pointer;display:inline-flex;align-items:center;gap:7px;font-family:inherit;letter-spacing:.02em;}
+  .navbtn .ic{font-size:15px;line-height:1;}
+  .navbtn:active{transform:translateY(1px);}
+  .navbtn.active{background:var(--gold);color:#3a2a06;border-color:var(--gold);}
+  @media (max-width:440px){ .navbtn .lbl{display:none;} #bellLabel{display:none;} .navbtn{padding:8px 11px;} .bell{padding:8px 11px;} }
+
+  /* Vue dédiée BAK'MUSIC */
+  body.view-music .hero,
+  body.view-music .install-hint{display:none;}
+  body.view-music #notifCard{display:none!important;}
+  .pagehead{display:flex;align-items:center;gap:12px;margin:4px 0 16px;}
+  .backbtn{appearance:none;border:1px solid var(--line-gold);background:var(--white);color:var(--wine);border-radius:22px;padding:9px 15px;font-size:14px;font-weight:700;cursor:pointer;font-family:inherit;display:inline-flex;align-items:center;gap:7px;box-shadow:var(--shadow);}
+  .backbtn:active{transform:translateY(1px);background:var(--cream);}
+  .admin-stub{display:flex;align-items:center;gap:12px;background:var(--white);border:1px dashed var(--line-gold);border-radius:var(--radius);padding:14px 16px;}
+  .admin-stub .em{font-size:22px;}
+  .admin-stub .st-main{flex:1;min-width:0;}
+  .admin-stub .st-main b{display:block;font-size:15px;}
+  .admin-stub .st-main span{font-size:12.5px;color:var(--ink-faint);}
+  .admin-stub button{appearance:none;border:1px solid var(--wine);background:var(--wine);color:#fff;border-radius:10px;padding:9px 13px;font-weight:700;font-size:13.5px;cursor:pointer;font-family:inherit;flex:none;}
+
   .bell{appearance:none;border:1px solid rgba(255,255,255,.32);background:rgba(255,255,255,.1);color:#fff;border-radius:22px;padding:7px 13px;font-size:13.5px;font-weight:600;cursor:pointer;display:inline-flex;align-items:center;gap:7px;font-family:inherit;}
   .bell:active{transform:translateY(1px);}
   .bell.on{background:var(--gold);border-color:var(--gold);color:#3a2a06;}
@@ -200,19 +222,25 @@
   .track-row button{width:30px;height:30px;border-radius:8px;border:1px solid var(--line-gold);background:#fff;cursor:pointer;font-size:13px;line-height:0;color:var(--ink-soft);flex:none;}
   .track-row button.del{color:var(--wine);}
 
-  #toast{position:fixed;left:50%;bottom:calc(78px + env(safe-area-inset-bottom));transform:translateX(-50%) translateY(160%);z-index:80;background:var(--ink);color:#F6ECDF;padding:12px 18px;border-radius:12px;font-size:14.5px;font-weight:500;box-shadow:0 12px 30px -10px rgba(0,0,0,.4);transition:transform .3s cubic-bezier(.2,.9,.3,1);max-width:90vw;text-align:center;}
-  #toast.show{transform:translateX(-50%) translateY(0);}
+  #toast{position:fixed;left:50%;bottom:calc(22px + env(safe-area-inset-bottom));transform:translateX(-50%) translateY(14px);opacity:0;visibility:hidden;pointer-events:none;z-index:80;background:var(--ink);color:#F6ECDF;padding:12px 18px;border-radius:12px;font-size:14.5px;font-weight:500;box-shadow:0 12px 30px -10px rgba(0,0,0,.4);transition:opacity .25s ease, transform .3s cubic-bezier(.2,.9,.3,1), visibility .3s;max-width:90vw;text-align:center;}
+  #toast.show{transform:translateX(-50%) translateY(0);opacity:1;visibility:visible;}
+  body.admin #toast{bottom:calc(78px + env(safe-area-inset-bottom));}
   @media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important;}}
   :focus-visible{outline:2px solid var(--gold);outline-offset:2px;}
 </style>
 </head>
 <body>
   <header class="topbar">
-    <div class="brand"><img src="logo-white.png" alt=""><span class="mark" id="brandMark">Bakougie</span></div>
-    <button class="bell" id="bellBtn" onclick="enableNotifications()">
-      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"/><path d="M10.3 21a1.94 1.94 0 0 0 3.4 0"/></svg>
-      <span id="bellLabel">Notifications</span>
-    </button>
+    <div class="brand" onclick="goHome()"><img src="logo-white.png" alt=""><span class="mark" id="brandMark">Bakougie</span></div>
+    <div class="topnav">
+      <button class="navbtn" id="musicNav" onclick="goMusic()" style="display:none">
+        <span class="ic">♪</span><span class="lbl">BAK'MUSIC</span>
+      </button>
+      <button class="bell" id="bellBtn" onclick="enableNotifications()">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"/><path d="M10.3 21a1.94 1.94 0 0 0 3.4 0"/></svg>
+        <span id="bellLabel">Notifications</span>
+      </button>
+    </div>
   </header>
 
   <section class="hero">
@@ -261,6 +289,7 @@ async function sha256hex(str){
 const $=(s)=>document.querySelector(s);
 function esc(s){ return String(s==null?'':s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c])); }
 function clone(o){ return JSON.parse(JSON.stringify(o)); }
+function fold(s){ return String(s==null?'':s).normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase(); }
 function uid(){ return 'b_'+Math.random().toString(36).slice(2,9); }
 function fmtDate(s){ try{ return new Date(s+'T00:00:00').toLocaleDateString('fr-FR',{day:'numeric',month:'long',year:'numeric'}); }catch(e){ return s; } }
 function toast(m){ const t=$('#toast'); t.textContent=m; t.classList.add('show'); clearTimeout(t._t); t._t=setTimeout(()=>t.classList.remove('show'),2300); }
@@ -303,11 +332,38 @@ function renderHeader(){
   $('#heroTitle').textContent=CONFIG.marque||'Bakougie';
   $('#heroTag').textContent=CONFIG.tagline||'';
   $('#heroIntro').textContent=CONFIG.intro||'';
+  const nav=$('#musicNav');
+  if(nav){
+    const mb=blocks.find(b=>b.type==='bakmusic');
+    nav.style.display = mb ? '' : 'none';
+    if(mb){ const lbl=nav.querySelector('.lbl'); if(lbl) lbl.textContent = mb.data.titre || "BAK'MUSIC"; }
+  }
 }
 
 /* ===== Rendu des blocs ===== */
 const TYPE_LABELS={live:'Bandeau live',section:'Titre de section',nouveaute:'Nouveauté',article:'Article',bakmusic:"BAK'MUSIC",bouton:'Bouton',texte:'Texte',image:'Image',liens:'Réseaux & boutique'};
 const TYPE_ICONS={live:'🔴',section:'📑',nouveaute:'🕯️',article:'📝',bakmusic:'🎵',bouton:'🔘',texte:'✍️',image:'🖼️',liens:'🔗'};
+
+/* ---- Navigation (accueil / page BAK'MUSIC) ---- */
+let currentView='home';
+function hasMusic(){ return blocks.some(b=>b.type==='bakmusic'); }
+function routeFromHash(){ const h=(location.hash||'').toLowerCase(); return (h==='#musique'||h==='#music'||h==='#bakmusic')?'musique':'home'; }
+function goMusic(){ if(location.hash.toLowerCase()!=='#musique'){ location.hash='musique'; } else { applyRoute(); } }
+function goHome(){ if(routeFromHash()==='musique'){ location.hash=''; } }
+function applyRoute(){
+  const v=routeFromHash();
+  const changed=(v!==currentView);
+  currentView=v;
+  document.body.classList.toggle('view-music', v==='musique');
+  const nav=$('#musicNav'); if(nav) nav.classList.toggle('active', v==='musique');
+  if(changed && v!=='musique') stopPlayback();
+  render();
+  if(changed) window.scrollTo(0,0);
+}
+window.addEventListener('hashchange',()=>{
+  if((location.hash||'').toLowerCase()==='#admin'){ openLogin(); return; }
+  applyRoute();
+});
 
 /* ---- Lecteur audio BAK'MUSIC ---- */
 const musicOpen={}, musicFilter={};
@@ -381,10 +437,10 @@ function blockInner(b, prevType){
     }
     case 'bakmusic':{
       const all=Array.isArray(d.tracks)?d.tracks:[];
-      const q=(musicFilter[b.id]||'').trim().toLowerCase();
-      const list=q?all.filter(t=>(t.titre||'').toLowerCase().includes(q)):all;
+      const q=fold(musicFilter[b.id]||'').trim();
+      const list=q?all.filter(t=>fold(t.titre).includes(q)):all;
       const LIMIT=8;
-      const expanded=!!musicOpen[b.id]||!!q;
+      const expanded=(currentView==='musique')||!!musicOpen[b.id]||!!q;
       const shown=expanded?list:list.slice(0,LIMIT);
       const rows=shown.map((t,i)=>{
         const idx=all.indexOf(t);
@@ -400,7 +456,8 @@ function blockInner(b, prevType){
         </div></li>`;
       }).join('');
       const search = all.length>8 ? `<div class="music-search"><input type="text" placeholder="Rechercher un titre…" value="${esc(musicFilter[b.id]||'')}" oninput="musicSearch('${b.id}',this.value)"></div>` : '';
-      const more = (!expanded && list.length>LIMIT) ? `<button class="music-more" onclick="musicToggle('${b.id}')">Voir les ${list.length} titres ↓</button>`
+      const more = (currentView==='musique') ? ''
+                 : (!expanded && list.length>LIMIT) ? `<button class="music-more" onclick="musicToggle('${b.id}')">Voir les ${list.length} titres ↓</button>`
                  : (expanded && list.length>LIMIT && !q) ? `<button class="music-more" onclick="musicToggle('${b.id}')">Réduire ↑</button>` : '';
       return `<div class="music">
         <div class="music-head"><span class="note">♪</span><div><h3>${esc(d.titre||"BAK'MUSIC")}</h3>
@@ -428,7 +485,40 @@ function blockInner(b, prevType){
 }
 function renderPage(){
   const page=$('#page'); let html=''; let prevType=null;
+  const musicView = (currentView==='musique');
+
+  if(musicView){
+    const list=blocks.filter(b=>b.type==='bakmusic');
+    html+=`<div class="pagehead"><button class="backbtn" onclick="goHome()">← Retour</button></div>`;
+    if(list.length===0){
+      html+=`<div class="empty-note">Aucune section musique pour l'instant.</div>`;
+    } else {
+      list.forEach(b=>{
+        const tools = isAdmin ? `<span class="blk-label">${TYPE_ICONS[b.type]} ${TYPE_LABELS[b.type]}</span>
+          <span class="blk-tools"><button title="Modifier" onclick="editBlock('${b.id}')">✎</button></span>` : '';
+        html+=`<div class="block" data-id="${b.id}">${tools}${blockInner(b,null)}</div>`;
+      });
+    }
+    page.innerHTML=html; restorePlayingUI(); return;
+  }
+
   blocks.forEach((b,i)=>{
+    if(b.type==='bakmusic'){
+      if(isAdmin){
+        html+=`<div class="block" data-id="${b.id}">
+          <span class="blk-label">${TYPE_ICONS[b.type]} ${TYPE_LABELS[b.type]}</span>
+          <span class="blk-tools">
+            <button title="Monter" onclick="moveBlock('${b.id}',-1)">↑</button>
+            <button title="Descendre" onclick="moveBlock('${b.id}',1)">↓</button>
+            <button class="del" title="Supprimer" onclick="deleteBlock('${b.id}')">🗑</button>
+          </span>
+          <div class="admin-stub"><span class="em">🎵</span>
+            <span class="st-main"><b>${esc(b.data.titre||"BAK'MUSIC")}</b>
+            <span>${(b.data.tracks||[]).length} titres · sur sa propre page</span></span>
+            <button onclick="goMusic()">Ouvrir</button></div></div>`;
+      }
+      prevType=b.type; return;
+    }
     const inner=blockInner(b, prevType);
     if(inner==='' && !isAdmin){ prevType=b.type; return; }
     const tools = isAdmin ? `<span class="blk-label">${TYPE_ICONS[b.type]||''} ${TYPE_LABELS[b.type]||b.type}</span>
@@ -443,6 +533,9 @@ function renderPage(){
   });
   if(blocks.length===0) html=`<p class="empty-note">Aucun module. ${isAdmin?'Touchez « + Module » pour commencer.':''}</p>`;
   page.innerHTML=html;
+  restorePlayingUI();
+}
+function restorePlayingUI(){
   if(playingKey && audio){
     const row=document.getElementById('tr_'+playingKey); if(row) row.classList.add('playing');
     const ic=document.getElementById('pi_'+playingKey); if(ic) ic.textContent=audio.paused?'▶':'❚❚';
@@ -518,9 +611,9 @@ function openMusicEditor(id){
   const b=findBlock(id); if(!b) return;
   if(!Array.isArray(b.data.tracks)) b.data.tracks=[];
   const all=b.data.tracks;
-  const q=musicEditFilter.trim().toLowerCase();
+  const q=fold(musicEditFilter).trim();
   const rows=all.map((t,i)=>({t,i}))
-    .filter(o=>!q||(o.t.titre||'').toLowerCase().includes(q))
+    .filter(o=>!q||fold(o.t.titre).includes(q))
     .map(o=>`<div class="track-row">
       <span class="tr-num">${o.i+1}</span>
       <span class="tr-name">${esc(o.t.titre||'Sans titre')}</span>
@@ -662,7 +755,7 @@ function escC(e){ if(e.key==='Escape') closeModal(); }
 /* accès admin via #admin */
 if((location.hash||'').toLowerCase()==='#admin') setTimeout(openLogin,300);
 
-render();
+applyRoute();
 
 /* ============================================================
    NOTIFICATIONS (OneSignal) — configuration qui fonctionne, inchangée
