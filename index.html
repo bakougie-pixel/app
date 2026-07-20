@@ -222,6 +222,123 @@
   .track-row button{width:30px;height:30px;border-radius:8px;border:1px solid var(--line-gold);background:#fff;cursor:pointer;font-size:13px;line-height:0;color:var(--ink-soft);flex:none;}
   .track-row button.del{color:var(--wine);}
 
+  /* ===== Compte à rebours ===== */
+  .cd{background:linear-gradient(125deg,var(--wine),var(--wine-deep));color:#fff;border-radius:var(--radius);padding:18px;box-shadow:var(--shadow);border:1px solid var(--gold);text-align:center;}
+  .cd h3{font-family:'Fraunces',serif;font-weight:500;font-size:20px;margin:0 0 3px;}
+  .cd .cd-sub{font-size:12.5px;color:#E7CBD2;margin-bottom:13px;}
+  .cd-grid{display:flex;justify-content:center;gap:9px;}
+  .cd-cell{background:rgba(255,255,255,.1);border:1px solid rgba(201,162,75,.45);border-radius:12px;padding:9px 4px;min-width:62px;}
+  .cd-val{font-family:'Spline Sans Mono',monospace;font-size:25px;font-weight:700;line-height:1;color:var(--gold);font-variant-numeric:tabular-nums;}
+  .cd-lab{font-size:10px;text-transform:uppercase;letter-spacing:.09em;color:#E2C3CB;margin-top:5px;}
+  .cd-done{font-size:17px;font-weight:700;color:var(--gold);padding:8px 0;}
+  .cd .cd-cta{display:inline-block;margin-top:13px;background:var(--gold);color:#3a2a06;font-weight:700;border-radius:11px;padding:11px 20px;text-decoration:none;font-size:14.5px;}
+
+  /* ===== Oracle parfumé ===== */
+  .or-wrap{background:var(--white);border:1px solid var(--line-gold);border-radius:var(--radius);box-shadow:var(--shadow);padding:18px;text-align:center;}
+  .or-wrap h3{font-family:'Fraunces',serif;font-weight:500;font-size:21px;margin:0 0 3px;color:var(--wine);}
+  .or-wrap .or-sub{font-size:13px;color:var(--ink-soft);margin-bottom:15px;}
+  .or-card{position:relative;width:190px;height:262px;margin:0 auto;perspective:1100px;cursor:pointer;}
+  .or-inner{position:relative;width:100%;height:100%;transition:transform .75s cubic-bezier(.4,.2,.2,1);transform-style:preserve-3d;}
+  .or-card.flip .or-inner{transform:rotateY(180deg);}
+  .or-face{position:absolute;inset:0;backface-visibility:hidden;-webkit-backface-visibility:hidden;border-radius:16px;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:16px;box-shadow:0 12px 26px -12px rgba(60,10,25,.55);}
+  .or-back{background:linear-gradient(140deg,var(--wine),var(--wine-deep));border:2px solid var(--gold);color:var(--gold);}
+  .or-back .bk-logo{font-size:38px;}
+  .or-back .bk-txt{font-size:11px;letter-spacing:.22em;text-transform:uppercase;margin-top:12px;font-weight:700;}
+  .or-front{background:linear-gradient(160deg,var(--gold-soft),#fff);border:2px solid var(--gold);color:var(--ink);transform:rotateY(180deg);}
+  .or-front .em{font-size:44px;line-height:1;}
+  .or-front .nm{font-family:'Fraunces',serif;font-size:19px;font-weight:600;color:var(--wine);margin:9px 0 6px;text-align:center;line-height:1.15;}
+  .or-front .tx{font-size:12.5px;color:var(--ink-soft);text-align:center;line-height:1.4;}
+  .or-hint{font-size:12.5px;color:var(--ink-faint);margin-top:13px;}
+  .or-cta{display:inline-block;margin-top:11px;background:var(--wine);color:#fff;font-weight:700;border-radius:11px;padding:11px 19px;text-decoration:none;font-size:14px;}
+
+  /* ===== Quiz ===== */
+  .qz{background:var(--white);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);overflow:hidden;}
+  .qz-head{background:linear-gradient(120deg,var(--wine),var(--wine-deep));color:#fff;padding:17px 18px;}
+  .qz-head h3{font-family:'Fraunces',serif;font-weight:500;font-size:20px;margin:0 0 3px;}
+  .qz-head p{margin:0;font-size:13px;color:#E7CBD2;}
+  .qz-body{padding:17px 18px 19px;}
+  .qz-prog{height:5px;background:var(--line);border-radius:4px;overflow:hidden;margin-bottom:15px;}
+  .qz-prog i{display:block;height:100%;background:linear-gradient(90deg,var(--gold),var(--gold-deep));transition:width .3s;}
+  .qz-step{font-size:11.5px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--gold-deep);margin-bottom:7px;}
+  .qz-q{font-family:'Fraunces',serif;font-size:20px;font-weight:500;margin:0 0 15px;line-height:1.25;}
+  .qz-opts{display:flex;flex-direction:column;gap:9px;}
+  .qz-opt{display:flex;align-items:center;gap:12px;width:100%;appearance:none;border:1px solid var(--line-gold);background:var(--cream);border-radius:13px;padding:14px 15px;font-family:inherit;font-size:15px;font-weight:600;color:var(--ink);cursor:pointer;text-align:left;}
+  .qz-opt:active{background:var(--wine-soft);transform:translateY(1px);}
+  .qz-opt .em{font-size:21px;flex:none;}
+  .qz-nav{display:flex;gap:9px;margin-top:15px;}
+  .qz-nav button{appearance:none;border:1px solid var(--line-gold);background:var(--white);color:var(--ink-soft);border-radius:11px;padding:10px 15px;font-family:inherit;font-weight:600;font-size:13.5px;cursor:pointer;}
+  .qz-res{text-align:center;}
+  .qz-res .rtag{font-size:11.5px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--gold-deep);}
+  .qz-res h4{font-family:'Fraunces',serif;font-weight:500;font-size:24px;margin:5px 0 8px;color:var(--wine);}
+  .qz-res p{margin:0 0 16px;color:var(--ink-soft);font-size:14.5px;}
+  .qz-picks{display:flex;flex-direction:column;gap:10px;text-align:left;}
+  .qz-pick{display:flex;align-items:center;gap:12px;background:var(--cream);border:1px solid var(--line);border-radius:13px;padding:11px 13px;text-decoration:none;}
+  .qz-pick img{width:52px;height:52px;border-radius:10px;object-fit:cover;flex:none;}
+  .qz-pick .ph{width:52px;height:52px;border-radius:10px;background:var(--wine);color:var(--gold);display:flex;align-items:center;justify-content:center;font-size:22px;flex:none;}
+  .qz-pick .pk{flex:1;min-width:0;}
+  .qz-pick .pk b{display:block;font-size:15px;}
+  .qz-pick .pk span{font-size:12.5px;color:var(--ink-faint);}
+  .qz-pick .go{color:var(--wine);font-weight:700;}
+
+  /* ===== Avis clients ===== */
+  .av{background:var(--white);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);padding:18px;}
+  .av-top{display:flex;align-items:center;gap:15px;margin-bottom:15px;}
+  .av-note{text-align:center;flex:none;}
+  .av-note b{display:block;font-family:'Fraunces',serif;font-size:34px;font-weight:600;color:var(--wine);line-height:1;}
+  .av-note span{font-size:11.5px;color:var(--ink-faint);}
+  .av-stars{color:var(--gold);font-size:17px;letter-spacing:2px;}
+  .av-txt h3{font-family:'Fraunces',serif;font-weight:500;font-size:19px;margin:0 0 3px;}
+  .av-txt p{margin:0;font-size:13px;color:var(--ink-soft);}
+  .av-row{display:flex;gap:11px;overflow-x:auto;padding-bottom:5px;scroll-snap-type:x mandatory;}
+  .av-card{flex:none;width:min(260px,78vw);background:var(--cream);border:1px solid var(--line);border-radius:13px;padding:14px;scroll-snap-align:start;}
+  .av-card .st{color:var(--gold);font-size:13px;letter-spacing:1.5px;margin-bottom:6px;}
+  .av-card p{margin:0 0 9px;font-size:14px;color:var(--ink);line-height:1.45;}
+  .av-card .who{font-size:12.5px;color:var(--ink-faint);font-weight:600;}
+
+  /* ===== Galerie (nouveautés) ===== */
+  .gal{display:flex;gap:8px;overflow-x:auto;scroll-snap-type:x mandatory;background:var(--wine-soft);}
+  .gal img{height:170px;width:auto;max-width:88%;object-fit:cover;flex:none;scroll-snap-align:center;display:block;}
+
+  /* ===== Partager ===== */
+  .sh{display:flex;align-items:center;gap:13px;background:linear-gradient(120deg,var(--gold-soft),var(--white));border:1px solid var(--line-gold);border-radius:var(--radius);padding:15px 17px;box-shadow:var(--shadow);}
+  .sh .em{width:44px;height:44px;border-radius:13px;background:var(--wine);color:var(--gold);display:flex;align-items:center;justify-content:center;font-size:20px;flex:none;}
+  .sh .sh-main{flex:1;min-width:0;}
+  .sh .sh-main b{display:block;font-size:15.5px;}
+  .sh .sh-main span{font-size:12.5px;color:var(--ink-soft);}
+  .sh button{appearance:none;border:none;background:var(--wine);color:#fff;border-radius:11px;padding:11px 16px;font-family:inherit;font-weight:700;font-size:14px;cursor:pointer;flex:none;}
+  .sh button:active{transform:translateY(1px);}
+
+  /* ===== Lecture d'un article ===== */
+  .rd{background:var(--white);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);overflow:hidden;}
+  .rd-img{width:100%;max-height:230px;object-fit:cover;display:block;}
+  .rd-body{padding:20px 20px 24px;}
+  .rd-body .card-date{margin-bottom:7px;}
+  .rd-body h1{font-family:'Fraunces',serif;font-weight:500;font-size:27px;line-height:1.18;margin:0 0 14px;color:var(--ink);}
+  .rd-body .rd-txt{font-size:16px;line-height:1.68;color:var(--ink);white-space:pre-wrap;}
+  .rd-more{display:inline-block;margin-top:18px;color:var(--wine);font-weight:700;text-decoration:none;}
+
+  /* ===== Bascule de thème ===== */
+  .theme-btn{appearance:none;border:1px solid var(--line-gold);background:var(--white);color:var(--ink-soft);border-radius:20px;padding:7px 13px;font-family:inherit;font-size:12.5px;font-weight:600;cursor:pointer;display:inline-flex;align-items:center;gap:7px;margin-top:12px;}
+  .theme-btn:active{transform:translateY(1px);}
+
+  /* ===== MODE SOMBRE ===== */
+  body.dark{
+    --cream:#171012; --paper:#120C0E; --white:#211619; --card:#211619;
+    --ink:#F4E9EB; --ink-soft:#C4AEB3; --ink-faint:#9B858A;
+    --line:#3A2A2E; --line-gold:#5C4632;
+    --wine:#A82C46; --wine-deep:#7A1730; --wine-soft:#2C161D;
+    --gold:#DDBA6B; --gold-deep:#C9A24B; --gold-soft:#332818;
+    --shadow:0 1px 2px rgba(0,0,0,.3), 0 14px 30px -18px rgba(0,0,0,.7);
+  }
+  body.dark .card-media{background:linear-gradient(150deg,#3A1D26,#25131A);}
+  body.dark .qz-opt{background:#2A1B20;}
+  body.dark .sh{background:linear-gradient(120deg,#2E2214,var(--white));}
+  body.dark .or-front{background:linear-gradient(160deg,#3A2C16,#241A1D);}
+  body.dark .or-front .tx{color:var(--ink-soft);}
+  body.dark .install-hint,body.dark .m-blank,body.dark .m-newpl{background:var(--white);}
+  body.dark .mtab.active,body.dark .m-play{color:#fff;}
+  body.dark .live-banner{border-color:var(--gold);}
+
   /* ===== BAK'MUSIC — page dédiée ===== */
   .m-hero{display:flex;align-items:center;gap:14px;background:linear-gradient(120deg,var(--wine),var(--wine-deep));color:#fff;border-radius:var(--radius);padding:16px 18px;box-shadow:var(--shadow);margin-bottom:14px;}
   .m-hero .note{width:46px;height:46px;border-radius:14px;background:rgba(201,162,75,.22);border:1px solid var(--gold);color:var(--gold);display:flex;align-items:center;justify-content:center;font-size:22px;flex:none;}
@@ -354,6 +471,7 @@
       📲 <b>Astuce :</b> ajoutez cette page à votre écran d'accueil pour la retrouver en un geste et recevoir les notifications.
       <span id="iosHint"></span>
     </div>
+    <div style="text-align:center"><button class="theme-btn" id="themeBtn" onclick="toggleTheme()">🌙 Mode sombre</button></div>
     <footer>© <span id="year"></span> Bakougie · Fait main en France
       <svg class="adot" onclick="openLogin()" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-label="Espace admin"><rect x="5" y="11" width="14" height="9" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg>
     </footer>
@@ -437,20 +555,27 @@ function renderHeader(){
 }
 
 /* ===== Rendu des blocs ===== */
-const TYPE_LABELS={live:'Bandeau live',section:'Titre de section',nouveaute:'Nouveauté',article:'Article',bakmusic:"BAK'MUSIC",bouton:'Bouton',texte:'Texte',image:'Image',liens:'Réseaux & boutique'};
-const TYPE_ICONS={live:'🔴',section:'📑',nouveaute:'🕯️',article:'📝',bakmusic:'🎵',bouton:'🔘',texte:'✍️',image:'🖼️',liens:'🔗'};
+const TYPE_LABELS={live:'Bandeau live',compte:'Compte à rebours',section:'Titre de section',nouveaute:'Nouveauté',article:'Article',oracle:'Oracle parfumé',quiz:'Quiz parfum',avis:'Avis clients',bakmusic:"BAK'MUSIC",partage:'Partager',bouton:'Bouton',texte:'Texte',image:'Image',liens:'Réseaux & boutique'};
+const TYPE_ICONS={live:'🔴',compte:'⏳',section:'📑',nouveaute:'🕯️',article:'📝',oracle:'🔮',quiz:'❓',avis:'⭐',bakmusic:'🎵',partage:'💌',bouton:'🔘',texte:'✍️',image:'🖼️',liens:'🔗'};
 
 /* ---- Navigation (accueil / page BAK'MUSIC) ---- */
 let currentView='home';
 function hasMusic(){ return blocks.some(b=>b.type==='bakmusic'); }
-function routeFromHash(){ const h=(location.hash||'').toLowerCase(); return (h==='#musique'||h==='#music'||h==='#bakmusic')?'musique':'home'; }
+let currentArticle=null;
+function routeFromHash(){
+  const raw=location.hash||''; const h=raw.toLowerCase();
+  if(h==='#musique'||h==='#music'||h==='#bakmusic') return 'musique';
+  const m=raw.match(/^#article-(.+)$/i);
+  if(m){ currentArticle=m[1]; return 'article'; }
+  return 'home';
+}
 function goMusic(){ if(location.hash.toLowerCase()!=='#musique'){ location.hash='musique'; } else { applyRoute(); } }
-function goHome(){ if(routeFromHash()==='musique'){ location.hash=''; } }
+function goHome(){ if(routeFromHash()!=='home'){ location.hash=''; } }
 function applyRoute(){
   const v=routeFromHash();
   const changed=(v!==currentView);
   currentView=v;
-  document.body.classList.toggle('view-music', v==='musique');
+  document.body.classList.toggle('view-music', v!=='home');
   const nav=$('#musicNav'); if(nav) nav.classList.toggle('active', v==='musique');
   render();
   if(changed) window.scrollTo(0,0);
@@ -864,29 +989,121 @@ function openPrompt(titre,label,val,cb){
   document.getElementById('pr_ok').onclick=()=>{ const v=inp?inp.value:''; closeModal(); cb(v); };
 }
 
+function stars(n){ const f=Math.round(n||0); let s=''; for(let i=0;i<5;i++) s+= i<f?'★':'☆'; return s; }
+function liveOn(d){
+  if(!d.auto) return !!d.actif;
+  const now=new Date();
+  if(String(d.jour)!=='' && d.jour!=null && +d.jour!==now.getDay()) return false;
+  const [h1,m1]=String(d.debut||'20:00').split(':').map(Number);
+  const [h2,m2]=String(d.fin||'21:30').split(':').map(Number);
+  const cur=now.getHours()*60+now.getMinutes();
+  return cur>=(h1*60+m1) && cur<=(h2*60+m2);
+}
+function galleryImgs(d){
+  const arr=String(d.images||'').split(/[\n,]/).map(s=>s.trim()).filter(Boolean);
+  if(!arr.length && d.image) arr.push(d.image);
+  return arr;
+}
+
 function blockInner(b, prevType){
   const d=b.data||{};
   switch(b.type){
     case 'live':{
-      if(!d.actif && !isAdmin) return '';
-      const cls='live-banner'+(d.actif?'':' inactive');
+      const on=liveOn(d);
+      if(!on && !isAdmin) return '';
+      const cls='live-banner'+(on?'':' inactive');
       const inner=`<span class="dot"></span><span>${esc(d.texte||'Live en cours')}</span>`;
-      if(d.lien && d.actif) return `<a class="${cls}" href="${esc(d.lien)}" target="_blank" rel="noopener">${inner}</a>`;
-      return `<div class="${cls}">${inner}${(!d.actif&&isAdmin)?' <span class="muted" style="color:#f2d9a8;margin-left:auto">(inactif)</span>':''}</div>`;
+      const adminNote=(!on&&isAdmin)?` <span class="muted" style="color:#f2d9a8;margin-left:auto">(${d.auto?'hors horaire':'inactif'})</span>`:'';
+      if(d.lien && on) return `<a class="${cls}" href="${esc(d.lien)}" target="_blank" rel="noopener">${inner}</a>`;
+      return `<div class="${cls}">${inner}${adminNote}</div>`;
     }
     case 'section':
       return `<div class="section-head">${d.eyebrow?`<span class="eyebrow">${esc(d.eyebrow)}</span>`:''}<h2>${esc(d.titre||'')}</h2></div>`;
-    case 'nouveaute':
-      return `<article class="card">
-        <div class="card-media">${d.image?`<img src="${esc(d.image)}" alt="${esc(d.titre)}" loading="lazy">`:'🕯️'}</div>
+
+    case 'compte':{
+      const t=Date.parse(d.date||'');
+      if(isNaN(t)) return isAdmin?`<div class="cd"><h3>${esc(d.titre||'Compte à rebours')}</h3><div class="cd-sub">Choisissez une date dans ✎</div></div>`:'';
+      const fini=(t-Date.now())<=0;
+      const body = fini
+        ? `<div class="cd-done">${esc(d.texte_fin||"C'est parti !")}</div>`
+        : `<div class="cd-grid" data-cd="${t}">
+            <div class="cd-cell"><div class="cd-val" data-u="j">--</div><div class="cd-lab">jours</div></div>
+            <div class="cd-cell"><div class="cd-val" data-u="h">--</div><div class="cd-lab">heures</div></div>
+            <div class="cd-cell"><div class="cd-val" data-u="m">--</div><div class="cd-lab">min</div></div>
+            <div class="cd-cell"><div class="cd-val" data-u="s">--</div><div class="cd-lab">sec</div></div>
+          </div>`;
+      const cta = d.lien?`<a class="cd-cta" href="${esc(d.lien)}" target="_blank" rel="noopener">${esc(d.label_lien||'J\'en profite')}</a>`:'';
+      return `<div class="cd"><h3>${esc(d.titre||'')}</h3>${d.sous_titre?`<div class="cd-sub">${esc(d.sous_titre)}</div>`:''}${body}${cta}</div>`;
+    }
+
+    case 'oracle':{
+      const cartes=Array.isArray(d.cartes)?d.cartes:[];
+      if(!cartes.length) return isAdmin?`<div class="or-wrap"><h3>${esc(d.titre||'Oracle parfumé')}</h3><p class="empty-note">Ajoutez des cartes avec ✎</p></div>`:'';
+      const c=cartes[oracleIndex(cartes.length)];
+      const open=oracleRevealed();
+      return `<div class="or-wrap"><h3>${esc(d.titre||'Oracle parfumé')}</h3>
+        <div class="or-sub">${esc(d.sous_titre||'Votre carte du jour')}</div>
+        <div class="or-card ${open?'flip':''}" id="orCard" onclick="revealOracle()">
+          <div class="or-inner">
+            <div class="or-face or-back"><span class="bk-logo">✦</span><span class="bk-txt">Bakougie</span></div>
+            <div class="or-face or-front"><span class="em">${esc(c.emoji||'🕯️')}</span>
+              <span class="nm">${esc(c.nom||'')}</span><span class="tx">${esc(c.texte||'')}</span></div>
+          </div>
+        </div>
+        <div class="or-hint">${open?(c.lien?'':'Revenez demain pour une nouvelle carte ✦'):'Touchez la carte pour la retourner'}</div>
+        ${open&&c.lien?`<a class="or-cta" href="${esc(c.lien)}" target="_blank" rel="noopener">Découvrir ce parfum →</a>`:''}</div>`;
+    }
+
+    case 'quiz':{
+      const qs=Array.isArray(d.questions)?d.questions:[];
+      if(!qs.length) return isAdmin?`<div class="qz"><div class="qz-head"><h3>${esc(d.titre||'Quiz')}</h3></div><div class="qz-body"><p class="empty-note">Ajoutez des questions avec ✎</p></div></div>`:'';
+      return `<div class="qz"><div class="qz-head"><h3>${esc(d.titre||'Trouve ton parfum')}</h3>
+        <p>${esc(d.intro||'')}</p></div><div class="qz-body" id="qz_${b.id}">${quizBody(b)}</div></div>`;
+    }
+
+    case 'avis':{
+      const list=Array.isArray(d.avis)?d.avis:[];
+      return `<div class="av">
+        <div class="av-top">
+          <div class="av-note"><b>${esc(d.note||'5')}</b><div class="av-stars">${stars(parseFloat(String(d.note||'5').replace(',','.')))}</div>
+            <span>${esc(d.nombre||'')} avis</span></div>
+          <div class="av-txt"><h3>${esc(d.titre||'Ce qu\'en disent nos client·e·s')}</h3>
+            <p>${esc(d.sous_titre||'')}</p></div>
+        </div>
+        ${list.length?`<div class="av-row">${list.map(a=>`<div class="av-card">
+          <div class="st">${stars(parseFloat(String(a.note||'5').replace(',','.')))}</div>
+          <p>${esc(a.texte||'')}</p><div class="who">${esc(a.auteur||'')}</div></div>`).join('')}</div>`:''}
+      </div>`;
+    }
+
+    case 'partage':
+      return `<div class="sh"><span class="em">💌</span>
+        <span class="sh-main"><b>${esc(d.titre||'Partager Bakougie')}</b>
+        <span>${esc(d.texte||'Envoyez la page à une amie')}</span></span>
+        <button onclick="sharePage()">Partager</button></div>`;
+
+    case 'nouveaute':{
+      const imgs=galleryImgs(d);
+      const media = imgs.length>1
+        ? `<div class="gal">${imgs.map(u=>`<img src="${esc(u)}" alt="${esc(d.titre)}" loading="lazy">`).join('')}</div>`
+        : `<div class="card-media">${imgs[0]?`<img src="${esc(imgs[0])}" alt="${esc(d.titre)}" loading="lazy">`:'🕯️'}</div>`;
+      return `<article class="card">${media}
         <div class="card-body">${d.date?`<div class="card-date">${fmtDate(d.date)}</div>`:''}<h3>${esc(d.titre||'')}</h3><p>${esc(d.texte||'')}</p>
         ${d.lien?`<a class="more" href="${esc(d.lien)}" target="_blank" rel="noopener">Découvrir →</a>`:''}</div></article>`;
+    }
+
     case 'article':{
       const first = prevType!=='article';
-      const inner=`${d.date?`<div class="card-date">${fmtDate(d.date)}</div>`:''}<h3>${esc(d.titre||'')}</h3><p>${esc(d.extrait||'')}</p>${d.lien?'<span class="more">Lire →</span>':''}`;
-      const wrap = d.lien?`<a class="post" href="${esc(d.lien)}" target="_blank" rel="noopener">${inner}</a>`:`<div class="post">${inner}</div>`;
+      const hasBody=!!(d.corps&&d.corps.trim());
+      const label = hasBody?'Lire l\'article →':(d.lien?'Lire →':'');
+      const inner=`${d.date?`<div class="card-date">${fmtDate(d.date)}</div>`:''}<h3>${esc(d.titre||'')}</h3><p>${esc(d.extrait||'')}</p>${label?`<span class="more">${label}</span>`:''}`;
+      let wrap;
+      if(hasBody) wrap=`<div class="post" style="cursor:pointer" onclick="openArticle('${b.id}')">${inner}</div>`;
+      else if(d.lien) wrap=`<a class="post" href="${esc(d.lien)}" target="_blank" rel="noopener">${inner}</a>`;
+      else wrap=`<div class="post">${inner}</div>`;
       return `<div class="${first?'journal-first':''}">${wrap}</div>`;
     }
+
     case 'bakmusic': return '';
     case 'bouton':
       return `<div class="cta-wrap"><a class="cta-btn" href="${esc(d.url||'#')}" target="_blank" rel="noopener">${esc(d.label||'Voir plus')}</a></div>`;
@@ -905,10 +1122,12 @@ function blockInner(b, prevType){
   }
   return '';
 }
+
 function renderPage(){
   const page=$('#page'); let html=''; let prevType=null;
   const musicView = (currentView==='musique');
 
+  if(currentView==='article'){ page.innerHTML=renderArticle(currentArticle); return; }
   if(musicView){
     page.innerHTML=renderMusicApp();
     markRows(); return;
@@ -946,6 +1165,7 @@ function renderPage(){
   if(blocks.length===0) html=`<p class="empty-note">Aucun module. ${isAdmin?'Touchez « + Module » pour commencer.':''}</p>`;
   page.innerHTML=html;
   restorePlayingUI();
+  if(typeof updateCountdowns==='function') updateCountdowns();
 }
 function restorePlayingUI(){ markRows(); }
 function render(){ renderHeader(); renderPage(); }
@@ -955,11 +1175,32 @@ function findBlock(id){ return blocks.find(b=>b.id===id); }
 function moveBlock(id,dir){ const i=blocks.findIndex(b=>b.id===id); const j=i+dir; if(i<0||j<0||j>=blocks.length) return; const t=blocks[i]; blocks[i]=blocks[j]; blocks[j]=t; saveDraft(); renderPage(); }
 function deleteBlock(id){ const b=findBlock(id); if(!b) return; if(!confirm(`Supprimer ce module « ${TYPE_LABELS[b.type]} » ?`)) return; blocks=blocks.filter(x=>x.id!==id); saveDraft(); renderPage(); toast('Module supprimé'); }
 
+const JOURS=[{v:'',t:'Tous les jours'},{v:'1',t:'Lundi'},{v:'2',t:'Mardi'},{v:'3',t:'Mercredi'},{v:'4',t:'Jeudi'},{v:'5',t:'Vendredi'},{v:'6',t:'Samedi'},{v:'0',t:'Dimanche'}];
 const SCHEMAS={
-  live:[{k:'actif',label:'Bandeau visible',type:'bool'},{k:'texte',label:'Texte',type:'text'},{k:'lien',label:'Lien au clic (optionnel)',type:'text'}],
+  live:[{k:'texte',label:'Texte du bandeau',type:'text'},{k:'lien',label:'Lien au clic (optionnel)',type:'text'},
+        {k:'auto',label:'Affichage automatique selon un horaire',type:'bool'},
+        {k:'jour',label:'Jour du live',type:'select',options:JOURS},
+        {k:'debut',label:'Début',type:'time'},{k:'fin',label:'Fin',type:'time'},
+        {k:'actif',label:'Forcer l\'affichage (si automatique décoché)',type:'bool'}],
+  compte:[{k:'titre',label:'Titre',type:'text'},{k:'sous_titre',label:'Sous-titre (optionnel)',type:'text'},
+        {k:'date',label:'Date et heure de fin',type:'datetime'},
+        {k:'texte_fin',label:'Message une fois le compte terminé',type:'text'},
+        {k:'lien',label:'Lien (optionnel)',type:'text'},{k:'label_lien',label:'Texte du bouton',type:'text'}],
   section:[{k:'eyebrow',label:'Sur-titre (optionnel)',type:'text'},{k:'titre',label:'Titre',type:'text'}],
-  nouveaute:[{k:'date',label:'Date',type:'date'},{k:'titre',label:'Titre',type:'text'},{k:'texte',label:'Texte',type:'area'},{k:'image',label:"Image (URL, optionnel)",type:'text'},{k:'lien',label:'Lien (optionnel)',type:'text'}],
-  article:[{k:'date',label:'Date',type:'date'},{k:'titre',label:'Titre',type:'text'},{k:'extrait',label:'Extrait',type:'area'},{k:'lien',label:'Lien (optionnel)',type:'text'}],
+  nouveaute:[{k:'date',label:'Date',type:'date'},{k:'titre',label:'Titre',type:'text'},{k:'texte',label:'Texte',type:'area'},
+        {k:'images',label:'Images',type:'area',hint:'Une adresse par ligne. Plusieurs images = galerie défilante.'},
+        {k:'lien',label:'Lien (optionnel)',type:'text'}],
+  article:[{k:'date',label:'Date',type:'date'},{k:'titre',label:'Titre',type:'text'},
+        {k:'extrait',label:'Extrait (affiché sur l\'accueil)',type:'area'},
+        {k:'image',label:'Image de couverture (optionnel)',type:'text'},
+        {k:'corps',label:'Article complet',type:'area',hint:'Rempli = l\'article se lit dans l\'app. Vide = renvoi vers le lien.'},
+        {k:'lien',label:'Lien externe (optionnel)',type:'text'}],
+  oracle:[{k:'titre',label:'Titre',type:'text'},{k:'sous_titre',label:'Sous-titre',type:'text'}],
+  quiz:[{k:'titre',label:'Titre',type:'text'},{k:'intro',label:'Introduction',type:'text'},
+        {k:'texte_resultat',label:'Titre de la page de résultat',type:'text'}],
+  avis:[{k:'note',label:'Note globale',type:'text'},{k:'nombre',label:'Nombre d\'avis',type:'text'},
+        {k:'titre',label:'Titre',type:'text'},{k:'sous_titre',label:'Sous-titre',type:'text'}],
+  partage:[{k:'titre',label:'Titre',type:'text'},{k:'texte',label:'Texte',type:'text'}],
   bakmusic:[{k:'titre',label:'Titre de la section',type:'text'},{k:'sous_titre',label:'Sous-titre (optionnel)',type:'text'}],
   bouton:[{k:'label',label:'Texte du bouton',type:'text'},{k:'url',label:'Lien',type:'text'}],
   texte:[{k:'titre',label:'Titre (optionnel)',type:'text'},{k:'corps',label:'Texte',type:'area'}],
@@ -967,49 +1208,38 @@ const SCHEMAS={
   liens:[],
 };
 function defaultData(type){
-  return ({live:{actif:true,texte:'🔴 Live TikTok en cours — venez !',lien:''},
+  return ({live:{actif:true,texte:'🔴 Live TikTok en cours — venez !',lien:'',auto:false,jour:'5',debut:'20:00',fin:'21:30'},
+    compte:{titre:'Prochain live TikTok',sous_titre:'Rendez-vous vendredi 20h',date:'',texte_fin:"C'est en direct maintenant !",lien:'',label_lien:'Rejoindre'},
     section:{eyebrow:'',titre:'Nouvelle section'},
-    nouveaute:{date:today(),titre:'Nouveauté',texte:'',image:'',lien:''},
-    article:{date:today(),titre:'Nouvel article',extrait:'',lien:''},
+    nouveaute:{date:today(),titre:'Nouveauté',texte:'',images:'',lien:''},
+    article:{date:today(),titre:'Nouvel article',extrait:'',image:'',corps:'',lien:''},
+    oracle:{titre:'Oracle parfumé',sous_titre:'Votre carte du jour',cartes:[]},
+    quiz:{titre:'Trouve ton parfum',intro:'4 questions pour trouver votre bougie idéale.',texte_resultat:'Ces parfums sont faits pour vous',questions:[],resultats:[]},
+    avis:{note:'4,98',nombre:'1 454',titre:"Ce qu'en disent nos client·e·s",sous_titre:'Merci pour votre confiance ✦',avis:[]},
+    partage:{titre:'Partager Bakougie',texte:'Envoyez la page à une amie'},
     bakmusic:{titre:"BAK'MUSIC",sous_titre:'Les chansons Bakougie',tracks:[]},
     bouton:{label:'En savoir plus',url:''},
     texte:{titre:'',corps:'Votre texte ici.'},
     image:{url:'',legende:''},
     liens:{}})[type];
 }
-function openAddModule(){
-  const cards=Object.keys(TYPE_LABELS).map(t=>`<button class="type-card" onclick="addBlock('${t}')"><span class="em">${TYPE_ICONS[t]}</span> ${TYPE_LABELS[t]}</button>`).join('');
-  openModal(`<div class="modal-head"><h3>Ajouter un module</h3><button class="icon-btn" onclick="closeModal()">✕</button></div>
-    <div class="modal-body"><div class="type-grid">${cards}</div></div>`);
-}
-function addBlock(type){
-  const b={id:uid(),type,data:defaultData(type)};
-  blocks.push(b); saveDraft(); closeModal(); renderPage(); toast('Module ajouté');
-  if(SCHEMAS[type].length) editBlock(b.id);
-}
 function editBlock(id){
   const b=findBlock(id); if(!b) return;
   if(b.type==='liens'){ openSettings(); return; }
   if(b.type==='bakmusic'){ openMusicEditor(id); return; }
   const sc=SCHEMAS[b.type]||[];
-  const fields=sc.map(f=>{
-    const v=b.data[f.k]==null?'':b.data[f.k];
-    if(f.type==='bool') return `<div class="field bool"><input type="checkbox" id="f_${f.k}" ${b.data[f.k]?'checked':''}><label for="f_${f.k}">${f.label}</label></div>`;
-    if(f.type==='area') return `<div class="field"><label>${f.label}</label><textarea id="f_${f.k}">${esc(v)}</textarea></div>`;
-    if(f.type==='date') return `<div class="field"><label>${f.label}</label><input type="date" id="f_${f.k}" value="${esc(v)}"></div>`;
-    return `<div class="field"><label>${f.label}</label><input type="text" id="f_${f.k}" value="${esc(v)}"></div>`;
-  }).join('');
+  const fields=sc.map(f=>fieldHTML(f,b.data[f.k],'f_')).join('');
+  const lists=(LISTS[b.type]||[]).map((c,i)=>`<button class="btn btn-gold" style="width:100%;margin-bottom:8px" onclick="saveBlock('${id}',true);openBlockList('${id}',${i})">${esc(c.bouton)} <span style="opacity:.7">(${(b.data[c.key]||[]).length})</span></button>`).join('');
   openModal(`<div class="modal-head"><h3>${TYPE_ICONS[b.type]} ${TYPE_LABELS[b.type]}</h3><button class="icon-btn" onclick="closeModal()">✕</button></div>
-    <div class="modal-body">${fields||'<p class="muted">Aucun réglage pour ce module.</p>'}</div>
-    <div class="modal-foot"><button class="btn btn-ghost" onclick="closeModal()">Annuler</button><button class="btn btn-primary" onclick="saveBlock('${id}')">Enregistrer</button></div>`);
+    <div class="modal-body">${fields||'<p class="muted">Aucun réglage pour ce module.</p>'}${lists?'<div style="margin-top:6px">'+lists+'</div>':''}</div>
+    <div class="modal-foot"><button class="btn btn-ghost" onclick="closeModal()">Annuler</button>
+      <button class="btn btn-primary" onclick="saveBlock('${id}')">Enregistrer</button></div>`);
 }
-function saveBlock(id){
+function saveBlock(id,silent){
   const b=findBlock(id); if(!b) return;
-  (SCHEMAS[b.type]||[]).forEach(f=>{
-    const el=$('#f_'+f.k); if(!el) return;
-    b.data[f.k] = f.type==='bool' ? el.checked : el.value;
-  });
-  saveDraft(); closeModal(); renderPage(); toast('Module mis à jour');
+  readFields(SCHEMAS[b.type]||[],b.data,'f_');
+  saveDraft();
+  if(!silent){ closeModal(); renderPage(); toast('Module mis à jour'); }
 }
 
 /* ===== Éditeur BAK'MUSIC ===== */
@@ -1077,6 +1307,271 @@ function saveTrack(id,i){
   if(!titre){ toast('Donnez un nom à la chanson'); return; }
   if(i<0) b.data.tracks.push({titre,url}); else b.data.tracks[i]={titre,url};
   saveDraft(); renderPage(); openMusicEditor(id); toast(i<0?'Titre ajouté':'Titre modifié');
+}
+
+
+/* ============================================================
+   Modules interactifs : compte à rebours, oracle, quiz, partage, thème
+   ============================================================ */
+
+/* ---- Compte à rebours + bandeau live automatique ---- */
+let liveSnapshot='';
+function updateCountdowns(){
+  let expired=false;
+  document.querySelectorAll('[data-cd]').forEach(g=>{
+    const t=+g.dataset.cd; let s=Math.max(0,Math.floor((t-Date.now())/1000));
+    const j=Math.floor(s/86400); s-=j*86400;
+    const h=Math.floor(s/3600); s-=h*3600;
+    const m=Math.floor(s/60); s-=m*60;
+    const set=(u,v)=>{ const el=g.querySelector('[data-u="'+u+'"]'); if(el) el.textContent=String(v).padStart(2,'0'); };
+    set('j',j); set('h',h); set('m',m); set('s',s);
+    if(t-Date.now()<=0) expired=true;
+  });
+  return expired;
+}
+function tickModules(){
+  if(updateCountdowns()) renderPage();
+  const snap=blocks.filter(b=>b.type==='live').map(b=>b.id+':'+(liveOn(b.data)?1:0)).join(',');
+  if(snap!==liveSnapshot){ liveSnapshot=snap; if(currentView==='home') renderPage(); }
+}
+setInterval(tickModules,1000);
+
+/* ---- Oracle parfumé ---- */
+const ORACLE_KEY='bakougie_oracle_v1';
+function todayStr(){ const d=new Date(); return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0'); }
+function oracleIndex(n){
+  const s=todayStr(); let h=0;
+  for(let i=0;i<s.length;i++) h=(h*31+s.charCodeAt(i))>>>0;
+  return n?h%n:0;
+}
+function oracleRevealed(){ try{ return localStorage.getItem(ORACLE_KEY)===todayStr(); }catch(e){ return false; } }
+function revealOracle(){
+  if(oracleRevealed()) return;
+  try{ localStorage.setItem(ORACLE_KEY,todayStr()); }catch(e){}
+  const c=document.getElementById('orCard'); if(c) c.classList.add('flip');
+  setTimeout(()=>renderPage(),780);
+}
+
+/* ---- Quiz ---- */
+const quizState={};
+function qState(id){ if(!quizState[id]) quizState[id]={step:0,tags:[],done:false}; return quizState[id]; }
+function quizBody(b){
+  const d=b.data||{}; const qs=d.questions||[]; const st=qState(b.id);
+  if(st.done){
+    const res=(d.resultats||[]).map(r=>{
+      const tg=String(r.tags||'').split(',').map(s=>fold(s).trim()).filter(Boolean);
+      let score=0; tg.forEach(t=>{ st.tags.forEach(x=>{ if(x===t) score++; }); });
+      return {r,score};
+    }).sort((a,b2)=>b2.score-a.score).slice(0,3).map(o=>o.r);
+    const picks=res.length?res:(d.resultats||[]).slice(0,3);
+    return `<div class="qz-res">
+      <div class="rtag">Votre sélection</div>
+      <h4>${esc(d.texte_resultat||'Ces parfums sont faits pour vous')}</h4>
+      <div class="qz-picks">${picks.map(r=>{
+        const inner=`${r.image?`<img src="${esc(r.image)}" alt="${esc(r.nom)}">`:'<span class="ph">🕯️</span>'}
+          <span class="pk"><b>${esc(r.nom||'')}</b><span>${esc(r.sous_titre||'')}</span></span>
+          ${r.lien?'<span class="go">→</span>':''}`;
+        return r.lien?`<a class="qz-pick" href="${esc(r.lien)}" target="_blank" rel="noopener">${inner}</a>`:`<div class="qz-pick">${inner}</div>`;
+      }).join('')||'<p class="empty-note">Ajoutez des résultats dans ✎</p>'}</div>
+      <div class="qz-nav"><button onclick="quizReset('${b.id}')">↺ Refaire le quiz</button></div>
+    </div>`;
+  }
+  const q=qs[st.step]; if(!q){ st.done=true; return quizBody(b); }
+  const opts=Array.isArray(q.options)?q.options:[];
+  return `<div class="qz-prog"><i style="width:${Math.round(st.step/qs.length*100)}%"></i></div>
+    <div class="qz-step">Question ${st.step+1} / ${qs.length}</div>
+    <div class="qz-q">${esc(q.q||'')}</div>
+    <div class="qz-opts">${opts.map((o,i)=>`<button class="qz-opt" onclick="quizAnswer('${b.id}',${i})">
+      <span class="em">${esc(o.emoji||'✦')}</span> ${esc(o.label||'')}</button>`).join('')||'<p class="empty-note">Aucune réponse pour cette question.</p>'}</div>
+    ${st.step>0?`<div class="qz-nav"><button onclick="quizBack('${b.id}')">← Précédent</button></div>`:''}`;
+}
+function refreshQuiz(id){ const el=document.getElementById('qz_'+id); const b=findBlock(id); if(el&&b) el.innerHTML=quizBody(b); }
+function quizAnswer(id,i){
+  const b=findBlock(id); if(!b) return; const st=qState(id);
+  const q=(b.data.questions||[])[st.step]; const o=q&&(q.options||[])[i];
+  if(o){ String(o.tags||'').split(',').map(s=>fold(s).trim()).filter(Boolean).forEach(t=>st.tags.push(t)); }
+  st.picks=st.picks||[]; st.picks[st.step]=i;
+  st.step++;
+  if(st.step>=(b.data.questions||[]).length) st.done=true;
+  refreshQuiz(id);
+}
+function quizBack(id){
+  const b=findBlock(id); const st=qState(id); if(st.step<=0) return;
+  st.step--;
+  const q=(b.data.questions||[])[st.step]; const o=q&&(q.options||[])[(st.picks||[])[st.step]];
+  if(o){ String(o.tags||'').split(',').map(s=>fold(s).trim()).filter(Boolean).forEach(t=>{ const k=st.tags.indexOf(t); if(k>=0) st.tags.splice(k,1); }); }
+  st.done=false; refreshQuiz(id);
+}
+function quizReset(id){ quizState[id]={step:0,tags:[],done:false,picks:[]}; refreshQuiz(id); }
+
+/* ---- Partager ---- */
+function sharePage(){
+  const url=(CONFIG.siteUrl||location.href);
+  const data={title:CONFIG.marque||'Bakougie',text:CONFIG.tagline||'',url};
+  if(navigator.share){ navigator.share(data).catch(()=>{}); return; }
+  if(navigator.clipboard){ navigator.clipboard.writeText(url).then(()=>toast('Lien copié ✓')).catch(()=>toast(url)); return; }
+  toast(url);
+}
+
+/* ---- Mode sombre ---- */
+const THEME_KEY='bakougie_theme_v1';
+function currentTheme(){
+  try{ const v=localStorage.getItem(THEME_KEY); if(v) return v; }catch(e){}
+  return (window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches)?'dark':'clair';
+}
+function applyTheme(t){
+  const dark=(t==='dark');
+  document.body.classList.toggle('dark',dark);
+  const meta=document.querySelector('meta[name="theme-color"]'); if(meta) meta.setAttribute('content',dark?'#7A1730':'#800020');
+  const em=document.querySelector('.hero .emblem'); if(em) em.src=dark?'logo-gold.png':'logo-black.png';
+  const btn=document.getElementById('themeBtn'); if(btn) btn.innerHTML=dark?'☀️ Mode clair':'🌙 Mode sombre';
+}
+function toggleTheme(){
+  const next=document.body.classList.contains('dark')?'clair':'dark';
+  try{ localStorage.setItem(THEME_KEY,next); }catch(e){}
+  applyTheme(next);
+}
+
+/* ---- Lecture d'un article ---- */
+function openArticle(id){ location.hash='article-'+id; }
+function renderArticle(id){
+  const b=findBlock(id);
+  if(!b||b.type!=='article') return `<div class="pagehead"><button class="backbtn" onclick="goHome()">← Retour</button></div><p class="empty-note">Article introuvable.</p>`;
+  const d=b.data||{};
+  return `<div class="pagehead"><button class="backbtn" onclick="goHome()">← Retour</button>
+    ${isAdmin?`<button class="backbtn" style="margin-left:auto" onclick="editBlock('${id}')">✎ Modifier</button>`:''}</div>
+    <article class="rd">
+      ${d.image?`<img class="rd-img" src="${esc(d.image)}" alt="${esc(d.titre)}">`:''}
+      <div class="rd-body">
+        ${d.date?`<div class="card-date">${fmtDate(d.date)}</div>`:''}
+        <h1>${esc(d.titre||'')}</h1>
+        <div class="rd-txt">${esc(d.corps||d.extrait||'')}</div>
+        ${d.lien?`<a class="rd-more" href="${esc(d.lien)}" target="_blank" rel="noopener">Lire la suite sur le site →</a>`:''}
+      </div>
+    </article>`;
+}
+
+/* ============================================================
+   Administration : champs génériques + éditeur de listes
+   ============================================================ */
+function fieldHTML(f,val,p){
+  const v=(val==null?'':val), id=p+f.k;
+  if(f.type==='bool')  return `<div class="field bool"><input type="checkbox" id="${id}" ${val?'checked':''}><label for="${id}">${f.label}</label></div>`;
+  if(f.type==='area')  return `<div class="field"><label>${f.label}</label><textarea id="${id}">${esc(v)}</textarea>${f.hint?`<p class="muted" style="margin-top:5px">${f.hint}</p>`:''}</div>`;
+  if(f.type==='date')  return `<div class="field"><label>${f.label}</label><input type="date" id="${id}" value="${esc(v)}"></div>`;
+  if(f.type==='datetime') return `<div class="field"><label>${f.label}</label><input type="datetime-local" id="${id}" value="${esc(v)}"></div>`;
+  if(f.type==='time')  return `<div class="field"><label>${f.label}</label><input type="time" id="${id}" value="${esc(v)}"></div>`;
+  if(f.type==='select')return `<div class="field"><label>${f.label}</label><select id="${id}" style="width:100%;padding:11px 13px;border:1px solid var(--line-gold);border-radius:11px;font-family:inherit;font-size:15px;background:var(--cream);color:var(--ink)">
+      ${f.options.map(o=>`<option value="${esc(o.v)}" ${String(v)===String(o.v)?'selected':''}>${esc(o.t)}</option>`).join('')}</select></div>`;
+  return `<div class="field"><label>${f.label}</label><input type="text" id="${id}" value="${esc(v)}">${f.hint?`<p class="muted" style="margin-top:5px">${f.hint}</p>`:''}</div>`;
+}
+function readFields(schema,obj,p){
+  schema.forEach(f=>{
+    const el=document.getElementById(p+f.k); if(!el) return;
+    obj[f.k]= (f.type==='bool') ? el.checked : el.value;
+  });
+}
+
+/* ---- Éditeur générique de listes ---- */
+let LEstack=[];
+function openListEditor(container,cfg,backFn){
+  LEstack.push({container,cfg,backFn});
+  renderListEditor();
+}
+function closeListEditor(){
+  const cur=LEstack.pop();
+  if(cur&&cur.backFn) cur.backFn(); else if(LEstack.length) renderListEditor(); else closeModal();
+  saveDraft(); renderPage();
+}
+function renderListEditor(){
+  const top=LEstack[LEstack.length-1]; if(!top) return;
+  const {container,cfg}=top;
+  if(!Array.isArray(container[cfg.key])) container[cfg.key]=[];
+  const arr=container[cfg.key];
+  const rows=arr.map((it,i)=>`<div class="track-row">
+      <span class="tr-num">${i+1}</span>
+      <span class="tr-name">${esc(it[cfg.nameField]||'(sans nom)')}</span>
+      <button title="Monter" onclick="leMove(${i},-1)">↑</button>
+      <button title="Descendre" onclick="leMove(${i},1)">↓</button>
+      <button title="Modifier" onclick="leEdit(${i})">✎</button>
+      <button class="del" title="Supprimer" onclick="leDel(${i})">🗑</button>
+    </div>`).join('');
+  openModal(`<div class="modal-head"><h3>${esc(cfg.titre)}</h3><button class="icon-btn" onclick="closeListEditor()">✕</button></div>
+    <div class="modal-body">
+      ${cfg.aide?`<p class="muted" style="margin-bottom:12px">${cfg.aide}</p>`:''}
+      <div style="max-height:46vh;overflow:auto">${rows||'<p class="muted">Aucun élément pour l\'instant.</p>'}</div>
+      <button class="btn btn-gold" style="width:100%;margin-top:12px" onclick="leEdit(-1)">＋ Ajouter</button>
+    </div>
+    <div class="modal-foot"><button class="btn btn-primary" onclick="closeListEditor()">Terminé</button></div>`);
+}
+function leMove(i,d){
+  const {container,cfg}=LEstack[LEstack.length-1]; const a=container[cfg.key]; const j=i+d;
+  if(j<0||j>=a.length) return; const t=a[i]; a[i]=a[j]; a[j]=t; saveDraft(); renderListEditor();
+}
+function leDel(i){
+  const {container,cfg}=LEstack[LEstack.length-1]; const a=container[cfg.key];
+  if(!confirm('Supprimer « '+(a[i][cfg.nameField]||'cet élément')+' » ?')) return;
+  a.splice(i,1); saveDraft(); renderPage(); renderListEditor();
+}
+function leEdit(i){
+  const {container,cfg}=LEstack[LEstack.length-1]; const a=container[cfg.key];
+  const isNew=(i<0); const item=isNew?Object.assign({},cfg.defaut||{}):a[i];
+  const fields=cfg.schema.map(f=>fieldHTML(f,item[f.k],'le_')).join('');
+  const sub=cfg.sub?`<button class="btn btn-ghost" style="width:100%;margin-top:6px" onclick="leSub(${i})">${esc(cfg.sub.bouton)}</button>`:'';
+  openModal(`<div class="modal-head"><h3>${isNew?'Ajouter':'Modifier'}</h3><button class="icon-btn" onclick="renderListEditor()">✕</button></div>
+    <div class="modal-body">${fields}${sub}</div>
+    <div class="modal-foot"><button class="btn btn-ghost" onclick="renderListEditor()">Annuler</button>
+      <button class="btn btn-primary" onclick="leSave(${i})">Enregistrer</button></div>`);
+}
+function leSave(i){
+  const {container,cfg}=LEstack[LEstack.length-1]; const a=container[cfg.key];
+  const item=(i<0)?Object.assign({},cfg.defaut||{}):a[i];
+  readFields(cfg.schema,item,'le_');
+  if(i<0) a.push(item);
+  saveDraft(); renderPage(); renderListEditor();
+}
+function leSub(i){
+  const {container,cfg}=LEstack[LEstack.length-1]; const a=container[cfg.key];
+  let item;
+  if(i<0){ item=Object.assign({},cfg.defaut||{}); readFields(cfg.schema,item,'le_'); a.push(item); }
+  else { item=a[i]; readFields(cfg.schema,item,'le_'); }
+  saveDraft();
+  openListEditor(item,cfg.sub.cfg,()=>renderListEditor());
+}
+
+/* ---- Listes attachées à un type de module ---- */
+const LISTS={
+  oracle:[{key:'cartes',titre:"Cartes de l'oracle",nameField:'nom',bouton:'🃏 Gérer les cartes',
+    aide:"Une carte est tirée automatiquement chaque jour, la même pour tout le monde.",
+    defaut:{emoji:'🕯️',nom:'',texte:'',lien:''},
+    schema:[{k:'emoji',label:'Emoji',type:'text'},{k:'nom',label:'Nom du parfum',type:'text'},
+            {k:'texte',label:'Message du jour',type:'area'},{k:'lien',label:'Lien boutique (optionnel)',type:'text'}]}],
+  avis:[{key:'avis',titre:'Avis clients',nameField:'auteur',bouton:'⭐ Gérer les avis',
+    defaut:{note:'5',texte:'',auteur:''},
+    schema:[{k:'texte',label:'Avis',type:'area'},{k:'auteur',label:'Prénom / nom',type:'text'},
+            {k:'note',label:'Note sur 5',type:'text'}]}],
+  quiz:[
+    {key:'questions',titre:'Questions du quiz',nameField:'q',bouton:'❓ Gérer les questions',
+     aide:"Chaque réponse porte des mots-clés. Les produits qui partagent ces mots-clés seront recommandés.",
+     defaut:{q:'',options:[]},
+     schema:[{k:'q',label:'Question',type:'text'}],
+     sub:{bouton:'→ Gérer les réponses de cette question',
+          cfg:{key:'options',titre:'Réponses',nameField:'label',
+               aide:"Mots-clés séparés par des virgules (ex. gourmand, hiver).",
+               defaut:{emoji:'✦',label:'',tags:''},
+               schema:[{k:'emoji',label:'Emoji',type:'text'},{k:'label',label:'Réponse',type:'text'},
+                       {k:'tags',label:'Mots-clés',type:'text',hint:'Séparés par des virgules'}]}}},
+    {key:'resultats',titre:'Produits recommandés',nameField:'nom',bouton:'🕯️ Gérer les produits',
+     aide:"Les 3 produits dont les mots-clés correspondent le mieux seront proposés.",
+     defaut:{nom:'',sous_titre:'',tags:'',image:'',lien:''},
+     schema:[{k:'nom',label:'Nom du produit',type:'text'},{k:'sous_titre',label:'Description courte',type:'text'},
+             {k:'tags',label:'Mots-clés',type:'text',hint:'Séparés par des virgules'},
+             {k:'image',label:'Image (URL, optionnel)',type:'text'},{k:'lien',label:'Lien boutique',type:'text'}]}],
+};
+function openBlockList(blockId,li){
+  const b=findBlock(blockId); const cfg=(LISTS[b.type]||[])[li]; if(!cfg) return;
+  LEstack=[];
+  openListEditor(b.data,cfg,()=>{ closeModal(); });
 }
 
 /* ===== Réglages (config) ===== */
@@ -1162,6 +1657,7 @@ function escC(e){ if(e.key==='Escape') closeModal(); }
 /* accès admin via #admin */
 if((location.hash||'').toLowerCase()==='#admin') setTimeout(openLogin,300);
 
+applyTheme(currentTheme());
 document.getElementById('page').addEventListener('click',onPageClick);
 applyRoute();
 renderPlayer();
